@@ -1,8 +1,8 @@
 import React from "react";
-
+import Helmet from "react-helmet";
 const EventJsonLd = ({ summary, description, start, end, location }) => (
-  <script type="application/ld+json">
-    {`
+  <Helmet>
+    <script type="application/ld+json">{`
     {
       "@context": "http://www.schema.org",
       "@type": "Event",
@@ -16,8 +16,8 @@ const EventJsonLd = ({ summary, description, start, end, location }) => (
         "address": "${location}"
       }
     }
-    `}
-  </script>
+  `}</script>
+  </Helmet>
 );
 
 export default EventJsonLd;

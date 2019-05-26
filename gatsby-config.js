@@ -1,8 +1,26 @@
+require("dotenv").config({
+  path: `.env`,
+});
+
+const today = new Date();
+const timeMin = today.toISOString();
+const timeMax = new Date(today.setMonth(today.getMonth() + 3)).toISOString();
+
+const url = `${process.env.GOOGLE_CALENDAR_BASE_URL}/${process.env.GOOGLE_CALENDAR_ID}/events`;
+
+const calendarParams = {
+  key: process.env.GOOGLE_CALENDAR_API_KEY,
+  orderBy: "startTime",
+  singleEvents: true,
+  timeMin,
+  timeMax
+}
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `DSA504`,
+    description: `I was saying "bapping"`,
+    author: `dsaneworleans`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,8 +39,8 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#ec1f27`,
+        theme_color: `#ec1f27`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
@@ -30,5 +48,46 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-source-apiserver',
+      options: {
+        // The url, this should be the endpoint you are attempting to pull data from
+        url,
+
+        method: 'get',
+
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        // Name of the data to be downloaded.  Will show in graphQL or be saved to a file
+        // using this name. i.e. posts.json
+        name: `calendarEvents`,
+
+        // Nested level of entities in response object, example: `data.posts`
+        entityLevel: `items`,
+
+        // Define schemaType to normalize blank values
+        // example:
+        // const postType = {
+        //   id: 1,
+        //   name: 'String',
+        //   published: true,
+        //   object: {a: 1, b: '2', c: false},
+        //   array: [{a: 1, b: '2', c: false}]
+        // }
+        // schemaType: postType,
+
+        // Request parameters
+        // Only available from version 2.1.0
+        params: calendarParams,
+
+
+        // Optionally include some output when building
+        // Default is false
+        verboseOutput: true, // For debugging purposes
+
+      }
+    }
   ],
 }

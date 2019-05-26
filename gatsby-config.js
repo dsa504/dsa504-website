@@ -23,6 +23,7 @@ module.exports = {
     author: `dsaneworleans`,
   },
   plugins: [
+    `gatsby-plugin-jss`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

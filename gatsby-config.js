@@ -13,7 +13,8 @@ const calendarParams = {
   orderBy: "startTime",
   singleEvents: true,
   timeMin,
-  timeMax
+  timeMax,
+  timeZone: "America/Chicago"
 }
 
 module.exports = {

@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 import Calendar from "../components/calendar";
 
@@ -19,8 +18,18 @@ const IndexPage = () => (
               creator { email },
               description,
               location,
-              start {dateTime },
-              end {dateTime },
+              start {
+                dateTime
+                monthandDay: dateTime(formatString: "MMMM Do")
+                dayOfWeek: dateTime(formatString: "dddd"),
+                localTime: dateTime(formatString: "h:mm A")
+                }
+              end {
+                dateTime
+                monthandDay: dateTime(formatString: "MMMM Do")
+                dayOfWeek: dateTime(formatString: "dddd"),
+                localTime: dateTime(formatString: "h:mm A")
+              }
               htmlLink
             }
           }

@@ -1,11 +1,8 @@
 import React from "react";
-import dayjs from "dayjs";
-import advancedFormat from "dayjs/plugin/advancedFormat";
 import EventJsonLd from "./event-json-ld";
 import injectSheet from "react-jss";
 import styles from "./styles";
 
-dayjs.extend(advancedFormat);
 
 const Event = ({
   summary,
@@ -17,8 +14,7 @@ const Event = ({
   classes,
   htmlLink
 }) => {
-  const formattedStartDate = start ? dayjs(start.dateTime).format("MMMM Do") : "";
-  const emailSubject = `${formattedStartDate} ${summary}`;
+  const emailSubject = `${start.monthAndDay} ${summary}`;
 
   return (
     <div className={classes.root} itemScope itemType="http://schema.org/Event">
@@ -26,11 +22,11 @@ const Event = ({
       <meta itemProp="startDate" content={start.dateTime} />
       <div>
         <div className={classes.date}>
-          <strong>{dayjs(start.dateTime).format("dddd")}</strong>
-          , {formattedStartDate}
+          <strong>{start.dayOfWeek}</strong>
+          , {start.monthAndDay}
         </div>
         <div className={classes.timespan}>
-          {dayjs(start.dateTime).format("h:mm A")} - {dayjs(end.dateTime).format("h:mm A")}
+          {start.localTime} - {end.localTime}
         </div>
       </div>
       <a href={htmlLink} className={classes.nameLink}>

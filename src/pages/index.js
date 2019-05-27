@@ -7,6 +7,18 @@ import Calendar from "../components/calendar";
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
+    <StaticQuery query={graphql`
+        query WordPressPostsQuery {
+        allWordpressPost(limit: 2) {
+          edges {
+            node {
+              slug
+              content
+            }
+          }
+        }
+      }
+    `} render={data => data.allWordpressPost.edges.map(edge => <div dangerouslySetInnerHTML={{ __html: edge.node.content }} />)} />
     <Link to="/page-2/">Go to page 2</Link>
     <StaticQuery query={graphql`
       query CalendarEventsQuery {

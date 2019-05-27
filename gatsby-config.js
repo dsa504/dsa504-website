@@ -51,6 +51,21 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        baseUrl: process.env.WORDPRESS_BASE_URL,
+        plugins: [
+          {
+            resolve: `gatsby-wordpress-inline-images`,
+            options: {
+              baseUrl: process.env.WORDPRESS_BASE_URL,
+              protocol: `http`
+            }
+          }
+        ]
+      }
+    },
+    {
       resolve: 'gatsby-source-apiserver',
       options: {
         // The url, this should be the endpoint you are attempting to pull data from

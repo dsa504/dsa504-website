@@ -3371,6 +3371,15 @@ deep-map-keys@^1.2.0:
     es6-weak-map "^2.0.1"
     lodash "^4.13.1"
 
+deep-map@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/deep-map/-/deep-map-1.5.0.tgz#eaa595cb81783ca2800f26a42e09f16e7d4fb890"
+  integrity sha1-6qWVy4F4PKKADyakLgnxbn1PuJA=
+  dependencies:
+    es6-weak-map "^2.0.2"
+    lodash "^4.17.4"
+    tslib "^1.6.0"
+
 deepmerge@^2.0.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
@@ -3914,7 +3923,7 @@ es6-symbol@^3.1.1, es6-symbol@~3.1.1:
     d "1"
     es5-ext "~0.10.14"
 
-es6-weak-map@^2.0.1:
+es6-weak-map@^2.0.1, es6-weak-map@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/es6-weak-map/-/es6-weak-map-2.0.2.tgz#5e3ab32251ffd1538a1f8e5ffa1357772f92d96f"
   integrity sha1-XjqzIlH/0VOKH45f+hNXdy+S2W8=
@@ -5038,6 +5047,23 @@ gatsby-source-filesystem@^2.0.37:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
+gatsby-source-wordpress@^3.0.62:
+  version "3.0.62"
+  resolved "https://registry.yarnpkg.com/gatsby-source-wordpress/-/gatsby-source-wordpress-3.0.62.tgz#aa60a22e0a8e025f0484604f2a645aa9ba4bbc16"
+  integrity sha512-zRC7Z/O0BRbYiCnqpOfhEnwuHC0jQmwHyvE3XMIaTDsnd5u08MKjbcY5wa9o5nU9kgiOB43g0Sp2FsdS+DmP4Q==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    axios "^0.18.0"
+    better-queue "^3.8.6"
+    bluebird "^3.5.0"
+    deep-map "^1.5.0"
+    deep-map-keys "^1.2.0"
+    gatsby-source-filesystem "^2.0.37"
+    json-stringify-safe "^5.0.1"
+    lodash "^4.17.10"
+    minimatch "^3.0.4"
+    qs "^6.4.0"
+
 gatsby-telemetry@^1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.0.10.tgz#c472210ffd7363f329fa853097274c2a2ed62135"
@@ -5071,6 +5097,14 @@ gatsby-transformer-sharp@^2.1.19:
     probe-image-size "^4.0.0"
     semver "^5.6.0"
     sharp "^0.22.1"
+
+gatsby-wordpress-inline-images@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-wordpress-inline-images/-/gatsby-wordpress-inline-images-1.0.0.tgz#c6d67936ef53c0fdc3f3400facadcad672a280f7"
+  integrity sha512-RaOQaR2f95jXsfqhV5IXpo5ABRdLvidySLte4WOoRKFHUdVXLeHXr9GQaBgTp9wphqQIJ63hOjLSbmxzYlkfXA==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    cheerio "^1.0.0-rc.2"
 
 gatsby@^2.7.1:
   version "2.7.1"
@@ -9244,7 +9278,7 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
-qs@6.7.0:
+qs@6.7.0, qs@^6.4.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==

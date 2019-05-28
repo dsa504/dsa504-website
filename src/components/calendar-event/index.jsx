@@ -2,7 +2,8 @@ import React from "react";
 import EventJsonLd from "./event-json-ld";
 import injectSheet from "react-jss";
 import styles from "./styles";
-
+import { Link } from "gatsby";
+import { kebabCase } from "lodash";
 
 const Event = ({
   summary,
@@ -29,11 +30,12 @@ const Event = ({
           {start.localTime} - {end.localTime}
         </div>
       </div>
-      <a href={htmlLink} className={classes.nameLink}>
+      <Link to={`/events/${kebabCase(summary)}`} className={classes.nameLink}>
         <h4 itemProp="name" className={classes.name}>
           {summary}
         </h4>
-      </a>
+      </Link>
+      <a href={htmlLink}>Add to your calendar</a>
       <a
         className={classes.link}
         href={`mailto:${creator.email}?subject=${encodeURIComponent(

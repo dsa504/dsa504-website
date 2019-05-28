@@ -13,9 +13,11 @@ const EventDetail = ({ pageContext: { summary, description, location } }) => {
       <article>
         <div style={{ display: "flex" }}>
           <div style={{ width: 400, flex: "1 0 auto" }}>
-            <StaticGoogleMap size="400x400">
-              <Marker color="0x222222" label="X" {...{ location }} />
-            </StaticGoogleMap>
+            {location ? (
+              <StaticGoogleMap size="400x400">
+                <Marker color="0x222222" label="X" {...{ location }} />
+              </StaticGoogleMap>
+            ) : null}
           </div>
           <div>
             <h1>{summary}</h1>

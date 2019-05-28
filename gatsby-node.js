@@ -34,20 +34,21 @@ exports.createPages = async function ({ actions, graphql }) {
   data.allCalendarEvents.edges.forEach(edge => {
     // TODO: move event slug creation to normalizer
 
-    const slug = `${edge.node.start.slugDate}-${kebabCase(edge.node.summary)}`;
-    actions.createPage({
-      path: `/events/${slug}`,
-      component: require.resolve(`./src/components/event-detail/index.jsx`),
-      context: { slug, ...edge.node },
-    });
-
-    data.allWordpressPost.edges.forEach(edge => {
+    if (edge.node.start) {
+      const slug = `${edge.node.start.slugDate}-${kebabCase(edge.node.summary)}`;
       actions.createPage({
-        path: `/posts/${edge.node.slug}`,
-        component: require.resolve(`./src/components/post/index.jsx`),
-        context: edge.node
-      })
-    })
+        path: `/events/${slug}`,
+        component: require.resolve(`./src/components/event-detail/index.jsx`),
+        context: { slug, ...edge.node },
+      });
+    }
+  });
 
-  })
+  data.allWordpressPost.edges.forEach(edge => {
+    actions.createPage({
+      path: `/posts/${edge.node.slug}`,
+      component: require.resolve(`./src/components/post/index.jsx`),
+      context: edge.node
+    })
+  });
 };

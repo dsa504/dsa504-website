@@ -18,7 +18,6 @@ const Event = ({
   const emailSubject = `${start.monthAndDay} ${summary}`;
 
   const slug = `${start.slugDate}-${kebabCase(summary)}`;
-  console.log("calendar-event slug", slug);
 
   return (
     <div className={classes.root} itemScope itemType="http://schema.org/Event">

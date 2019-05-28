@@ -23,16 +23,13 @@ exports.createPages = async function ({ actions, graphql }) {
     `)
   data.allCalendarEvents.edges.forEach(edge => {
     // TODO: move event slug creation to normalizer
-    if (edge.node.start) {
-      const slug = `${edge.node.start.slugDate}-${kebabCase(edge.node.summary)}`;
-      console.log("createPage slug", slug);
-      actions.createPage({
-        path: `/events/${slug}`,
-        component: require.resolve(`./src/components/event-detail/index.jsx`),
-        context: { slug: slug, summary: edge.node.summary },
-      })
-    } else {
-      console.log(edge.node)
-    }
+
+    const slug = `${edge.node.start.slugDate}-${kebabCase(edge.node.summary)}`;
+    actions.createPage({
+      path: `/events/${slug}`,
+      component: require.resolve(`./src/components/event-detail/index.jsx`),
+      context: { slug: slug, summary: edge.node.summary },
+    })
+
   })
 };

@@ -9456,6 +9456,13 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-promise@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-promise/-/react-promise-2.1.0.tgz#8a8d590b4ec9dc8fca428859bafe65c6f04e151e"
+  integrity sha512-j9B97+RWlC/OS36asazn1mn24F+xfi5x6PP6b/vq1TyKZ9CfI8mFJGIvqEJCngO8orC2+OaUM4ZlvQiEsY19bQ==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-reconciler@^0.20.0:
   version "0.20.4"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.20.4.tgz#3da6a95841592f849cb4edd3d38676c86fd920b2"
@@ -9474,7 +9481,16 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react@^16.8.4, react@^16.8.6:
+react-static-google-map@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/react-static-google-map/-/react-static-google-map-0.5.2.tgz#1e1738bc5e2abc87ab7ed92d1131d84b2149d7b3"
+  integrity sha512-kys3ituNQyp2tD0cC8m+CjA6xU3ZOGUNdD0YAP3jcc32ZNy8PlKTPKR3pvUkFBm3wc68G+O0mRDUM19FWv/vQw==
+  dependencies:
+    invariant "^2.2.2"
+    react ">=0.14.x"
+    react-promise "^2.0.0"
+
+react@>=0.14.x, react@^16.8.4, react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==

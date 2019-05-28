@@ -1,9 +1,9 @@
-import React from "react";
-import EventJsonLd from "./event-json-ld";
-import injectSheet from "react-jss";
-import styles from "./styles";
-import { Link } from "gatsby";
-import { kebabCase } from "lodash";
+import React from "react"
+import EventJsonLd from "./event-json-ld"
+import injectSheet from "react-jss"
+import styles from "./styles"
+import { Link } from "gatsby"
+import { kebabCase } from "lodash"
 
 const Event = ({
   summary,
@@ -13,11 +13,11 @@ const Event = ({
   start,
   end,
   classes,
-  htmlLink
+  htmlLink,
 }) => {
-  const emailSubject = `${start.monthAndDay} ${summary}`;
+  const emailSubject = `${start.monthAndDay} ${summary}`
 
-  const slug = `${start.slugDate}-${kebabCase(summary)}`;
+  const slug = `${start.slugDate}-${kebabCase(summary)}`
 
   return (
     <div className={classes.root} itemScope itemType="http://schema.org/Event">
@@ -25,8 +25,7 @@ const Event = ({
       <meta itemProp="startDate" content={start.dateTime} />
       <div>
         <div className={classes.date}>
-          <strong>{start.dayOfWeek}</strong>
-          , {start.monthAndDay}
+          <strong>{start.dayOfWeek}</strong>, {start.monthAndDay}
         </div>
         <div className={classes.timespan}>
           {start.localTime} - {end.localTime}
@@ -59,7 +58,7 @@ const Event = ({
         dangerouslySetInnerHTML={{ __html: description }}
       />
     </div>
-  );
-};
+  )
+}
 
-export default injectSheet(styles)(Event);
+export default injectSheet(styles)(Event)

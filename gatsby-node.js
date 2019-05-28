@@ -19,8 +19,18 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
         }
+        allWordpressPost {
+          edges {
+            node {
+              title
+              content
+              slug
+            }
+          }
+        }
       }
-    `)
+    `);
+
   data.allCalendarEvents.edges.forEach(edge => {
     // TODO: move event slug creation to normalizer
 
@@ -28,7 +38,15 @@ exports.createPages = async function ({ actions, graphql }) {
     actions.createPage({
       path: `/events/${slug}`,
       component: require.resolve(`./src/components/event-detail/index.jsx`),
-      context: { slug: slug, summary: edge.node.summary },
+      context: { slug, ...edge.node },
+    });
+
+    data.allWordpressPost.edges.forEach(edge => {
+      actions.createPage({
+        path: `/posts/${edge.node.slug}`,
+        component: require.resolve(`./src/components/post/index.jsx`),
+        context: edge.node
+      })
     })
 
   })

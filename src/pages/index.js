@@ -18,7 +18,14 @@ const IndexPage = () => (
           }
         }
       }
-    `} render={data => data.allWordpressPost.edges.map(({ node }) => <article><h2 dangerouslySetInnerHTML={{ __html: node.title }}></h2><div dangerouslySetInnerHTML={{ __html: node.excerpt }} /></article>)} />
+    `} render={data => data.allWordpressPost.edges.map(({ node }) => (
+      <article>
+        <Link to={`/posts/${node.slug}`}>
+          <h2 dangerouslySetInnerHTML={{ __html: node.title }} />
+        </Link>
+        <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+      </article>
+    ))} />
     <Link to="/events/">Events</Link>
   </Layout>
 )

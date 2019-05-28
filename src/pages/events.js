@@ -19,6 +19,7 @@ const HomeEvents = () => {
               monthandDay: dateTime(formatString: "MMMM Do")
               dayOfWeek: dateTime(formatString: "dddd"),
               localTime: dateTime(formatString: "h:mm A")
+              slugDate: dateTime(formatString: "YYYY-MM-DD")
               }
             end {
               dateTime

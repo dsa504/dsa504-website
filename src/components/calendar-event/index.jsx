@@ -17,6 +17,9 @@ const Event = ({
 }) => {
   const emailSubject = `${start.monthAndDay} ${summary}`;
 
+  const slug = `${start.slugDate}-${kebabCase(summary)}`;
+  console.log("calendar-event slug", slug);
+
   return (
     <div className={classes.root} itemScope itemType="http://schema.org/Event">
       <EventJsonLd {...{ summary, description, start, end, location }} />
@@ -30,7 +33,8 @@ const Event = ({
           {start.localTime} - {end.localTime}
         </div>
       </div>
-      <Link to={`/events/${kebabCase(summary)}`} className={classes.nameLink}>
+      {/* TODO: move event slug creation to normalizer */}
+      <Link to={`/events/${slug}`} className={classes.nameLink}>
         <h4 itemProp="name" className={classes.name}>
           {summary}
         </h4>

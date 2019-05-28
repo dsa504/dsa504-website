@@ -1,12 +1,14 @@
 require("dotenv").config({
   path: `.env`,
-});
+})
 
-const today = new Date();
-const timeMin = today.toISOString();
-const timeMax = new Date(today.setMonth(today.getMonth() + 3)).toISOString();
+const today = new Date()
+const timeMin = today.toISOString()
+const timeMax = new Date(today.setMonth(today.getMonth() + 3)).toISOString()
 
-const url = `${process.env.GOOGLE_CALENDAR_BASE_URL}/${process.env.GOOGLE_CALENDAR_ID}/events`;
+const url = `${process.env.GOOGLE_CALENDAR_BASE_URL}/${
+  process.env.GOOGLE_CALENDAR_ID
+}/events`
 
 const calendarParams = {
   key: process.env.GOOGLE_CALENDAR_API_KEY,
@@ -14,7 +16,7 @@ const calendarParams = {
   singleEvents: true,
   timeMin,
   timeMax,
-  timeZone: "America/Chicago"
+  timeZone: "America/Chicago",
 }
 
 module.exports = {
@@ -59,22 +61,22 @@ module.exports = {
             resolve: `gatsby-wordpress-inline-images`,
             options: {
               baseUrl: process.env.WORDPRESS_BASE_URL,
-              protocol: `http`
-            }
-          }
-        ]
-      }
+              protocol: `http`,
+            },
+          },
+        ],
+      },
     },
     {
-      resolve: 'gatsby-source-apiserver',
+      resolve: "gatsby-source-apiserver",
       options: {
         // The url, this should be the endpoint you are attempting to pull data from
         url,
 
-        method: 'get',
+        method: "get",
 
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
 
         // Name of the data to be downloaded.  Will show in graphQL or be saved to a file
@@ -99,12 +101,10 @@ module.exports = {
         // Only available from version 2.1.0
         params: calendarParams,
 
-
         // Optionally include some output when building
         // Default is false
         verboseOutput: true, // For debugging purposes
-
-      }
-    }
+      },
+    },
   ],
 }

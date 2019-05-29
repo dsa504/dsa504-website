@@ -56,6 +56,8 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         baseUrl: process.env.WORDPRESS_BASE_URL,
+        hostingWPCOM: false,
+        includedRoutes: ["/*/*/posts", "/*/*/pages"],
         plugins: [
           {
             resolve: `gatsby-wordpress-inline-images`,

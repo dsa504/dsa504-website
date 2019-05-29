@@ -15,7 +15,7 @@ exports.createPages = async function({ actions, graphql }) {
           }
         }
       }
-      allWordpressPost {
+      allWordpressPost(limit: 10) {
         edges {
           node {
             title

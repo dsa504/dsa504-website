@@ -14,7 +14,7 @@
     "gatsby-plugin-sharp": "^2.1.1",
     "gatsby-source-apiserver": "^2.1.1",
     "gatsby-source-filesystem": "^2.0.37",
-    "gatsby-source-wordpress": "^3.0.62",
+    "gatsby-source-wordpress": ">=3.0.64 < 4",
     "gatsby-transformer-sharp": "^2.1.19",
     "gatsby-wordpress-inline-images": "^1.0.0",
     "lodash": "^4.17.11",
@@ -26,7 +26,11 @@
     "react-static-google-map": "^0.5.2"
   },
   "devDependencies": {
+    "moment": "^2.24.0",
     "prettier": "^1.17.1"
+  },
+  "resolutions": {
+    "axios": "^0.19.0"
   },
   "keywords": [
     "gatsby"

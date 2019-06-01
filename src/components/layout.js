@@ -31,14 +31,14 @@ const Layout = ({ children }) => (
           <link
             rel="stylesheet"
             id="wp-block-library-css"
-            href="http://dsaneworleans.org/wp-includes/css/dist/block-library/style.min.css?ver=5.2.1"
+            href="https://dsaneworleans.org/wp-includes/css/dist/block-library/style.min.css?ver=5.2.1"
             type="text/css"
             media="all"
           />
           <link
             rel="stylesheet"
             id="dsa504-stylesheet-css"
-            href="http://dsaneworleans.org/wp-content/themes/dsa504wp/library/css/style.css?ver=5.2.1"
+            href="https://dsaneworleans.org/wp-content/themes/dsa504wp/library/css/style.css?ver=5.2.1"
             type="text/css"
             media="all"
           />

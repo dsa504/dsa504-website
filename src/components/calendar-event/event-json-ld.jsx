@@ -8,9 +8,6 @@ const EventJsonLd = ({
   location,
   ...rest
 }) => {
-  console.log(summary, ...rest)
-  console.log(start)
-  console.log(end)
   return (
     <Helmet>
       <script type="application/ld+json">{`

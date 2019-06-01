@@ -3,8 +3,6 @@ import { StaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Calendar from "../components/calendar"
 
-console.log("events page module entered")
-
 const Events = () => {
   return (
     <StaticQuery
@@ -42,7 +40,6 @@ const Events = () => {
       render={data => (
         <Layout>
           <Calendar
-            data-items={console.log(console.log(data.allCalendarEvents.edges))}
             items={data.allCalendarEvents.edges.map(edge => edge.node)}
           />
         </Layout>

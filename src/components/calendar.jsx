@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react"
 import CalendarEvent from "./calendar-event"
 import { red } from "./calendar-event/styles"
-import { get, uniq } from "lodash"
+import { compact, get, uniq } from "lodash"
 
 const Calendar = ({ error, isFetching, items, fullScreen, ...rest }) => {
   const [filter, setFilter] = useState("")
@@ -16,7 +16,9 @@ const Calendar = ({ error, isFetching, items, fullScreen, ...rest }) => {
 
   if (error || !items) return null
 
-  const filterOptions = uniq(items.map(e => get(e, "creator.email"))).sort()
+  const filterOptions = compact(
+    uniq(items.map(e => get(e, "creator.email")))
+  ).sort()
 
   const filteredItems = filter
     ? items.filter(e => get(e, "creator.email") === filter)

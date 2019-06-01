@@ -40,6 +40,7 @@ const Events = () => {
       render={data => (
         <Layout>
           <Calendar
+            fullScreen
             items={data.allCalendarEvents.edges.map(edge => edge.node)}
           />
         </Layout>

@@ -14,21 +14,29 @@ const Event = ({
   end,
   classes,
   htmlLink,
+  fields,
+  ...rest
 }) => {
-  const emailSubject = `${start.monthAndDay} ${summary}`
+  if (!start) return null
 
-  const slug = `${start.slugDate}-${kebabCase(summary)}`
+  const { slugDate, monthAndDay, dayOfWeek, startLocalTime, endLocalTime } =
+    fields || {}
+  const emailSubject = `${monthAndDay} ${summary}`
+
+  const slug = `${slugDate}-${kebabCase(summary)}`
 
   return (
     <div className={classes.root} itemScope itemType="http://schema.org/Event">
-      <EventJsonLd {...{ summary, description, start, end, location }} />
+      <EventJsonLd
+        {...{ summary, description, start, end, location, fields }}
+      />
       <meta itemProp="startDate" content={start.dateTime} />
       <div>
         <div className={classes.date}>
-          <strong>{start.dayOfWeek}</strong>, {start.monthAndDay}
+          <strong>{dayOfWeek}</strong>, {monthAndDay}
         </div>
         <div className={classes.timespan}>
-          {start.localTime} - {end.localTime}
+          {startLocalTime} - {endLocalTime}
         </div>
       </div>
       {/* TODO: move event slug creation to normalizer */}

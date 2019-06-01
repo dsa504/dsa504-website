@@ -1,36 +1,30 @@
-import React, { useCallback, useState } from "react";
-import CalendarEvent from "./calendar-event";
-import { red } from "./calendar-event/styles";
-import { get, uniq } from "lodash";
+import React, { useCallback, useState } from "react"
+import CalendarEvent from "./calendar-event"
+import { red } from "./calendar-event/styles"
+import { get, uniq } from "lodash"
 
-const Calendar = ({
-  error,
-  isFetching,
-  items,
-  fullScreen,
-}) => {
+console.log("calendar module entered")
+
+const Calendar = ({ error, isFetching, items, fullScreen, ...rest }) => {
+  console.log("items", items)
+  console.log("calendar ...rest", rest)
   const [filter, setFilter] = useState("")
   const handleSetFilter = useCallback(
     e => {
-      setFilter(e.target.value);
+      setFilter(e.target.value)
     },
     [setFilter]
-  );
+  )
 
-  if (isFetching) return <div>Fetching events…</div>;
+  if (isFetching) return <div>Fetching events…</div>
 
-  if (error || !items) return null;
+  if (error || !items) return null
 
-
-  const realItems = items.filter(e => !!e.start);
-
-  const filterOptions = uniq(
-    realItems.map(e => get(e, "creator.email"))
-  ).sort();
+  const filterOptions = uniq(items.map(e => get(e, "creator.email"))).sort()
 
   const filteredItems = filter
-    ? realItems.filter(e => get(e, "creator.email") === filter)
-    : realItems;
+    ? items.filter(e => get(e, "creator.email") === filter)
+    : items
 
   return (
     <div>
@@ -54,7 +48,7 @@ const Calendar = ({
         <CalendarEvent key={item.id} {...item} {...{ fullScreen }} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Calendar;
+export default Calendar

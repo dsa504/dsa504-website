@@ -2,9 +2,10 @@ import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Image from "../components/image"
 
 const IndexPage = () => (
-  <Layout>
+  <Layout isHome>
     <SEO title="Home" />
     <StaticQuery
       query={graphql`
@@ -20,16 +21,18 @@ const IndexPage = () => (
           }
         }
       `}
-      render={data =>
-        data.allWordpressPost.edges.map(({ node }) => (
-          <article>
-            <Link to={`/posts/${node.slug}`}>
-              <h2 dangerouslySetInnerHTML={{ __html: node.title }} />
-            </Link>
-            <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </article>
-        ))
-      }
+      render={data => (
+        <>
+          {data.allWordpressPost.edges.map(({ node }) => (
+            <article>
+              <Link to={`/posts/${node.slug}`}>
+                <h2 dangerouslySetInnerHTML={{ __html: node.title }} />
+              </Link>
+              <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            </article>
+          ))}
+        </>
+      )}
     />
     <Link to="/events/">Events</Link>
   </Layout>

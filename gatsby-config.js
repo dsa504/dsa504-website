@@ -21,8 +21,8 @@ const calendarParams = {
 
 module.exports = {
   siteMetadata: {
-    title: `DSA504`,
-    description: `I was saying "bapping"`,
+    title: `DSA New Orleans`,
+    description: `The New Orleans Chapter of Democratic Socialists of America"`,
     author: `dsaneworleans`,
   },
   plugins: [
@@ -41,13 +41,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `dsa-new-orleans`,
+        short_name: `dsa504`,
         start_url: `/`,
         background_color: `#ec1f27`,
         theme_color: `#ec1f27`,
         display: `minimal-ui`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

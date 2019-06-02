@@ -10,12 +10,12 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Image from "../components/image"
 import "./layout.css"
-import Helmet from "react-helmet"
 import "../sass/style.scss"
 import "../sass/wp-block-library.scss"
 
-const Layout = ({ children }) => (
+const Layout = ({ isHome, children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -28,23 +28,68 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-            href="http://dsaneworleans.org/wp-includes/css/dist/block-library/style.min.css?ver=5.2.1"
-            href="http://dsaneworleans.org/wp-content/themes/dsa504wp/library/css/style.css?ver=5.2.1"
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 80,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+        <div id="container">
+          <Header siteTitle={data.site.siteMetadata.title} />
+          {isHome ? (
+            <div class="hero-index">
+              <div class="wrap hero-wrap">
+                <Image
+                  imgName="dsa-new-orleans-hero-short.png"
+                  className="hero-index-img"
+                  alt="New Orleans Democratic Socialists of America"
+                  title="New Orleans Democratic Socialists of America"
+                />
+              </div>
+            </div>
+          ) : null}
+          <div
+            style={{
+              margin: `0 auto`,
+              maxWidth: 960,
+              padding: `0px 1.0875rem 1.45rem`,
+              paddingTop: 80,
+            }}
+          >
+            <main id="content" className="wrap">
+              {children}
+            </main>
+            <footer>
+              <div className="footer">
+                <nav className="pull-left">
+                  <a itemProp="url" href="/">
+                    <Image
+                      imgName="dsa-new-orleans-logo-footer.png"
+                      alt="DSA New Orleans"
+                      title="DSA New Orleans"
+                    />
+                  </a>
+                  <span
+                    className="microdata-logo"
+                    itemProp="logo"
+                    style={{ display: "none" }}
+                  >
+                    <Image imgName="equal-access-legal-logo.png" />
+                  </span>
+                </nav>
+                <div className="copyright">
+                  <p>
+                    © {new Date().getFullYear()}{" "}
+                    <span itemProp="name">DSA New Orleans</span>
+                    <br className="visible-xs" />
+                    <span style={{ fontSize: "10px", color: "#7b7b7b" }}>
+                      All rights reserved.
+                    </span>
+                  </p>
+                </div>
+                <div className="additional-links">
+                  Get in Touch!
+                  <br />{" "}
+                  <a href="hello@dsaneworleans.org">hello@dsaneworleans.org</a>
+                </div>
+              </div>
+              <br className="clearit" />
+            </footer>
+          </div>
         </div>
       </>
     )}

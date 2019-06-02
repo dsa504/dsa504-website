@@ -1,0 +1,68 @@
+/******************************************************************
+
+Stylesheet: Main Stylesheet
+
+******************************************************************/
+
+/*********************
+IMPORTING PARTIALS
+These files are needed at the beginning so that we establish all
+our mixins, functions, and variables that we'll be using across
+the whole project.
+*********************/
+
+// normalize: http://necolas.github.io/normalize.css/
+@import "partials/normalize";
+
+// buttons
+@import "modules/buttons";
+
+// forms (inputs & labels)
+@import "modules/forms";
+
+// calendar
+@import "modules/events";
+
+/*********************
+BASE (MOBILE) SIZE
+This are the mobile styles. It's what people see on their phones. If
+you set a great foundation, you won't need to add too many styles in
+the other stylesheets. Remember, keep it light: Speed is Important.
+*********************/
+
+// styles in base.scss
+@import "breakpoints/base";
+
+
+/*********************
+TABLET & SMALLER LAPTOPS
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 768px) {
+
+	// styles in 768up.scss
+	@import "breakpoints/768up";
+
+} // end of media query
+
+/*********************
+DESKTOP
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 1030px) {
+
+	// styles in 1030up.scss
+	@import "breakpoints/1030up";
+
+} // end of media query
+
+@media only screen and (min-width: 1300px) {
+
+	// styles in 1030up.scss
+	@import "breakpoints/1240up";
+
+} // end of media query

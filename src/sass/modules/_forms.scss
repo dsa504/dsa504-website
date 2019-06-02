@@ -1,0 +1,109 @@
+/******************************************************************
+
+Stylesheet: Form Styles
+
+******************************************************************/
+
+input[type="text"], input[type="tel"], input[type="email"], textarea {
+    border: none !important;
+    width: 100% !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+    font-size: 14px;
+    color: #999 !important;
+    padding: 16px !important;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+	margin-top:15px;
+}
+
+input[type="submit"] {
+    margin-top:30px;
+    width: 150px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 3px;
+    padding: 6px 20px;
+    line-height: 1.7em;
+    background: #231f20;
+    border:0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+input[type="submit"]:hover {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 3px;
+    padding: 6px 20px;
+    line-height: 1.7em;
+    background: #ec1f27;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#mmm_honey { /**** honeypot for the form *****/
+    display:none;
+}
+
+
+.cta-box {
+	margin-top:10px;
+	margin-bottom:40px;
+}
+
+.committee-template-default .cta-box {
+	margin-top:25px;
+}
+
+.cta-box {
+    max-width: 380px;
+    background: #ebebeb;
+    padding: 30px 20px 30px 20px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 4px;
+    -webkit-box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.25);
+    box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.25);
+}
+
+
+.cta-box b {
+    font-family: 'Klima Ultra';
+    font-size: 45px;
+    line-height: 15px;    
+    color: #ec1f27;
+}
+
+.cta-box p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-right:20px;
+    padding-left:20px;
+}
+
+#contact select {
+	margin-top:15px;
+    border:1px solid #ffffff;
+    width: 100% !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+    font-size: 14px;
+    color: #2f2f2f !important;
+    padding: 16px !important;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}

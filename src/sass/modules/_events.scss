@@ -1,0 +1,125 @@
+
+#dsa-cal-app {
+    
+}
+
+
+#events-calendar {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding:0;
+}
+
+#events-calendar li {
+    list-style-type: none;
+    padding-bottom:35px;
+    padding-top:35px;
+    margin-left:20px;
+    margin-right:20px;
+    border-bottom:1px solid #dddddd;
+}
+
+#events-calendar li .day {
+    font-weight:normal;
+}
+
+#events-calendar li .time {
+    color:#797979;
+    float:right;
+    font-size:18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top:5px;
+}
+
+#events-calendar li .thedate {
+    color: #ec1f27;
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+#events-calendar li .name {
+    font-weight:bold;
+    font-size:24px;
+}
+
+#events-calendar li .location {
+    font-style:italic;
+}
+
+#events-calendar li .description {
+    padding-top:10px;
+}
+
+#errors {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size:18px;
+    text-align:center;
+    padding-top:10px;
+}
+
+/* mobile */
+@media only screen and (max-width: 800px){
+    #dsa-cal-app {
+        text-align:center;
+    }
+
+    .content {
+        padding: 50px 16px;
+    }
+    #events-calendar li .name {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    #events-calendar li .time {
+        float: none;
+        display: block;
+        padding-top:0;
+    }
+
+}
+
+
+#sidebar {
+
+    .intro-section-header {
+        margin-top:10px;
+    }
+    
+    #events-calendar li {
+        padding-top:20px;
+        padding-bottom:10px;
+        font-size: 16px;
+    }
+
+    #events-calendar li span.time {
+        float:none;
+        display:block;
+        font-size: 13px;
+        padding:0;
+        margin:0;
+    }
+
+    #events-calendar li .thedate {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    #events-calendar li .thedate .day {
+        font-weight:bold;
+    }
+
+    #events-calendar li .name {
+        font-size:18px;
+        padding:0;
+        margin:0;
+    }
+    #events-calendar li .location {
+        font-size: 13px;
+        line-height: 16px;
+    }
+}

@@ -1,0 +1,79 @@
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {
+width:auto;
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	width: 760px;
+	width:100%;
+	margin:auto;
+
+}
+
+.committee-template-default #content {
+	padding-top:0;
+}
+
+.committee-template-default article {
+padding-left: 16px;
+padding-right: 16px;
+padding-top: 20px;
+}
+
+.header {
+	
+	a, a:active, a:visited {
+			
+	}
+	
+	li {
+			display:inline;
+			padding:0px 15px 0px 15px;
+	}
+	
+	img.header-logo {
+		margin-top:0px;
+		margin-left:0px;
+		height:80px;
+	}
+}
+
+.main-nav a.logo {
+margin:0;
+}
+
+
+
+/***************** headers *************/
+
+.committee-header {
+	padding-top: 80px;
+    font-family: 'Klima Ultra';
+    font-size: 60px;
+    margin: 0px auto;
+    background: #231f20;
+    color: #fff;
+    padding-bottom: 20px;
+    line-height: 60px;
+}
+
+.intro-section {
+	float:left;
+	width:60%
+}
+
+
+
+/***************** footer *************/
+
+footer .pull-left {
+	padding-top: 0px;
+}

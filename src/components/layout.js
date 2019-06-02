@@ -12,6 +12,8 @@ import { StaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import Helmet from "react-helmet"
+import "../sass/style.scss"
+import "../sass/wp-block-library.scss"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -26,23 +28,8 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Helmet>
-          {/* TODO: GROSS */}
-          <link
-            rel="stylesheet"
-            id="wp-block-library-css"
-            href="https://dsaneworleans.org/wp-includes/css/dist/block-library/style.min.css?ver=5.2.1"
-            type="text/css"
-            media="all"
-          />
-          <link
-            rel="stylesheet"
-            id="dsa504-stylesheet-css"
-            href="https://dsaneworleans.org/wp-content/themes/dsa504wp/library/css/style.css?ver=5.2.1"
-            type="text/css"
-            media="all"
-          />
-        </Helmet>
+            href="http://dsaneworleans.org/wp-includes/css/dist/block-library/style.min.css?ver=5.2.1"
+            href="http://dsaneworleans.org/wp-content/themes/dsa504wp/library/css/style.css?ver=5.2.1"
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{

@@ -26,6 +26,7 @@ module.exports = {
     author: `dsaneworleans`,
   },
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-jss`,
     `gatsby-plugin-react-helmet`,
     {
@@ -46,7 +47,7 @@ module.exports = {
         background_color: `#ec1f27`,
         theme_color: `#ec1f27`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

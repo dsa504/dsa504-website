@@ -1,0 +1,306 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop.
+
+******************************************************************/
+
+body {
+text-align:left;
+}
+
+.wrap {
+  width: 1170px;
+}
+
+
+.header {
+	
+	z-index:10;
+	
+	a, a:active, a:visited {
+		
+	}
+	
+	li {
+			display:inline;
+			
+	}
+	
+}
+
+h1, .h1 {
+	
+}
+
+h3, .h3 {
+	
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+body {
+width:100%;
+}
+
+
+/*********************
+HEADER STYLES
+*********************/
+
+header {
+text-align:left;
+height:80px;
+position:fixed;
+width:100%;
+}
+
+.header {
+text-align:left;
+height:80px;
+position:fixed;
+background:#ec1f27;
+}
+
+.committee-header-inner {
+	width:1170px;
+	padding-left:20px;
+	padding-right:20px;
+	margin:0 auto;
+}
+
+.header img.header-logo {
+height:auto;
+margin-top:0px;
+margin-left:0px;
+}
+
+
+
+.main-nav {
+margin: 0px auto 0px auto;
+display:inline-block;
+}
+
+.main-nav .logo {
+display:inline;
+}
+
+.main-nav a.logo {
+
+}
+
+#container {
+}
+
+#content-wrapper {
+padding-top:120px;
+}
+
+#main {
+  width: 65%;
+  float: left;
+  display: inline-block;
+  padding-right: 50px;
+}
+
+#sidebar {
+  text-align:left;
+  width:30%;
+  display:inline-block;
+}
+
+/*********************
+DRAWER STYLES
+*********************/
+
+.drawer {
+position:fixed;
+top:0px;
+z-index:11;
+width: 400px;
+}
+
+.menu--off {
+  position: fixed;
+  right: -400px;
+  width: 400px;
+  display: block;
+  background: #eee;
+  background: rgba(16, 16, 16, 0.95);
+  min-height: 600px;
+  height: 100%;
+  margin-top: 80px;
+  transition: all 300ms;
+	z-index:11;
+}
+
+.menu--on {
+  right: 0;
+  -webkit-box-shadow: -5px 8px 12px 0px rgba(0,0,0,0.33);
+-moz-box-shadow: -5px 8px 12px 0px rgba(0,0,0,0.33);
+box-shadow: -5px 8px 12px 0px rgba(0,0,0,0.33);
+  transition: all 300ms;
+}
+
+.drawer {
+padding:5px;
+padding-left:20px;
+padding-right:20px;
+text-align:center;
+
+padding-top:15px;
+}
+
+/****************************************************************
+CONTENT
+*****************************************************************/
+
+.hr {
+width:150px;
+background:#000000;
+height: 3px;
+margin:0px auto 10px auto;
+}
+
+
+/*********************
+FAQs STYLES
+*********************/
+.faq-item {
+padding:10px 0px 10px 0px;
+font-size:16px;
+}
+
+.faq-item p {
+font-size:16px;
+line-height:26px;
+padding-top:0px;
+margin-top:0px;
+}
+
+.faq-item h2 {
+
+font-size:16px;
+font-weight:800;
+margin-bottom:0px;
+padding-bottom:0px;
+color:#ec1f27;;
+}
+.faq-item ul {
+list-style-type: disc;
+padding-left:10px;
+padding-top:0px;
+margin-top:0px;
+}
+
+.faq-item ul li {
+margin-left:20px;
+}
+
+.faq-left h1 {
+font-size:30px;
+font-weight:100;
+margin-top:20px;
+color:#3c3c3c;
+}
+
+.faq-left {
+max-width:600px;
+float:left;
+}
+
+.faq-toc {
+font-size:13px;
+max-width:450px;
+display:inline-block;
+background:none;
+padding:20px;
+margin-left:40px;
+margin-top:90px;
+//border-left:3px solid #8c8c8c;
+border-left:4px solid #eaeaea;
+padding-left:10px;
+padding-top:5px;
+}
+
+.faq-toc h3 {
+padding-left:0px;
+//background:#efefef;
+font-style:normal;
+color:#8c8c8c;
+//border-bottom:2px solid #cecece;
+margin-bottom:0px;
+padding-bottom:5px;
+//text-transform:uppercase;
+font-size:18px;
+//letter-spacing:1px;
+font-weight:200px;
+padding-top:0px;
+}
+
+.faq-toc ul {
+margin-top:0px;
+margin-bottom:0px;
+padding-top:0px;
+padding-left:20px;
+padding-right:20px;
+padding-bottom:0px;
+//border-bottom:10px solid #efefef;
+}
+
+.faq-toc ul li {
+margin-left:0px;
+}
+
+.faq-toc ul a {
+text-decoration:none;
+}
+
+.faq-toc ul a:hover {
+text-decoration:underline;
+}
+
+.faq-wrap {
+padding-bottom:60px;
+}
+
+/** footers **/
+
+.footer .additional-links, .footer .copyright {
+padding-top:25px;
+}
+
+
+.footer {
+width:1170px;
+margin:auto;
+font-size: 12px;
+font-weight: normal;
+color: #bdc3c7;
+padding-top:20px;
+}
+footer .copyright {
+float: right;
+text-align:right;
+padding-top:10px;
+}
+footer .pull-left {
+float: left;
+}
+footer .additional-links {
+font-size: 12px;
+font-weight: normal;
+color: #bdc3c7;
+text-align: center;
+padding-top:12px;
+}
+footer ul, footer p {
+margin:0;
+}

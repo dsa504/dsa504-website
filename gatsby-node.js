@@ -1,4 +1,4 @@
-const { kebabCase } = require("lodash")
+const { kebabCase, groupBy } = require("lodash")
 const moment = require("moment-timezone")
 
 exports.createPages = async function({ actions, graphql }) {
@@ -8,7 +8,13 @@ exports.createPages = async function({ actions, graphql }) {
         edges {
           node {
             summary
+            creator {
+              email
+            }
             start {
+              dateTime
+            }
+            end {
               dateTime
             }
             location
@@ -18,6 +24,7 @@ exports.createPages = async function({ actions, graphql }) {
               endLocalTime
               monthAndDay
               slugDate
+              dayOfWeek
             }
           }
         }
@@ -34,18 +41,28 @@ exports.createPages = async function({ actions, graphql }) {
     }
   `)
 
-  data.allCalendarEvents.edges.forEach(edge => {
-    // TODO: move event slug creation to normalizer
+  const calEvents = data.allCalendarEvents.edges.map(edge => edge.node)
 
-    if (edge.node.start && edge.node.fields) {
-      const slugDate = edge.node.fields.slugDate
-      const summary = edge.node.summary
-      const slug = `${slugDate}-${kebabCase(summary)}`
+  const calDateSlugGroups = groupBy(calEvents, "fields.slugDate")
+
+  for (let dateSlugGroup in calDateSlugGroups) {
+    actions.createPage({
+      path: `/events/${dateSlugGroup}`,
+      component: require.resolve("./src/components/day/index.jsx"),
+      context: calDateSlugGroups[dateSlugGroup],
+    })
+  }
+
+  calEvents.forEach(node => {
+    if (node.start && node.fields) {
+      const slugDate = node.fields.slugDate
+      const summary = node.summary
+      const slug = `${slugDate}/${kebabCase(summary)}`
 
       actions.createPage({
         path: `/events/${slug}`,
         component: require.resolve(`./src/components/event-detail/index.jsx`),
-        context: { slug, ...edge.node },
+        context: { slug, ...node },
       })
     }
   })
@@ -98,3 +115,12 @@ async function onCreateNode({ node, actions: { createNodeField } }) {
 }
 
 exports.onCreateNode = onCreateNode
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage } = actions
+
+  if (page.path === "/") {
+    page.context.layout = "home"
+    createPage(page)
+  }
+}

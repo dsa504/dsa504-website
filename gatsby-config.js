@@ -26,6 +26,7 @@ module.exports = {
     author: `dsaneworleans`,
   },
   plugins: [
+    `gatsby-plugin-layout`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-jss`,
     `gatsby-plugin-react-helmet`,

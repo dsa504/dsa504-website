@@ -1,6 +1,5 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
 import Calendar from "../components/calendar"
 
 const Events = () => {
@@ -38,12 +37,10 @@ const Events = () => {
         }
       `}
       render={data => (
-        <Layout>
-          <Calendar
-            fullScreen
-            items={data.allCalendarEvents.edges.map(edge => edge.node)}
-          />
-        </Layout>
+        <Calendar
+          fullScreen
+          items={data.allCalendarEvents.edges.map(edge => edge.node)}
+        />
       )}
     />
   )

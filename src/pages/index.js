@@ -1,11 +1,9 @@
 import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Image from "../components/image"
 
 const IndexPage = () => (
-  <Layout isHome>
+  <>
     <SEO title="Home" />
     <StaticQuery
       query={graphql`
@@ -35,7 +33,7 @@ const IndexPage = () => (
       )}
     />
     <Link to="/events/">Events</Link>
-  </Layout>
+  </>
 )
 
 export default IndexPage

@@ -5,7 +5,7 @@ import styles from "./styles"
 import { Link } from "gatsby"
 import { kebabCase } from "lodash"
 
-const Event = ({
+const CalendarEvent = ({
   summary,
   creator,
   description,
@@ -23,7 +23,7 @@ const Event = ({
     fields || {}
   const emailSubject = `${monthAndDay} ${summary}`
 
-  const slug = `${slugDate}-${kebabCase(summary)}`
+  const slug = `${slugDate}/${kebabCase(summary)}`
 
   return (
     <div className={classes.root} itemScope itemType="http://schema.org/Event">
@@ -69,4 +69,4 @@ const Event = ({
   )
 }
 
-export default injectSheet(styles)(Event)
+export default injectSheet(styles)(CalendarEvent)

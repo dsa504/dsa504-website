@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../../components/layout"
 import {
   StaticGoogleMap as StaticGoogleMapNoKey,
   Marker,
@@ -9,23 +8,21 @@ const apiKey = process.env.GATSBY_GOOGLE_MAPS_API_KEY
 
 const EventDetail = ({ pageContext: { summary, description, location } }) => {
   return (
-    <Layout>
-      <article>
-        <div style={{ display: "flex" }}>
-          <div style={{ width: 400, flex: "1 0 auto" }}>
-            {location ? (
-              <StaticGoogleMap size="400x400">
-                <Marker color="0x222222" label="X" {...{ location }} />
-              </StaticGoogleMap>
-            ) : null}
-          </div>
-          <div>
-            <h1>{summary}</h1>
-            <div dangerouslySetInnerHTML={{ __html: description }} />
-          </div>
+    <article>
+      <div style={{ display: "flex" }}>
+        <div style={{ width: 400, flex: "1 0 auto" }}>
+          {location ? (
+            <StaticGoogleMap size="400x400">
+              <Marker color="0x222222" label="X" {...{ location }} />
+            </StaticGoogleMap>
+          ) : null}
         </div>
-      </article>
-    </Layout>
+        <div>
+          <h1>{summary}</h1>
+          <div dangerouslySetInnerHTML={{ __html: description }} />
+        </div>
+      </div>
+    </article>
   )
 }
 

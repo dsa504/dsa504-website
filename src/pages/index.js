@@ -22,6 +22,7 @@ const IndexPage = () => (
             edges {
               node {
                 slug
+                title
               }
             }
           }
@@ -42,7 +43,7 @@ const IndexPage = () => (
           <div>
             {data.allWordpressWpCommittee.edges.map(({ node }) => (
               <div>
-                <Link to={node.slug}>{node.slug}</Link>
+                <Link to={node.slug}>{node.title}</Link>
               </div>
             ))}
           </div>

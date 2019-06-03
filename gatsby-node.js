@@ -38,6 +38,13 @@ exports.createPages = async function({ actions, graphql }) {
           }
         }
       }
+      allWordpressWpCommittee {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `)
 
@@ -72,6 +79,14 @@ exports.createPages = async function({ actions, graphql }) {
       path: `/posts/${edge.node.slug}`,
       component: require.resolve(`./src/components/post/index.jsx`),
       context: edge.node,
+    })
+  })
+
+  data.allWordpressWpCommittee.edges.forEach(({ node }) => {
+    actions.createPage({
+      path: `/${node.slug}`,
+      component: require.resolve(`./src/components/committee.jsx`),
+      context: node,
     })
   })
 }

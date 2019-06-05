@@ -17,6 +17,7 @@ module.exports = {
     `gatsby-plugin-jss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify-cache`,
+    `gatsby-plugin-remove-fingerprints`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

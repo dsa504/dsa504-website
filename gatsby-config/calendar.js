@@ -1,10 +1,11 @@
+/* eslint-env node */
 const today = new Date()
 const timeMin = today.toISOString()
 const timeMax = new Date(today.setMonth(today.getMonth() + 3)).toISOString()
 
 const url = `${process.env.GOOGLE_CALENDAR_BASE_URL}/${
   process.env.GOOGLE_CALENDAR_ID
-}/events`
+  }/events`
 
 const calendarParams = {
   key: process.env.GOOGLE_CALENDAR_API_KEY,

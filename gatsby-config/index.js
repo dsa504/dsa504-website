@@ -1,3 +1,4 @@
+/* eslint-env node */
 require("dotenv").config({
   path: `.env`,
 })
@@ -12,6 +13,7 @@ module.exports = {
     author: `dsaneworleans`,
   },
   plugins: [
+    `gatsby-plugin-eslint`,
     `gatsby-plugin-layout`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-jss`,

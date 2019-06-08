@@ -31,8 +31,8 @@ const Layout = ({ pageContext, children }) => (
         <div id="container">
           <Header siteTitle={data.site.siteMetadata.title} />
           {pageContext.layout === "home" ? (
-            <div class="hero-index">
-              <div class="wrap hero-wrap">
+            <div className="hero-index">
+              <div className="wrap hero-wrap">
                 <Image
                   imgName="dsa-new-orleans-hero-short.png"
                   className="hero-index-img"

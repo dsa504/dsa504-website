@@ -3,7 +3,7 @@ import CalendarEvent from "./calendar-event"
 import { red } from "./calendar-event/styles"
 import { compact, get, uniq } from "lodash"
 
-const Calendar = ({ error, isFetching, items, fullScreen, ...rest }) => {
+const Calendar = ({ error, isFetching, items, fullScreen }) => {
   const [filter, setFilter] = useState("")
   const handleSetFilter = useCallback(
     e => {

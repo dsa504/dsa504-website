@@ -1,9 +1,11 @@
 {
     "parser": "babel-eslint",
+    "plugins": [
+        "react-hooks"
+    ],
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks"
+        "plugin:react/recommended"
     ],
     "rules": {
         "react/prop-types": [
@@ -11,5 +13,10 @@
         ],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }

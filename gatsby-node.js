@@ -1,8 +1,9 @@
+/* eslint-env node */
 const { kebabCase, groupBy } = require("lodash")
 const moment = require("moment-timezone")
 
 exports.createPages = async function ({ actions, graphql }) {
-  const { data, ...rest } = await graphql(`
+  const { data } = await graphql(`
     query {
       allCalendarEvents {
         edges {

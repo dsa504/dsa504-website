@@ -5,8 +5,7 @@ const EventJsonLd = ({
   description,
   start,
   end,
-  location,
-  ...rest
+  location
 }) => {
   return (
     <Helmet>

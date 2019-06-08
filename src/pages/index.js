@@ -34,7 +34,7 @@ const IndexPage = () => (
         <div style={{ display: "flex" }}>
           <div>
             {data.allWordpressPost.edges.map(({ node }) => (
-              <article>
+              <article key={node.slug}>
                 <Link to={`/posts/${node.slugYear}/${node.slugMonth}/${node.slug}`}>
                   <h2 dangerouslySetInnerHTML={{ __html: node.title }} />
                 </Link>
@@ -44,7 +44,7 @@ const IndexPage = () => (
           </div>
           <div>
             {data.allWordpressWpCommittee.edges.map(({ node }) => (
-              <div>
+              <div key={node.slug}>
                 <Link to={node.slug}>{node.title}</Link>
               </div>
             ))}

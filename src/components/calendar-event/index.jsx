@@ -14,8 +14,7 @@ const CalendarEvent = ({
   end,
   classes,
   htmlLink,
-  fields,
-  ...rest
+  fields
 }) => {
   if (!start) return null
 

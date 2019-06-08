@@ -1,3 +1,4 @@
+/* eslint-env node */
 import React from "react"
 import {
   StaticGoogleMap as StaticGoogleMapNoKey,

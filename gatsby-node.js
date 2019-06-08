@@ -5,9 +5,10 @@ const moment = require("moment-timezone")
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
     query {
-      allCalendarEvents {
+      allCalendarEvent {
         edges {
           node {
+            id
             summary
             creator {
               email
@@ -50,9 +51,9 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `)
 
-  const calEvents = data.allCalendarEvents.edges.map(edge => edge.node)
+  const calEvents = data.allCalendarEvent.edges;
 
-  const calDateSlugGroups = groupBy(calEvents, "fields.slugDate")
+  const calDateSlugGroups = groupBy(calEvents.map(edge => edge.node), "fields.slugDate")
 
   for (let dateSlugGroup in calDateSlugGroups) {
     actions.createPage({
@@ -62,16 +63,17 @@ exports.createPages = async function ({ actions, graphql }) {
     })
   }
 
-  calEvents.forEach(node => {
-    if (node.start && node.fields) {
-      const slugDate = node.fields.slugDate
-      const summary = node.summary
-      const slug = `${slugDate}/${kebabCase(summary)}`
+  calEvents.forEach(evt => {
+    if (evt.node.start && evt.node.fields) {
+      const slugDate = evt.node.fields.slugDate;
+      const summary = evt.node.summary;
+      const slug = `${slugDate}/${kebabCase(summary)}`;
+
 
       actions.createPage({
         path: `/events/${slug}`,
         component: require.resolve(`./src/components/event-detail/index.jsx`),
-        context: { slug, ...node },
+        context: { id: evt.node.id },
       })
     }
   })
@@ -98,7 +100,7 @@ exports.createPages = async function ({ actions, graphql }) {
 }
 
 async function onCreateNode({ node, actions: { createNodeField } }) {
-  if (node.internal.type === "CalendarEvents" && node.start) {
+  if (node.internal.type === "CalendarEvent" && node.start) {
     const startMoment = moment(node.start.dateTime).tz("America/Chicago")
     const endMoment = moment(node.end.dateTime).tz("America/Chicago")
 

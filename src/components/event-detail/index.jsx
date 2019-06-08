@@ -4,10 +4,18 @@ import {
   StaticGoogleMap as StaticGoogleMapNoKey,
   Marker,
 } from "react-static-google-map"
+import { graphql } from "gatsby"
 
 const apiKey = process.env.GATSBY_GOOGLE_MAPS_API_KEY
 
-const EventDetail = ({ pageContext: { summary, description, location } }) => {
+const EventDetail = ({
+  data: {
+    calendarEvent: {
+      location, summary, description
+    }
+  }
+}) => {
+
   return (
     <article>
       <div style={{ display: "flex" }}>
@@ -41,5 +49,26 @@ const StaticGoogleMap = props => {
     />
   )
 }
+
+export const pageQuery = graphql`
+	query CalEvtById($id: String!) {
+		calendarEvent(id: { eq: $id }) {
+			id
+      summary
+      description
+      creator { email }
+      start { dateTime }
+      end { dateTime }
+      location
+      fields {
+        startLocalTime
+        endLocalTime
+        slugDate
+        monthAndDay
+        dayOfWeek
+      }
+		}
+	}
+`;
 
 export default EventDetail

@@ -6,8 +6,8 @@ const Events = () => {
   return (
     <StaticQuery
       query={graphql`
-        query CalendarEventsQuery {
-          allCalendarEvents {
+        query CalendarEventQuery {
+          allCalendarEvent {
             edges {
               node {
                 id
@@ -39,7 +39,7 @@ const Events = () => {
       render={data => (
         <Calendar
           fullScreen
-          items={data.allCalendarEvents.edges.map(edge => edge.node)}
+          items={data.allCalendarEvent.edges.map(edge => edge.node)}
         />
       )}
     />

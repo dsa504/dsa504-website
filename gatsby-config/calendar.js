@@ -24,7 +24,7 @@ module.exports = {
     headers: {
       "Content-Type": "application/json",
     },
-    name: `CalendarEvents`,
+    name: `CalendarEvent`,
     entityLevel: `items`,
     // Define schemaType to normalize blank values
     // example:

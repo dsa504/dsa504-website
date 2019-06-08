@@ -14,6 +14,8 @@ const IndexPage = () => (
                 title
                 slug
                 excerpt
+                slugYear: date(formatString: "YYYY")
+                slugMonth: date(formatString: "MM")
               }
             }
           }
@@ -33,7 +35,7 @@ const IndexPage = () => (
           <div>
             {data.allWordpressPost.edges.map(({ node }) => (
               <article>
-                <Link to={`/posts/${node.slug}`}>
+                <Link to={`/posts/${node.slugYear}/${node.slugMonth}/${node.slug}`}>
                   <h2 dangerouslySetInnerHTML={{ __html: node.title }} />
                 </Link>
                 <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />

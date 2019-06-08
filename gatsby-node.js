@@ -1,7 +1,7 @@
 const { kebabCase, groupBy } = require("lodash")
 const moment = require("moment-timezone")
 
-exports.createPages = async function({ actions, graphql }) {
+exports.createPages = async function ({ actions, graphql }) {
   const { data, ...rest } = await graphql(`
     query {
       allCalendarEvents {
@@ -32,9 +32,9 @@ exports.createPages = async function({ actions, graphql }) {
       allWordpressPost(limit: 10) {
         edges {
           node {
-            title
-            content
             slug
+            slugYear: date(formatString: "YYYY")
+            slugMonth: date(formatString: "MM")
           }
         }
       }
@@ -75,13 +75,17 @@ exports.createPages = async function({ actions, graphql }) {
     }
   })
 
-  data.allWordpressPost.edges.forEach(edge => {
+  const wpPosts = data.allWordpressPost.edges;
+  wpPosts.forEach(post => {
     actions.createPage({
-      path: `/posts/${edge.node.slug}`,
+      path: `/posts/${post.node.slugYear}/${post.node.slugMonth}/${
+        post.node.slug
+        }`,
       component: require.resolve(`./src/components/post/index.jsx`),
-      context: edge.node,
-    })
-  })
+      context: { slug: post.node.slug }
+    });
+  });
+
 
   data.allWordpressWpCommittee.edges.forEach(({ node }) => {
     actions.createPage({

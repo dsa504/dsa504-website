@@ -92,7 +92,7 @@ exports.createPages = async function ({ actions, graphql }) {
 
   data.allWordpressWpCommittee.edges.forEach(({ node }) => {
     actions.createPage({
-      path: `/${node.slug}`,
+      path: `/committees/${node.slug}`,
       component: require.resolve(`./src/components/committee.jsx`),
       context: node,
     })

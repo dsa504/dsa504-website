@@ -67,7 +67,7 @@ const HomeRoot = ({ allWordpressPost, allWordpressWpCommittee, allCalendarEvent 
     <div style={{ flex: "1 0 auto" }}>
       {allWordpressWpCommittee.edges.map(({ node }) => (
         <div key={node.slug}>
-          <Link to={`/${node.slug}`}>{node.title}</Link>
+          <Link to={`/committees/${node.slug}`}>{node.title}</Link>
         </div>
       ))}
       <h3>Upcoming Events</h3>

@@ -34,6 +34,7 @@ const IndexPage = () => (
             edges {
               node {
                 summary
+                id
                 fields {
                   monthAndDay
                   slugDate
@@ -66,18 +67,18 @@ const HomeRoot = ({ allWordpressPost, allWordpressWpCommittee, allCalendarEvent 
     <div style={{ flex: "1 0 auto" }}>
       {allWordpressWpCommittee.edges.map(({ node }) => (
         <div key={node.slug}>
-          <Link to={node.slug}>{node.title}</Link>
+          <Link to={`/${node.slug}`}>{node.title}</Link>
         </div>
       ))}
       <h3>Upcoming Events</h3>
-      {allCalendarEvent.edges.map(({ node }) => (
-        <Link to={`/events/${node.fields.slugDate}/${kebabCase(node.summary)}`} key={node.summary}>
+      {allCalendarEvent.edges.map(({ node }) => node && node.id !== "dummy" ? (
+        <Link to={`/events/${node.fields.slugDate}/${kebabCase(node.summary)}`} key={node.id}>
           <div style={{ display: "flex" }} >
             <div style={{ whiteSpace: "nowrap", maxWidth: "18em", overflow: "hidden", textOverflow: "ellipsis" }}>{node.summary}</div>
             <div style={{ marginLeft: "auto" }}>{node.fields.monthAndDay}</div>
           </div>
         </Link>
-      ))}
+      ) : null)}
     </div>
   </div>
 }

@@ -89,10 +89,9 @@ const HomeRoot = ({
               (allCalendarEvent.edges[idx - 1] &&
                 allCalendarEvent.edges[idx - 1].node.fields.monthAndDay !==
                   node.fields.monthAndDay) ? (
-                <>
-                  <br />
+                <Link to={`/events/${node.fields.slugDate}`}>
                   {node.fields.monthAndDay}
-                </>
+                </Link>
               ) : null}
               <Link
                 to={`/events/${node.fields.slugDate}/${kebabCase(

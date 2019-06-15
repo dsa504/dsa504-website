@@ -52,6 +52,7 @@ const Layout = ({ pageContext, children, classes }) => (
               <nav className="pull-left">
                 <a itemProp="url" href="/">
                   <Image
+                    style={{ width: 114, height: 100 }}
                     imgName="dsa-new-orleans-logo-footer.png"
                     alt="DSA New Orleans"
                     title="DSA New Orleans"

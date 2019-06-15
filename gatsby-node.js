@@ -1,16 +1,33 @@
 /* eslint-env node */
 const { kebabCase, groupBy } = require("lodash")
 const moment = require("moment-timezone")
-const { createRemoteFileNode } = require("gatsby-source-filesystem");
+const { createRemoteFileNode } = require("gatsby-source-filesystem")
+const { oneLineTrim } = require("common-tags")
 
-const mapsKey = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
-const getMapImageUrl = require("google-maps-image-api-url");
+const mapsKey = process.env.GATSBY_GOOGLE_MAPS_API_KEY
+const getMapImageUrl = require("google-maps-image-api-url")
 
-const mapStyle =
-  "element:labels.icon%7Cvisibility:off&style=element:labels.text.fill%7Ccolor:0xffffff&style=element:labels.text.stroke%7Cvisibility:off&style=feature:administrative%7Celement:geometry.fill%7Ccolor:0xc9323b&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0xc9323b%7Cweight:1.2&style=feature:administrative.land_parcel%7Celement:labels.text.stroke%7Cweight:0.01&style=feature:administrative.locality%7Celement:geometry.fill%7Clightness:-1&style=feature:administrative.neighborhood%7Celement:labels.text.fill%7Csaturation:0%7Clightness:0&style=feature:administrative.neighborhood%7Celement:labels.text.stroke%7Cweight:0.01&style=feature:landscape%7Celement:geometry%7Ccolor:0xc9323b&style=feature:poi%7Celement:geometry%7Ccolor:0x99282f&style=feature:road%7Celement:geometry.stroke%7Cvisibility:off&style=feature:road.arterial%7Celement:geometry%7Ccolor:0x99282f&style=feature:road.highway%7Celement:geometry.fill%7Ccolor:0x99282f&style=feature:road.highway.controlled_access%7Celement:geometry.stroke%7Ccolor:0x99282f&style=feature:road.local%7Celement:geometry%7Ccolor:0x99282f&style=feature:transit%7Celement:geometry%7Ccolor:0x99282f&style=feature:water%7Celement:geometry%7Ccolor:0x090228";
+const mapStyle = encodeURIComponent(oneLineTrim`
+  element:labels.icon|visibility:off&
+  style=element:labels.text.fill|color:0xffffff&
+  style=element:labels.text.stroke|visibility:off&
+  style=feature:administrative|element:geometry.fill|color:0xc9323b&
+  style=feature:administrative|element:geometry.stroke|color:0xc9323b|weight:1.2&
+  style=feature:administrative.land_parcel|element:labels.text.stroke|weight:0.01&
+  style=feature:administrative.locality|element:geometry.fill|lightness:-1&
+  style=feature:administrative.neighborhood|element:labels|inverse_lightness:true&
+  style=feature:landscape|element:geometry|color:0xc9323b&
+  style=feature:poi|element:geometry|color:0x99282f&
+  style=feature:road|element:geometry.stroke|visibility:off&
+  style=feature:road.arterial|element:geometry|color:0x99282f&
+  style=feature:road.highway|element:geometry.fill|color:0x99282f&
+  style=feature:road.highway.controlled_access|element:geometry.stroke|color:0x99282f&
+  style=feature:road.local|element:geometry|color:0x99282f&
+  style=feature:transit|element:geometry|color:0x99282f&
+  style=feature:water|element:geometry|color:0x090228
+  `)
 
-
-exports.createPages = async function ({ actions, graphql }) {
+exports.createPages = async function({ actions, graphql }) {
   const { data } = await graphql(`
     query {
       allCalendarEvent {
@@ -59,9 +76,12 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `)
 
-  const calEvents = data.allCalendarEvent.edges;
+  const calEvents = data.allCalendarEvent.edges
 
-  const calDateSlugGroups = groupBy(calEvents.map(edge => edge.node), "fields.slugDate")
+  const calDateSlugGroups = groupBy(
+    calEvents.map(edge => edge.node),
+    "fields.slugDate"
+  )
 
   for (let dateSlugGroup in calDateSlugGroups) {
     actions.createPage({
@@ -73,10 +93,9 @@ exports.createPages = async function ({ actions, graphql }) {
 
   calEvents.forEach(evt => {
     if (evt.node.start && evt.node.fields) {
-      const slugDate = evt.node.fields.slugDate;
-      const summary = evt.node.summary;
-      const slug = `${slugDate}/${kebabCase(summary)}`;
-
+      const slugDate = evt.node.fields.slugDate
+      const summary = evt.node.summary
+      const slug = `${slugDate}/${kebabCase(summary)}`
 
       actions.createPage({
         path: `/events/${slug}`,
@@ -86,17 +105,16 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   })
 
-  const wpPosts = data.allWordpressPost.edges;
+  const wpPosts = data.allWordpressPost.edges
   wpPosts.forEach(post => {
     actions.createPage({
       path: `/posts/${post.node.slugYear}/${post.node.slugMonth}/${
         post.node.slug
-        }`,
+      }`,
       component: require.resolve(`./src/components/post/index.jsx`),
-      context: { slug: post.node.slug }
-    });
-  });
-
+      context: { slug: post.node.slug },
+    })
+  })
 
   data.allWordpressWpCommittee.edges.forEach(({ node }) => {
     actions.createPage({
@@ -107,11 +125,12 @@ exports.createPages = async function ({ actions, graphql }) {
   })
 }
 
-async function onCreateNode({ node,
+async function onCreateNode({
+  node,
   store,
   cache,
   createNodeId,
-  actions: { createNode, createNodeField }
+  actions: { createNode, createNodeField },
 }) {
   if (node.internal.type === "CalendarEvent" && node.start) {
     const startMoment = moment(node.start.dateTime).tz("America/Chicago")
@@ -159,8 +178,8 @@ async function onCreateNode({ node,
         key: mapsKey,
         markers: `color:0x222222|label:X|${node.location}`,
         style: mapStyle,
-        format: "JPEG"
-      });
+        format: "JPEG",
+      })
 
       const fileNode = await createRemoteFileNode({
         url: mapUrl,
@@ -169,11 +188,11 @@ async function onCreateNode({ node,
         createNode,
         createNodeId,
         name: `${slugDate}-${kebabCase(node.summary)}-map-image`,
-        ext: ".jpg"
-      });
+        ext: ".jpg",
+      })
 
       if (fileNode) {
-        node.mapImage___NODE = fileNode.id;
+        node.mapImage___NODE = fileNode.id
       }
     }
   }

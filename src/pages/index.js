@@ -69,7 +69,9 @@ const HomeRoot = ({
         ))}
       </div>
       <div style={{ flex: "1 0 auto" }}>
-        <h3>Committees &amp; Caucuses</h3>
+        <Link to="/committees">
+          <h3>Committees &amp; Caucuses</h3>
+        </Link>
         {allWordpressWpCommittee.edges.map(({ node }) => (
           <div key={node.slug}>
             <Link to={`/committees/${node.slug}`}>{node.title}</Link>
@@ -77,7 +79,9 @@ const HomeRoot = ({
         ))}
         <br />
         <br />
-        <h3>Upcoming Events</h3>
+        <Link to="/events">
+          <h3>Upcoming Events</h3>
+        </Link>
         {allCalendarEvent.edges.map(({ node }, idx) =>
           node && node.id !== "dummy" ? (
             <F key={node.id}>

@@ -116,13 +116,23 @@ exports.createPages = async function({ actions, graphql }) {
     })
   })
 
-  data.allWordpressWpCommittee.edges.forEach(({ node }) => {
+  if (
+    data.allWordpressWpCommittee &&
+    data.allWordpressWpCommittee.edges.length
+  ) {
     actions.createPage({
-      path: `/committees/${node.slug}`,
-      component: require.resolve(`./src/components/committee.jsx`),
-      context: node,
+      path: `/committees`,
+      component: require.resolve(`./src/components/committees.jsx`),
     })
-  })
+
+    data.allWordpressWpCommittee.edges.forEach(({ node }) => {
+      actions.createPage({
+        path: `/committees/${node.slug}`,
+        component: require.resolve(`./src/components/committee.jsx`),
+        context: node,
+      })
+    })
+  }
 }
 
 async function onCreateNode({

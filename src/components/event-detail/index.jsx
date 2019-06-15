@@ -15,7 +15,9 @@ const EventDetail = ({
             maxWidth: 400,
             height: 400,
             flex: "1 0 auto",
-            backgroundImage: `url(${mapImage.childImageSharp.fluid.base64})`,
+            backgroundImage: mapImage
+              ? `url(${mapImage.childImageSharp.fluid.base64})`
+              : null,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}

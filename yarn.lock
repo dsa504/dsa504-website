@@ -5580,6 +5580,11 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
+google-maps-image-api-url@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/google-maps-image-api-url/-/google-maps-image-api-url-1.0.3.tgz#d9ecdce0e9ef4bea481990f4e590b4b2583c8dba"
+  integrity sha1-2ezc4OnvS+pIGZD05ZC0slg8jbo=
+
 got@8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/got/-/got-8.0.0.tgz#57a11f841edc58e3f3eba4b3ac220faf5133770f"

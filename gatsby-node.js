@@ -1,6 +1,14 @@
 /* eslint-env node */
 const { kebabCase, groupBy } = require("lodash")
 const moment = require("moment-timezone")
+const { createRemoteFileNode } = require("gatsby-source-filesystem");
+
+const mapsKey = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
+const getMapImageUrl = require("google-maps-image-api-url");
+
+const mapStyle =
+  "element:labels.icon%7Cvisibility:off&style=element:labels.text.fill%7Ccolor:0xffffff&style=element:labels.text.stroke%7Cvisibility:off&style=feature:administrative%7Celement:geometry.fill%7Ccolor:0xc9323b&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0xc9323b%7Cweight:1.2&style=feature:administrative.land_parcel%7Celement:labels.text.stroke%7Cweight:0.01&style=feature:administrative.locality%7Celement:geometry.fill%7Clightness:-1&style=feature:administrative.neighborhood%7Celement:labels.text.fill%7Csaturation:0%7Clightness:0&style=feature:administrative.neighborhood%7Celement:labels.text.stroke%7Cweight:0.01&style=feature:landscape%7Celement:geometry%7Ccolor:0xc9323b&style=feature:poi%7Celement:geometry%7Ccolor:0x99282f&style=feature:road%7Celement:geometry.stroke%7Cvisibility:off&style=feature:road.arterial%7Celement:geometry%7Ccolor:0x99282f&style=feature:road.highway%7Celement:geometry.fill%7Ccolor:0x99282f&style=feature:road.highway.controlled_access%7Celement:geometry.stroke%7Ccolor:0x99282f&style=feature:road.local%7Celement:geometry%7Ccolor:0x99282f&style=feature:transit%7Celement:geometry%7Ccolor:0x99282f&style=feature:water%7Celement:geometry%7Ccolor:0x090228";
+
 
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
@@ -99,15 +107,22 @@ exports.createPages = async function ({ actions, graphql }) {
   })
 }
 
-async function onCreateNode({ node, actions: { createNodeField } }) {
+async function onCreateNode({ node,
+  store,
+  cache,
+  createNodeId,
+  actions: { createNode, createNodeField }
+}) {
   if (node.internal.type === "CalendarEvent" && node.start) {
     const startMoment = moment(node.start.dateTime).tz("America/Chicago")
     const endMoment = moment(node.end.dateTime).tz("America/Chicago")
 
+    const slugDate = startMoment.format("YYYY-MM-DD")
+
     createNodeField({
       node,
       name: "slugDate",
-      value: startMoment.format("YYYY-MM-DD"),
+      value: slugDate,
     })
 
     createNodeField({
@@ -133,6 +148,34 @@ async function onCreateNode({ node, actions: { createNodeField } }) {
       name: "endLocalTime",
       value: endMoment.format("h:mm A"),
     })
+
+    if (node.location) {
+      const mapUrl = getMapImageUrl({
+        type: "staticmap",
+        size: "400x400",
+        zoom: 12,
+        scale: 2,
+        center: node.location,
+        key: mapsKey,
+        markers: `color:0x222222|label:X|${node.location}`,
+        style: mapStyle,
+        format: "JPEG"
+      });
+
+      const fileNode = await createRemoteFileNode({
+        url: mapUrl,
+        store,
+        cache,
+        createNode,
+        createNodeId,
+        name: `${slugDate}-${kebabCase(node.summary)}-map-image`,
+        ext: ".jpg"
+      });
+
+      if (fileNode) {
+        node.mapImage___NODE = fileNode.id;
+      }
+    }
   }
   return
 }

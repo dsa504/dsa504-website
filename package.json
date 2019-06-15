@@ -33,6 +33,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "gatsby-plugin-eslint": "^2.0.5",
     "gatsby-plugin-sass": "^2.0.11",
+    "google-maps-image-api-url": "^1.0.3",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
     "node-sass": "^4.12.0",

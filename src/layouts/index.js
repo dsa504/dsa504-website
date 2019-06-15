@@ -35,10 +35,10 @@ const Layout = ({ pageContext, children, classes }) => (
             <div className="hero-index">
               <div className="wrap hero-wrap">
                 <Image
-                  imgName="dsa-new-orleans-hero-short.png"
+                  imgName="dsanola_FBpage_banner-01.png"
                   className="hero-index-img"
-                  alt="New Orleans Democratic Socialists of America"
-                  title="New Orleans Democratic Socialists of America"
+                  alt={`A stylized map of the New Orleans riverfront captioned with "A better world is possible"`}
+                  title={`A stylized map of the New Orleans riverfront captioned with " A better world is possible"`}
                 />
               </div>
             </div>

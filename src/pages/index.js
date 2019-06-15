@@ -1,8 +1,9 @@
 import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import SEO from "../components/seo"
 import HomeCalendar from "../components/home-calendar"
 import HomePost from "../components/home-post"
+import HomeCommittees from "../components/home-committees"
 
 const IndexPage = () => (
   <>
@@ -48,7 +49,6 @@ const IndexPage = () => (
       `}
       render={HomeRoot}
     />
-    <Link to="/events/">Events</Link>
   </>
 )
 
@@ -65,17 +65,12 @@ const HomeRoot = ({
         ))}
       </div>
       <div style={{ flex: "1 0 auto" }}>
-        <Link to="/committees">
-          <h3>Committees &amp; Caucuses</h3>
-        </Link>
-        {allWordpressWpCommittee.edges.map(({ node }) => (
-          <div key={node.slug}>
-            <Link to={`/committees/${node.slug}`}>{node.title}</Link>
-          </div>
-        ))}
+        <HomeCommittees
+          committees={allWordpressWpCommittee.edges.map(edge => edge.node)}
+        />
         <br />
         <br />
-        <HomeCalendar data={{ allCalendarEvent }} />
+        <HomeCalendar events={allCalendarEvent.edges.map(edge => edge.node)} />
       </div>
     </div>
   )

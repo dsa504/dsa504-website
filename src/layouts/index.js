@@ -14,8 +14,9 @@ import Image from "../components/image"
 import "./layout.css"
 import "../sass/style.scss"
 import "../sass/wp-block-library.scss"
+import useSheet from "react-jss"
 
-const Layout = ({ pageContext, children }) => (
+const Layout = ({ pageContext, children, classes }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -28,7 +29,7 @@ const Layout = ({ pageContext, children }) => (
     `}
     render={data => (
       <>
-        <div id="container">
+        <div id="container" className={classes.root}>
           <Header siteTitle={data.site.siteMetadata.title} />
           {pageContext.layout === "home" ? (
             <div className="hero-index">
@@ -92,4 +93,16 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+const styles = {
+  root: {
+    padding: [0, 20],
+    "& a": {
+      "&, &:hover, &:focus": {
+        textDecoration: "none",
+        color: "#f00",
+      },
+    },
+  },
+}
+
+export default useSheet(styles)(Layout)

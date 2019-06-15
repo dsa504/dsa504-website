@@ -2,6 +2,7 @@ import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import SEO from "../components/seo"
 import HomeCalendar from "../components/home-calendar"
+import HomePost from "../components/home-post"
 
 const IndexPage = () => (
   <>
@@ -60,12 +61,7 @@ const HomeRoot = ({
     <div style={{ display: "flex" }}>
       <div>
         {allWordpressPost.edges.map(({ node }) => (
-          <article key={node.slug}>
-            <Link to={`/posts/${node.slugYear}/${node.slugMonth}/${node.slug}`}>
-              <h2 dangerouslySetInnerHTML={{ __html: node.title }} />
-            </Link>
-            <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </article>
+          <HomePost key={node.slug} {...node} />
         ))}
       </div>
       <div style={{ flex: "1 0 auto" }}>

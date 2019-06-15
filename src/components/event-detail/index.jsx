@@ -4,17 +4,25 @@ import { graphql } from "gatsby"
 
 const EventDetail = ({
   data: {
-    calendarEvent: {
-      mapImage, summary, description
-    }
-  }
+    calendarEvent: { mapImage, summary, description },
+  },
 }) => {
-
   return (
     <article>
       <div style={{ display: "flex" }}>
-        <div style={{ width: 400, flex: "1 0 auto" }}>
-          {mapImage ? <img src={mapImage.publicURL} /> : null}
+        <div
+          style={{
+            maxWidth: 400,
+            height: 400,
+            flex: "1 0 auto",
+            backgroundImage: `url(${mapImage.childImageSharp.fluid.base64})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          {mapImage ? (
+            <img style={{ maxWidth: "100%" }} src={mapImage.publicURL} />
+          ) : null}
         </div>
         <div>
           <h1>{summary}</h1>
@@ -25,20 +33,29 @@ const EventDetail = ({
   )
 }
 
-
-
 export const pageQuery = graphql`
-	query CalEvtById($id: String!) {
-		calendarEvent(id: { eq: $id }) {
-			id
+  query CalEvtById($id: String!) {
+    calendarEvent(id: { eq: $id }) {
+      id
       summary
       description
-      creator { email }
-      start { dateTime }
-      end { dateTime }
+      creator {
+        email
+      }
+      start {
+        dateTime
+      }
+      end {
+        dateTime
+      }
       location
       mapImage {
         publicURL
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            base64
+          }
+        }
       }
       fields {
         startLocalTime
@@ -47,8 +64,8 @@ export const pageQuery = graphql`
         monthAndDay
         dayOfWeek
       }
-		}
-	}
-`;
+    }
+  }
+`
 
 export default EventDetail

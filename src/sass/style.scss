@@ -30,9 +30,9 @@ you set a great foundation, you won't need to add too many styles in
 the other stylesheets. Remember, keep it light: Speed is Important.
 *********************/
 
+@import "typography.scss";
 // styles in base.scss
-@import "breakpoints/base";
-
+// @import "breakpoints/base";
 
 /*********************
 TABLET & SMALLER LAPTOPS
@@ -41,10 +41,8 @@ in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 768px) {
-
-	// styles in 768up.scss
-	@import "breakpoints/768up";
-
+  // styles in 768up.scss
+  // @import "breakpoints/768up";
 } // end of media query
 
 /*********************
@@ -54,15 +52,11 @@ in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 1030px) {
-
-	// styles in 1030up.scss
-	@import "breakpoints/1030up";
-
+  // styles in 1030up.scss
+  // @import "breakpoints/1030up";
 } // end of media query
 
 @media only screen and (min-width: 1300px) {
-
-	// styles in 1030up.scss
-	@import "breakpoints/1240up";
-
+  // styles in 1030up.scss
+  // @import "breakpoints/1240up";
 } // end of media query

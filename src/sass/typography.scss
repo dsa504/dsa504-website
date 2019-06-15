@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Klima Regular";
+  src: url("../fonts/klima-regular-web.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/klima-regular-web.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/klima-regular-web.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/klima-regular-web.woff")
+      format("woff"),
+    /* Pretty Modern Browsers */ url("../fonts/klima-regular-web.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Klima Ultra";
+  src: url("../fonts/klima-ultra-web.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/klima-ultra-web.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/klima-ultra-web.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/klima-ultra-web.woff")
+      format("woff"),
+    /* Pretty Modern Browsers */ url("../fonts/klima-ultra-web.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Klima Light";
+  src: url("../fonts/klima-light-web.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/klima-light-web.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/klima-light-web.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/klima-light-web.woff")
+      format("woff"),
+    /* Pretty Modern Browsers */ url("../fonts/klima-light-web.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+}
+
+body {
+  font-family: "Klima Regular", "Open Sans", sans-serif;
+}

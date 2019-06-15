@@ -14,258 +14,231 @@ and will be used across all viewports.
 /*********************
 GENERAL STYLES
 *********************/
-@font-face {
-    font-family: 'Klima Regular';
-    src: url('../fonts/klima-regular-web.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/klima-regular-web.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../fonts/klima-regular-web.woff2') format('woff2'), /* Super Modern Browsers */
-         url('../fonts/klima-regular-web.woff') format('woff'), /* Pretty Modern Browsers */
-         url('../fonts/klima-regular-web.ttf')  format('truetype'), /* Safari, Android, iOS */
-}
-
-@font-face {
-    font-family: 'Klima Ultra';
-    src: url('../fonts/klima-ultra-web.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/klima-ultra-web.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../fonts/klima-ultra-web.woff2') format('woff2'), /* Super Modern Browsers */
-         url('../fonts/klima-ultra-web.woff') format('woff'), /* Pretty Modern Browsers */
-         url('../fonts/klima-ultra-web.ttf')  format('truetype'), /* Safari, Android, iOS */
-}
-
-@font-face {
-    font-family: 'Klima Light';
-    src: url('../fonts/klima-light-web.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/klima-light-web.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../fonts/klima-light-web.woff2') format('woff2'), /* Super Modern Browsers */
-         url('../fonts/klima-light-web.woff') format('woff'), /* Pretty Modern Browsers */
-         url('../fonts/klima-light-web.ttf')  format('truetype'), /* Safari, Android, iOS */
-}
-
 
 body {
-	font-family: 'Klima Regular','Open Sans', sans-serif;
-	font-size: 16px;
-	line-height: 24px;
-   -webkit-font-smoothing: antialiased;
-   -webkit-font-variant-ligatures: no-common-ligatures;
-   text-align:center;
-   
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-variant-ligatures: no-common-ligatures;
+  text-align: center;
 }
 
-
 .clearit {
-clear:both;
+  clear: both;
 }
 /*********************
 LAYOUT & GRID STYLES
 *********************/
 
 body {
-width:100%;
+  width: 100%;
 }
 
 .home #content {
-	padding-top:30px;
+  padding-top: 30px;
 }
 
 .wrap {
-	
-	width:100%;
-	margin:auto;
-	padding-left:20px;
-	padding-right:20px;
-	text-align:left;
-
+  width: 100%;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
 }
 
 .hero-wrap {
-	padding:0;
+  padding: 0;
 }
 
 .hero-index {
-	line-height: 0;
+  line-height: 0;
 }
 
 .hero-index-img {
-	width:100%;
-	margin-top:80px;
+  width: 100%;
+  margin-top: 80px;
 }
 
 article {
-	padding-left:16px;
-	padding-right:16px;
-	padding-bottom: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 40px;
 }
-
 
 .container {
 }
 
 #sidebar {
-	margin-bottom:60px;
-	text-align: center
+  margin-bottom: 60px;
+  text-align: center;
 }
 
 .entry-content img {
-	max-width: 100%;
-	height: auto;
-}	
+  max-width: 100%;
+  height: auto;
+}
 
 /*********************
 LINK STYLES
 *********************/
 
-a, a:visited {
-	color: #4285f4;
+a,
+a:visited {
+  color: #4285f4;
 
-	/* on hover */
-	&:hover, &:focus {
-	}
+  /* on hover */
+  &:hover,
+  &:focus {
+  }
 
-	/* on click */
-	&:active {
+  /* on click */
+  &:active {
+  }
 
-	}
-
-	/* mobile tap color */
-	&:link {
-		/*
+  /* mobile tap color */
+  &:link {
+    /*
 		this highlights links on iPhones/iPads.
 		so it basically works like the :hover selector
 		for mobile devices.
 		*/
-		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
-	}
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
 /******************************************************************
 H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 
-
-
-
-h1 a, h1 a:visited, h1 {
-	color:#231f20;
+h1 a,
+h1 a:visited,
+h1 {
+  color: #231f20;
 }
-
 
 p {
-	font-size:16px;
+  font-size: 16px;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-	text-rendering: optimizelegibility;
-	font-style:normal;
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+  text-rendering: optimizelegibility;
+  font-style: normal;
 
-	/* removing text decoration from all headline links */
-	a {
-		text-decoration: none;
-	}
+  /* removing text decoration from all headline links */
+  a {
+    text-decoration: none;
+  }
 }
 
-h1, .h1 {
-	
-	font-family: 'Klima Regular','Open Sans', sans-serif;
-	text-transform: uppercase;
-	font-size: 33px;
-	line-height: 30px;
-	letter-spacing:0px;
-	margin-top:0px;
-	padding:0px;
-	margin-bottom:10px;
-	padding-top:20px;
+h1,
+.h1 {
+  font-family: "Klima Regular", "Open Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 33px;
+  line-height: 30px;
+  letter-spacing: 0px;
+  margin-top: 0px;
+  padding: 0px;
+  margin-bottom: 10px;
+  padding-top: 20px;
 }
 
-h2, .h2 {
-	font-size: 24px;
-	line-height: 30px;
-	font-weight:400;
-	margin-bottom: 0;
-	margin-top: 0;
-	
+h2,
+.h2 {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
-h3, .h3 {
-	font-size: 20px;
-	font-style: italic;
-	line-height: 22px;
-	font-weight:400;
-	margin:0px;
-	padding:0px;
+h3,
+.h3 {
+  font-size: 20px;
+  font-style: italic;
+  line-height: 22px;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
 }
 
-h4, .h4 {
-	font-size: 1.95em;
-	line-height: 1.1em;
-	font-weight: 300;
-	margin-top: 0px;
-	margin-bottom: 10px;
-	padding-top: 60px;
+h4,
+.h4 {
+  font-size: 1.95em;
+  line-height: 1.1em;
+  font-weight: 300;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding-top: 60px;
 }
 
-h5, .h5 {
-	font-size: 1em;
-	line-height: 1.3em;
-	font-style: italic;
-	font-weight: 300;
-	letter-spacing: 2px;
-	margin:0;
-	padding-top:0px;
+h5,
+.h5 {
+  font-size: 1em;
+  line-height: 1.3em;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 0;
+  padding-top: 0px;
 }
 
 h6 {
-	 margin: 0;
-    padding-bottom: 10px;
-	font-size: 14px;
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 14px;
 }
 
 blockquote {
-	 background-color: #e4e4e4;
-    padding: 10px 20px;
-    margin: 20px;
+  background-color: #e4e4e4;
+  padding: 10px 20px;
+  margin: 20px;
 }
-
 
 /*********************
 HEADER STYLES
 *********************/
 
-
 .header {
-	text-align:left;
-	height:80px;
-	position:fixed;
-	background:#ec1f27;
-	width:100%;
-	z-index:100;
+  text-align: left;
+  height: 80px;
+  position: fixed;
+  background: #ec1f27;
+  width: 100%;
+  z-index: 100;
 }
 
 .header img.header-logo {
-	margin-top: 12px;
-    margin-left: 5px;
-    height: 55px;
+  margin-top: 12px;
+  margin-left: 5px;
+  height: 55px;
 }
 
 #inner-header {
-	padding:0;
+  padding: 0;
 }
-
-
 
 /*********************
 DRAWER STYLES
 *********************/
 
 .drawer {
-position:fixed;
-top:0px;
-z-index:11;
+  position: fixed;
+  top: 0px;
+  z-index: 11;
 
-    overflow-x: scroll;
-    height: 100%;
-    padding-bottom: 100px !important;
-
+  overflow-x: scroll;
+  height: 100%;
+  padding-bottom: 100px !important;
 }
 
 .menu--off {
@@ -279,279 +252,280 @@ z-index:11;
   height: 100%;
   margin-top: 80px;
   transition: all 300ms;
-  z-index:11;
+  z-index: 11;
 }
 
 .menu--on {
   right: 0;
-  -webkit-box-shadow: -5px 8px 12px 0px rgba(0,0,0,0.33);
--moz-box-shadow: -5px 8px 12px 0px rgba(0,0,0,0.33);
-box-shadow: -5px 8px 12px 0px rgba(0,0,0,0.33);
+  -webkit-box-shadow: -5px 8px 12px 0px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: -5px 8px 12px 0px rgba(0, 0, 0, 0.33);
+  box-shadow: -5px 8px 12px 0px rgba(0, 0, 0, 0.33);
   transition: all 300ms;
 }
 
 .drawer {
-padding:5px;
-padding-left:20px;
-padding-right:20px;
-text-align:center;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
 
-padding-top:15px;
+  padding-top: 15px;
 }
 
 .drawer ul {
-padding-top:0;
-margin-top:0;
-padding-bottom:0;
-margin-bottom:0;
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .drawer ul li {
-display:block;
-padding:15px 0px 15px 0px;
-border-bottom:2px solid #313131;
-font-size:18px;
-width:100%;
-font-weight:lighter;
-text-align:left;
+  display: block;
+  padding: 15px 0px 15px 0px;
+  border-bottom: 2px solid #313131;
+  font-size: 18px;
+  width: 100%;
+  font-weight: lighter;
+  text-align: left;
 }
 
 .drawer img {
-width:80px;
+  width: 80px;
 }
 
 .drawer ul li.first {
-margin-top:0;
-padding-top:0;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .drawer ul li ul li {
-border-bottom:none;
-padding-top:8px;
-padding-bottom:8px;
+  border-bottom: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .drawer ul li ul {
-margin-left:20px;
-margin-top:0px;
-padding-top:0px;
+  margin-left: 20px;
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
-.drawer, .drawer ul li a, .drawer ul li ul li a {
-color:#ffffff;
-text-decoration:none;
+.drawer,
+.drawer ul li a,
+.drawer ul li ul li a {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 li.menu-parent {
-border-bottom:0 !important;
-padding-bottom:20px;
+  border-bottom: 0 !important;
+  padding-bottom: 20px;
 }
 
 li.menu-parent span {
-text-transform:uppercase;
-font-size:14px;
-font-weight:bold;
-color:#777777;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  color: #777777;
 }
 
 .menu-extra-intro {
-font-size:14px;
-display:block;
-color:#7b7b7b;
-line-height:18px;
+  font-size: 14px;
+  display: block;
+  color: #7b7b7b;
+  line-height: 18px;
 }
 
 .menu-extra-footer {
-font-size:12px;
-line-height:14px;
-display:block;
-padding-top:10px;
-color:#7b7b7b;
+  font-size: 12px;
+  line-height: 14px;
+  display: block;
+  padding-top: 10px;
+  color: #7b7b7b;
 }
 
 .social-icons {
-	padding-top:5px;
+  padding-top: 5px;
 }
 
 .social-icons a {
-	color:#ec1f27;
-	cursor:pointer;
-	padding-left:15px;
-	padding-right:15px;
-	padding-top:10px;
+  color: #ec1f27;
+  cursor: pointer;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
 }
 
 .menu-extra {
-	padding-top:20px;
+  padding-top: 20px;
 }
 
 /*********************
 NAVIGATION STYLES
 *********************/
 #nav {
-display:inline;
-display:none;
+  display: inline;
+  display: none;
 }
 
 #nav li {
-
 }
 
-
 .main-nav {
-	margin: 0px auto 0px auto;
-	display:inline-block;
+  margin: 0px auto 0px auto;
+  display: inline-block;
 }
 
 .main-nav .logo {
-	display:inline;
+  display: inline;
 }
-
 
 /*********************
 CONTENT STYLES
 *********************/
 
 .article-header {
-	height:auto;
+  height: auto;
 }
 
 .committee-header {
-	padding-top: 80px;
-    font-family: 'Klima Ultra';
-    font-size: 50px;
-    margin: 0px auto;
-    background: #231f20;
-    color: #fff;
-    padding-bottom: 20px;
-    line-height: 60px;
+  padding-top: 80px;
+  font-family: "Klima Ultra";
+  font-size: 50px;
+  margin: 0px auto;
+  background: #231f20;
+  color: #fff;
+  padding-bottom: 20px;
+  line-height: 60px;
 }
 
 .committee-header-inner {
-	padding-left:10px;
-	padding-right:10px;
-	margin:0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto;
 }
 
 .committee-header-inner span {
-	display: block;
-    font-size: 15px;
-    font-family: 'Klima Ultra';
-    text-transform: uppercase;
-    line-height: 18px;
-    margin-top: 10px;
-    margin-bottom: -10px;
-    color: grey;
+  display: block;
+  font-size: 15px;
+  font-family: "Klima Ultra";
+  text-transform: uppercase;
+  line-height: 18px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  color: grey;
 }
 
 .intro-section-header {
-	color: #ec1f27;
-    font-family: 'Klima Ultra';
-    font-size: 24px;
-    border-left: 8px solid #ebebeb;
-    padding-bottom: 5px;
-    padding-left: 8px;
-    margin-left: -px;
-    margin-top: 20px;
+  color: #ec1f27;
+  font-family: "Klima Ultra";
+  font-size: 24px;
+  border-left: 8px solid #ebebeb;
+  padding-bottom: 5px;
+  padding-left: 8px;
+  margin-left: -px;
+  margin-top: 20px;
 }
 
 .intro-section-body {
-	padding: 0px 16px;
+  padding: 0px 16px;
 }
 
 #content {
-padding-top:80px;
+  padding-top: 80px;
 }
 
-.single #content, .page #content {
-padding-top:100px;
+.single #content,
+.page #content {
+  padding-top: 100px;
 }
 
-
-.single #content, .page #content {
-	img {
-		max-width:90%;
-		height: auto;
-		border-radius: 4px;
-		box-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-	}
+.single #content,
+.page #content {
+  img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
+  }
 }
-
-
 
 .article-header {
-	position:relative;
+  position: relative;
 }
 
-.article-footer  {
-	color:#231f20;
-	background:transparent;
-	font-size: inherit;
+.article-footer {
+  color: #231f20;
+  background: transparent;
+  font-size: inherit;
 }
 
-.article-footer a, .article-footer a:visited {
-	color:#231f20;
-	background:transparent;
-	font-size: inherit;
+.article-footer a,
+.article-footer a:visited {
+  color: #231f20;
+  background: transparent;
+  font-size: inherit;
 }
 
 .wrap ul li {
-	list-style-type: disc;
-	margin-left:18px;
+  list-style-type: disc;
+  margin-left: 18px;
 }
 
 .page .byline {
-	display:none;
+  display: none;
 }
 
-.byline, .footer-category {
-	color: #9c9c9c;
-	padding:0;
-	margin: 0;
-	font-style: italic;
+.byline,
+.footer-category {
+  color: #9c9c9c;
+  padding: 0;
+  margin: 0;
+  font-style: italic;
 }
 
 .byline {
-	font-style: normal;
+  font-style: normal;
 }
 
 .byline time {
-	font-weight:bold;
-	color: #ec1f27;
+  font-weight: bold;
+  color: #ec1f27;
 }
 
 .byline .author {
-	font-style: normal;
+  font-style: normal;
 }
 
-.nav-previous a, .nav-next a {
-	text-decoration:none;
-	color:#fff;
-		color: #ec1f27;
-	font-weight:bold;
-	display:inline-block;
-	transition: all .2s ease-in;
-	
-}	
+.nav-previous a,
+.nav-next a {
+  text-decoration: none;
+  color: #fff;
+  color: #ec1f27;
+  font-weight: bold;
+  display: inline-block;
+  transition: all 0.2s ease-in;
+}
 
-.nav-previous a:hover, .nav-next a:hover {
-	color: #231f20
+.nav-previous a:hover,
+.nav-next a:hover {
+  color: #231f20;
 }
 
 .nav-previous {
-	float:left;
+  float: left;
 }
 
 .nav-next {
-	float:right;
+  float: right;
 }
 
 .prev-next-box {
-    max-width: 660px;
-    padding-top: 0px;
-    padding-bottom: 70px;
-     padding-left: 18px;
-    padding-right: 18px;
+  max-width: 660px;
+  padding-top: 0px;
+  padding-bottom: 70px;
+  padding-left: 18px;
+  padding-right: 18px;
 }
 
 /*********************
@@ -559,144 +533,146 @@ FAQs STYLES
 *********************/
 
 .faq-wrap p {
-	font-size: 16px;
-    line-height: 26px;
+  font-size: 16px;
+  line-height: 26px;
 }
 
 .faq-item {
-padding:10px 0px 10px 0px;
-font-size:16px;
+  padding: 10px 0px 10px 0px;
+  font-size: 16px;
 }
 
 .faq-item p {
-font-size:16px;
-line-height:26px;
-padding-top:0px;
-margin-top:0px;
+  font-size: 16px;
+  line-height: 26px;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
 .faq-item h2 {
-
-font-size:16px;
-font-weight:800;
-margin-bottom:0px;
-padding-bottom:0px;
-color:#ec1f27;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  color: #ec1f27;
 }
 .faq-item ul {
-list-style-type: disc;
-padding-left:10px;
-padding-top:0px;
-margin-top:0px;
+  list-style-type: disc;
+  padding-left: 10px;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
 .faq-item ul li {
-margin-left:20px;
+  margin-left: 20px;
 }
 
 .faq-left h1 {
-font-size:28px;
-font-weight:100;
-margin-top:20px;
-color:#3c3c3c;
+  font-size: 28px;
+  font-weight: 100;
+  margin-top: 20px;
+  color: #3c3c3c;
 }
 
 .faq-left {
-float:left;
+  float: left;
 }
 
 .faq-toc {
-font-size:13px;
-display:inline-block;
-//background:#efefef;
-padding:20px;
-margin-left:0px;
-margin-top:30px;
-//border-left:3px solid #8c8c8c;
-background:#efefef;
-width:100%;
-padding-left:10px;
-padding-top:15px;
+  font-size: 13px;
+  display: inline-block;
+  //background:#efefef;
+  padding: 20px;
+  margin-left: 0px;
+  margin-top: 30px;
+  //border-left:3px solid #8c8c8c;
+  background: #efefef;
+  width: 100%;
+  padding-left: 10px;
+  padding-top: 15px;
 }
 
 .faq-toc h3 {
-padding-left:0px;
-//background:#efefef;
-font-style:normal;
-color:#8c8c8c;
-//border-bottom:2px solid #cecece;
-margin-bottom:0px;
-padding-bottom:5px;
-//text-transform:uppercase;
-font-size:18px;
-//letter-spacing:1px;
-font-weight:200px;
-padding-top:0px;
+  padding-left: 0px;
+  //background:#efefef;
+  font-style: normal;
+  color: #8c8c8c;
+  //border-bottom:2px solid #cecece;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+  //text-transform:uppercase;
+  font-size: 18px;
+  //letter-spacing:1px;
+  font-weight: 200px;
+  padding-top: 0px;
 }
 
 .faq-toc ul {
-margin-top:0px;
-margin-bottom:0px;
-padding-top:0px;
-padding-left:20px;
-padding-right:20px;
-padding-bottom:0px;
-//border-bottom:10px solid #efefef;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  //border-bottom:10px solid #efefef;
 }
 
 .faq-toc ul li {
-margin-left:0px;
+  margin-left: 0px;
 }
 
 .faq-toc ul a {
-text-decoration:none;
+  text-decoration: none;
 }
 
 .faq-toc ul a:hover {
-text-decoration:underline;
+  text-decoration: underline;
 }
 
 .faq-wrap {
-padding-bottom:20px;
+  padding-bottom: 20px;
 }
 
 /*********************
 FOOTER STYLES
 *********************/
 
-footer, footer a, footer a:visited {
-font-size:13px;
-line-height:20px;
-text-decoration:none;
-color:#ffffff;
-background-color:#231f20;
-clear:both;
+footer,
+footer a,
+footer a:visited {
+  font-size: 13px;
+  line-height: 20px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #231f20;
+  clear: both;
 }
 .footer {
-margin:0px auto 0px auto;
-width:100%;
-padding-top:0px;
-padding-bottom:30px;
-min-height: 120px;
+  margin: 0px auto 0px auto;
+  width: 100%;
+  padding-top: 0px;
+  padding-bottom: 30px;
+  min-height: 120px;
 }
 
 footer a:hover {
-color:#9aa4af;
+  color: #9aa4af;
 }
 
 footer .pull-left {
-padding-left: 0px;
-padding-top: 20px;
+  padding-left: 0px;
+  padding-top: 20px;
 }
 
 footer ul li {
-font-size: 13px;
-float: left;
-padding: 10px 8px;
-padding-bottom: 5px;
-margin: 0 5px 0 5px;
+  font-size: 13px;
+  float: left;
+  padding: 10px 8px;
+  padding-bottom: 5px;
+  margin: 0 5px 0 5px;
 }
 
-.footer .additional-links, .footer .copyright {
-padding-top:0px;
+.footer .additional-links,
+.footer .copyright {
+  padding-top: 0px;
 }

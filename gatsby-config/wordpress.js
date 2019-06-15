@@ -1,4 +1,6 @@
 /* eslint-env node */
+const normalizer = require("../src/wordpress-normalizer").default
+
 module.exports = {
   resolve: "gatsby-source-wordpress",
   options: {
@@ -14,5 +16,6 @@ module.exports = {
         },
       },
     ],
+    normalizer,
   },
 }

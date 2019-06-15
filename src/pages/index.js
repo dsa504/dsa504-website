@@ -46,7 +46,7 @@ const IndexPage = () => (
           }
         }
       `}
-      render={data => <HomeRoot {...data} />}
+      render={HomeRoot}
     />
     <Link to="/events/">Events</Link>
   </>

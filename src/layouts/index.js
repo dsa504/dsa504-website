@@ -100,7 +100,7 @@ const styles = {
     "& a": {
       "&, &:hover, &:focus": {
         textDecoration: "none",
-        color: "#f00",
+        color: "#ec1f27",
       },
     },
   },

@@ -124,11 +124,13 @@ exports.createPages = async function({ actions, graphql }) {
   })
   const wpPages = data.allWordpressPage.edges
   wpPages.forEach(page => {
-    actions.createPage({
-      path: `/${page.node.slug}`,
-      component: require.resolve(`./src/components/wordpress-page/index.jsx`),
-      context: { slug: page.node.slug },
-    })
+    if (page.node.slug !== "events") {
+      actions.createPage({
+        path: `/${page.node.slug}`,
+        component: require.resolve(`./src/components/wordpress-page/index.jsx`),
+        context: { slug: page.node.slug },
+      })
+    }
   })
 
   if (

@@ -96,7 +96,6 @@ Layout.propTypes = {
 
 const styles = {
   root: {
-    padding: [0, 20],
     "& a": {
       "&, &:hover, &:focus": {
         textDecoration: "none",

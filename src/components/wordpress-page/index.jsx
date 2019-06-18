@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import SEO from "../seo"
 
 const Page = ({
   data: {
@@ -7,10 +8,13 @@ const Page = ({
   },
 }) => {
   return (
-    <article>
-      <h1 dangerouslySetInnerHTML={{ __html: title }} />
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    </article>
+    <>
+      <SEO title={title} />
+      <article>
+        <h1 dangerouslySetInnerHTML={{ __html: title }} />
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </article>
+    </>
   )
 }
 

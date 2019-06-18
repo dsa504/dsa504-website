@@ -9,15 +9,16 @@ const HomeCalendar = ({ events }) => {
         <h3>Upcoming Events</h3>
       </Link>
       {events.map(({ id, fields, summary }, idx) =>
-        id && id !== "dummy" ? (
+        id && id !== "dummy" && fields ? (
           <F key={id}>
-            {(fields.monthAndDay && !events[idx - 1]) ||
-            (events[idx - 1] &&
-              events[idx - 1].fields.monthAndDay !== fields.monthAndDay) ? (
-              <Link to={`/events/${fields.slugDate}`}>
-                {fields.monthAndDay}
-              </Link>
-            ) : null}
+            {(fields.monthAndDay && (!events[idx - 1] || events[idx - 1].id === "dummy")) ||
+              (events[idx - 1] &&
+                events[idx - 1].fields &&
+                events[idx - 1].fields.monthAndDay !== fields.monthAndDay) ? (
+                <Link to={`/events/${fields.slugDate}`}>
+                  {fields.monthAndDay}
+                </Link>
+              ) : null}
             <Link to={`/events/${fields.slugDate}/${kebabCase(summary)}`}>
               <div style={{ display: "flex" }}>
                 <div

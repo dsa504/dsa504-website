@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react"
+import SEO from "./seo"
 import CalendarEvent from "./calendar-event"
 import { red } from "./calendar-event/styles"
 import { compact, get, uniq } from "lodash"
@@ -25,7 +26,8 @@ const Calendar = ({ error, isFetching, items, fullScreen }) => {
     : items
 
   return (
-    <div>
+    <>
+      <SEO title="Upcoming Events" />
       <div className="events-filter">
         <select onChange={handleSetFilter}>
           <option value="">Filter by committee or caucus…</option>
@@ -45,7 +47,7 @@ const Calendar = ({ error, isFetching, items, fullScreen }) => {
       {filteredItems.map(item => (
         <CalendarEvent key={item.id} {...item} {...{ fullScreen }} />
       ))}
-    </div>
+    </>
   )
 }
 

@@ -21,10 +21,7 @@ const Page = ({
 export const pageQuery = graphql`
   query WordpressPageBySlug($slug: String!) {
     wordpressPage(slug: { eq: $slug }) {
-      id
-      excerpt
       date(formatString: "MMMM Do, YYYY")
-      slug
       content
       title
     }

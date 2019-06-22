@@ -4,7 +4,7 @@ import SEO from "../seo"
 
 const Post = ({
   data: {
-    wordpressPost: { content, title },
+    wordpressPost: { content, title, date },
   },
 }) => {
   return (
@@ -12,6 +12,7 @@ const Post = ({
       <SEO title={title} />
       <article>
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
+        <p>Posted on {date}</p>
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </article>
     </>
@@ -21,10 +22,7 @@ const Post = ({
 export const pageQuery = graphql`
   query WordpressPostBySlug($slug: String!) {
     wordpressPost(slug: { eq: $slug }) {
-      id
-      excerpt
       date(formatString: "MMMM Do, YYYY")
-      slug
       content
       title
     }

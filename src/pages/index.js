@@ -12,7 +12,18 @@ const IndexPage = () => (
     <StaticQuery
       query={graphql`
         query HomeQuery {
-          allWordpressPost(limit: 10) {
+          latestPost: allWordpressPost(limit: 1) {
+            edges {
+              node {
+                title
+                content
+                slug
+                slugYear: date(formatString: "YYYY")
+                slugMonth: date(formatString: "MM")
+              }
+            }
+          }
+          restPosts: allWordpressPost(skip: 1, limit: 9) {
             edges {
               node {
                 title
@@ -56,7 +67,8 @@ const IndexPage = () => (
 )
 
 const _HomeRoot = ({
-  allWordpressPost,
+  latestPost,
+  restPosts,
   allWordpressWpCommittee,
   allCalendarEvent,
   classes,
@@ -78,7 +90,8 @@ const _HomeRoot = ({
         </div>
       </div>
       <div className={classes.posts}>
-        {allWordpressPost.edges.map(({ node }) => (
+        <HomePost {...latestPost.edges[0].node} />
+        {restPosts.edges.map(({ node }) => (
           <HomePost key={node.slug} {...node} />
         ))}
       </div>

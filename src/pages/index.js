@@ -62,18 +62,18 @@ const _HomeRoot = ({
   classes,
 }) => {
   return (
-    <div>
+    <div className={classes.root}>
       <div className={classes.upcoming}>
         <div>
-          <HomeCommittees
-            committees={allWordpressWpCommittee.edges.map(edge => edge.node)}
+          <HomeCalendar
+            events={allCalendarEvent.edges.map(edge => edge.node)}
           />
           <br />
           <br />
         </div>
         <div>
-          <HomeCalendar
-            events={allCalendarEvent.edges.map(edge => edge.node)}
+          <HomeCommittees
+            committees={allWordpressWpCommittee.edges.map(edge => edge.node)}
           />
         </div>
       </div>
@@ -87,11 +87,26 @@ const _HomeRoot = ({
 }
 
 const styles = {
+  root: {
+    "&:after": {
+      display: "table",
+      content: '""',
+      clear: "both",
+    },
+  },
   column: {
     padding: ["1em", "2em"],
   },
   posts: {
     composes: "$column",
+
+    "@media screen and (min-width: 65em)": {
+      "& > article:nth-last-child(-n+5)": {
+        display: "inline-block",
+        verticalAlign: "top",
+        width: "50%",
+      },
+    },
   },
   upcoming: {
     composes: "$column",
@@ -104,6 +119,9 @@ const styles = {
     "@media screen and (min-width: 65em)": {
       float: "right",
       columns: 1,
+    },
+    "@media screen and (min-width: 105em)": {
+      columns: 2,
     },
   },
 }

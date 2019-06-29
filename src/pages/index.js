@@ -23,7 +23,7 @@ const IndexPage = () => (
               }
             }
           }
-          restPosts: allWordpressPost(skip: 1, limit: 9) {
+          restPosts: allWordpressPost(skip: 1, limit: 8) {
             edges {
               node {
                 title
@@ -114,7 +114,7 @@ const styles = {
     composes: "$column",
 
     "@media screen and (min-width: 65em)": {
-      "& > article:nth-last-child(-n+5)": {
+      "& > article:not(:first-child)": {
         display: "inline-block",
         verticalAlign: "top",
         width: "50%",

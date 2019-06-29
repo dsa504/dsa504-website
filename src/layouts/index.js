@@ -47,7 +47,7 @@ const Layout = ({ pageContext, children, classes }) => (
             {children}
           </main>
           <footer>
-            <div className="footer">
+            <div className="footer" style={{ padding: "1em 2em" }}>
               <nav className="pull-left">
                 <a itemProp="url" href="/">
                   <Image

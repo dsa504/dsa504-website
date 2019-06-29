@@ -133,9 +133,7 @@ const styles = {
       float: "right",
       columns: 1,
     },
-    "@media screen and (min-width: 105em)": {
-      columns: 2,
-    },
+    "@media screen and (min-width: 105em)": {},
   },
 }
 

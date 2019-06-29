@@ -6,7 +6,6 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "../components/header"
@@ -89,10 +88,6 @@ const Layout = ({ pageContext, children, classes }) => (
     )}
   />
 )
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 const styles = {
   root: {

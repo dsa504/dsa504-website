@@ -6,6 +6,13 @@ require("dotenv").config({
 const calendarConfig = require("./calendar")
 const wordpressConfig = require("./wordpress")
 
+const theme = {
+  palette: {
+    red: "#ec1f27",
+    black: "#222",
+  },
+}
+
 module.exports = {
   siteMetadata: {
     title: `DSA New Orleans`,
@@ -16,7 +23,7 @@ module.exports = {
     `gatsby-plugin-eslint`,
     `gatsby-plugin-layout`,
     `gatsby-plugin-sass`,
-    `gatsby-plugin-jss`,
+    { resolve: `gatsby-plugin-jss`, options: { theme } },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-remove-fingerprints`,

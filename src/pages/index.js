@@ -112,12 +112,15 @@ const styles = {
   },
   posts: {
     composes: "$column",
-
+    "& > article": {
+      paddingBottom: "2em",
+    },
     "@media screen and (min-width: 65em)": {
       "& > article:not(:first-child)": {
         display: "inline-block",
         verticalAlign: "top",
         width: "50%",
+        paddingRight: "2em",
       },
     },
   },

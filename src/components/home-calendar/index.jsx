@@ -1,8 +1,9 @@
 import React, { Fragment as F } from "react"
 import { Link } from "gatsby"
 import { kebabCase } from "lodash"
+import useSheet from "react-jss";
 
-const HomeCalendar = ({ events }) => {
+const HomeCalendar = ({ events, classes }) => {
   return (
     <div>
       <Link to="/events">
@@ -15,7 +16,7 @@ const HomeCalendar = ({ events }) => {
               (events[idx - 1] &&
                 events[idx - 1].fields &&
                 events[idx - 1].fields.monthAndDay !== fields.monthAndDay) ? (
-                <Link to={`/events/${fields.slugDate}`}>
+                <Link className={classes.date} to={`/events/${fields.slugDate}`}>
                   {fields.monthAndDay}
                 </Link>
               ) : null}
@@ -43,4 +44,12 @@ const HomeCalendar = ({ events }) => {
   )
 }
 
-export default HomeCalendar
+const styles = theme => {
+  return {
+    date: {
+      color: theme.palette.black
+    }
+  }
+}
+
+export default useSheet(styles)(HomeCalendar)

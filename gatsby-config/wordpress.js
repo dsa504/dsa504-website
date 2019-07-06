@@ -12,7 +12,7 @@ module.exports = {
         resolve: `gatsby-wordpress-inline-images`,
         options: {
           baseUrl: process.env.WORDPRESS_BASE_URL,
-          protocol: `http`,
+          protocol: `https`,
         },
       },
     ],

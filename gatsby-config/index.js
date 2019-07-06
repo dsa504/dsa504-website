@@ -11,6 +11,9 @@ const theme = {
     red: "#ec1f27",
     black: "#222",
   },
+  spacing: {
+    unit: 8,
+  },
 }
 
 module.exports = {

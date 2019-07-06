@@ -12,6 +12,7 @@ import Header from "../components/header"
 import Image from "../components/image"
 import "./layout.css"
 import "../sass/style.scss"
+import "../sass/wp-block-library.scss"
 
 const Layout = ({ pageContext, children }) => (
   <StaticQuery
@@ -26,9 +27,6 @@ const Layout = ({ pageContext, children }) => (
     `}
     render={data => {
       const isHome = pageContext.layout === "home"
-      if (!isHome) {
-        import("../sass/wp-block-library.scss")
-      }
       return (
         <>
           <div id="container">

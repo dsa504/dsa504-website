@@ -1,16 +1,18 @@
 import React from "react"
 import { graphql } from "gatsby"
 import SEO from "../seo"
+import useSheet from "react-jss"
 
 const Post = ({
   data: {
     wordpressPost: { content, title, date },
   },
+  classes
 }) => {
   return (
     <>
       <SEO title={title} />
-      <article>
+      <article className={classes.root}>
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
         <p>Posted on {date}</p>
         <div dangerouslySetInnerHTML={{ __html: content }} />
@@ -29,4 +31,13 @@ export const pageQuery = graphql`
   }
 `
 
-export default Post
+const styles = theme => {
+  const u = theme.spacing.unit;
+  return {
+    root: {
+      padding: [u * 2, u * 4]
+    }
+  }
+}
+
+export default useSheet(styles)(Post)

@@ -11,9 +11,12 @@ const HomeCalendarEvent = ({ fields, summary, previous, classes }) => {
 	return (
 		<>
 			{showDate ? (
-				<Link className={classes.date} to={`/events/${fields.slugDate}`}>
-					{fields.monthAndDay}
-				</Link>
+				<>
+					<br />
+					<Link className={classes.date} to={`/events/${fields.slugDate}`}>
+						{fields.monthAndDay}
+					</Link>
+				</>
 			) : null}
 			<Link to={`/events/${fields.slugDate}/${kebabCase(summary)}`}>
 				<div style={{ display: "flex" }}>

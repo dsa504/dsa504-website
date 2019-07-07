@@ -33,6 +33,7 @@ const styles = theme => {
 	const u = theme.spacing.unit;
 	return {
 		root: {
+			width: "30vw",
 			padding: [u * 2, u * 4]
 		}
 	};

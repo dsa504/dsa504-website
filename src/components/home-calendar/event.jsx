@@ -12,7 +12,6 @@ const HomeCalendarEvent = ({ fields, summary, previous, classes }) => {
 		<>
 			{showDate ? (
 				<>
-					<br />
 					<Link className={classes.date} to={`/events/${fields.slugDate}`}>
 						{fields.monthAndDay}
 					</Link>
@@ -33,6 +32,7 @@ const HomeCalendarEvent = ({ fields, summary, previous, classes }) => {
 					<div style={{ marginLeft: "auto" }}>{fields.startLocalTime}</div>
 				</div>
 			</Link>
+			{showDate ? <br /> : null}
 		</>
 	);
 };

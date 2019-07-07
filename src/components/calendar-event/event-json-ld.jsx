@@ -1,15 +1,10 @@
-import React from "react"
-import Helmet from "react-helmet"
-const EventJsonLd = ({
-  summary,
-  description,
-  start,
-  end,
-  location
-}) => {
-  return (
-    <Helmet>
-      <script type="application/ld+json">{`
+import React from "react";
+import Helmet from "react-helmet";
+
+const EventJsonLd = ({ summary, description, start, end, location }) => {
+	return (
+		<Helmet>
+			<script type="application/ld+json">{`
     {
       "@context": "http://www.schema.org",
       "@type": "Event",
@@ -24,8 +19,8 @@ const EventJsonLd = ({
       }
     }
   `}</script>
-    </Helmet>
-  )
-}
+		</Helmet>
+	);
+};
 
-export default EventJsonLd
+export default EventJsonLd;

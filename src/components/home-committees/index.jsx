@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "gatsby";
 
-const HomeCommittees = ({ committees }) => {
+const HomeCommittees = ({ committees, onClickLink }) => {
 	return (
 		<>
-			<Link to="/committees">
+			<Link to="/committees" onClick={onClickLink}>
 				<h3>Committees &amp; Caucuses</h3>
 			</Link>
 			{committees.map(({ title, slug }) => (
 				<div key={slug}>
-					<Link to={`/committees/${slug}`}>{title}</Link>
+					<Link onClick={onClickLink} to={`/committees/${slug}`}>
+						{title}
+					</Link>
 				</div>
 			))}
 		</>

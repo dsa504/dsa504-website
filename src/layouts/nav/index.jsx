@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import HomeCommittees from "../../components/home-committees";
 import useSheet from "react-jss";
+import useOnClickOutside from "use-onclickoutside";
 
-const LayoutNav = ({ committees, classes }) => {
+const LayoutNav = ({ committees, setIsOpen, classes }) => {
+	const handleClose = useCallback(() => {
+		setIsOpen(false);
+	}, [setIsOpen]);
+
+	const ref = useRef(null);
+	useOnClickOutside(ref, handleClose);
 	return (
-		<div className={classes.root}>
-			<HomeCommittees committees={committees} />
+		<div ref={ref} className={classes.root}>
+			<HomeCommittees onClickLink={handleClose} committees={committees} />
 		</div>
 	);
 };
@@ -23,7 +30,7 @@ const styles = theme => {
 			position: "fixed",
 			top: 0,
 			right: 0,
-			bottom: 0,
+			height: "100vh",
 			padding: [u * 2, u * 4]
 		}
 	};

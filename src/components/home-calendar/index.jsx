@@ -1,56 +1,21 @@
-import React, { Fragment as F } from "react";
+import React from "react";
 import { Link } from "gatsby";
-import { kebabCase } from "lodash";
-import useSheet from "react-jss";
+import HomeCalendarEvent from "./event";
 
-const HomeCalendar = ({ events, classes }) => {
+const HomeCalendar = ({ events }) => {
 	return (
 		<div>
 			<Link to="/events">
 				<h3>Upcoming Events</h3>
 			</Link>
-			{events.map(({ id, fields, summary }, idx) =>
-				id && id !== "dummy" && fields ? (
-					<F key={id}>
-						{(fields.monthAndDay &&
-							(!events[idx - 1] || events[idx - 1].id === "dummy")) ||
-						(events[idx - 1] &&
-							events[idx - 1].fields &&
-							events[idx - 1].fields.monthAndDay !== fields.monthAndDay) ? (
-							<Link className={classes.date} to={`/events/${fields.slugDate}`}>
-								{fields.monthAndDay}
-							</Link>
-						) : null}
-						<Link to={`/events/${fields.slugDate}/${kebabCase(summary)}`}>
-							<div style={{ display: "flex" }}>
-								<div
-									style={{
-										whiteSpace: "nowrap",
-										maxWidth: "18em",
-										overflow: "hidden",
-										textOverflow: "ellipsis"
-									}}
-								>
-									{summary}
-								</div>
-								<div style={{ marginLeft: "auto" }}>
-									{fields.startLocalTime}
-								</div>
-							</div>
-						</Link>
-					</F>
-				) : null
-			)}
+			{events
+				.filter(evt => evt.id && evt.id !== "dummy")
+				.map((evt, idx) => {
+					const previous = events[idx - 1];
+					return <HomeCalendarEvent key={evt.id} {...evt} {...{ previous }} />;
+				})}
 		</div>
 	);
 };
 
-const styles = theme => {
-	return {
-		date: {
-			color: theme.palette.black
-		}
-	};
-};
-
-export default useSheet(styles)(HomeCalendar);
+export default HomeCalendar;

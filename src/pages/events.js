@@ -2,6 +2,13 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Calendar from "../components/calendar";
 import useSheet from "react-jss";
+import { get } from "lodash";
+
+function nodesToProps(path) {
+	const nodes = get(path, "edges");
+	if (!nodes) return [];
+	return nodes.map(n => n.node);
+}
 
 const Events = ({ classes }) => {
 	const data = useStaticQuery(graphql`
@@ -39,7 +46,7 @@ const Events = ({ classes }) => {
 	return (
 		<CalendarInner
 			classes={classes}
-			items={data.allCalendarEvent.edges.map(edge => edge.node)}
+			items={nodesToProps(data.allCalendarEvent)}
 		/>
 	);
 };

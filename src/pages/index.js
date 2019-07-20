@@ -1,70 +1,68 @@
 import React from "react";
-import { StaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import SEO from "../components/seo";
 import HomeCalendar from "../components/home-calendar";
 import HomePost from "../components/home-post";
 import HomeCommittees from "../components/home-committees";
 import useSheet from "react-jss";
 
-const IndexPage = () => (
-	<>
-		<SEO title="Home" />
-		<StaticQuery
-			query={graphql`
-				query HomeQuery {
-					latestPost: allWordpressPost(limit: 1) {
-						edges {
-							node {
-								title
-								content
-								slug
-								slugYear: date(formatString: "YYYY")
-								slugMonth: date(formatString: "MM")
-							}
-						}
+const IndexPage = () => {
+	const data = useStaticQuery(graphql`
+		query HomeQuery {
+			latestPost: allWordpressPost(limit: 1) {
+				edges {
+					node {
+						title
+						content
+						slug
+						slugYear: date(formatString: "YYYY")
+						slugMonth: date(formatString: "MM")
 					}
-					restPosts: allWordpressPost(skip: 1, limit: 8) {
-						edges {
-							node {
-								title
-								slug
-								excerpt
-								slugYear: date(formatString: "YYYY")
-								slugMonth: date(formatString: "MM")
-							}
-						}
+				}
+			}
+			restPosts: allWordpressPost(skip: 1, limit: 8) {
+				edges {
+					node {
+						title
+						slug
+						excerpt
+						slugYear: date(formatString: "YYYY")
+						slugMonth: date(formatString: "MM")
 					}
+				}
+			}
 
-					allWordpressWpCommittee {
-						edges {
-							node {
-								slug
-								title
-							}
-						}
+			allWordpressWpCommittee {
+				edges {
+					node {
+						slug
+						title
 					}
+				}
+			}
 
-					allCalendarEvent(limit: 10) {
-						edges {
-							node {
-								summary
-								id
-								fields {
-									monthAndDay
-									slugDate
-									startLocalTime
-								}
-							}
+			allCalendarEvent(limit: 10) {
+				edges {
+					node {
+						summary
+						id
+						fields {
+							monthAndDay
+							slugDate
+							startLocalTime
 						}
 					}
 				}
-			`}
-			// Expects a function component not a class which the react-jss HOC makes it,
-			// and the hook-based API doesn't seem to work here yet so we're stuck with this
-			render={HomeRootWrapper}
-		/>
-	</>
-);
+			}
+		}
+	`);
+	return (
+		<>
+			<SEO title="Home" />
+			return <HomeRoot {...data} />
+		</>
+	);
+};
 
 const _HomeRoot = ({
 	latestPost,
@@ -141,7 +139,5 @@ const styles = {
 };
 
 const HomeRoot = useSheet(styles)(_HomeRoot);
-
-const HomeRootWrapper = props => <HomeRoot {...props} />;
 
 export default IndexPage;

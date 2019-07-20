@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useCallback } from "react";
-import { StaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 import Header from "../components/header";
 import Image from "../components/image";
@@ -21,116 +21,108 @@ const Layout = ({ pageContext, children, classes }) => {
 	const handleToggleNav = useCallback(() => {
 		setIsNavOpen(currentIsNavOpen => !currentIsNavOpen);
 	}, []);
-	return (
-		<StaticQuery
-			query={graphql`
-				query {
-					site {
-						siteMetadata {
-							title
-						}
-					}
+	const data = useStaticQuery(graphql`
+		query {
+			site {
+				siteMetadata {
+					title
+				}
+			}
 
-					allWordpressWpCommittee {
-						edges {
-							node {
-								slug
-								title
-							}
-						}
+			allWordpressWpCommittee {
+				edges {
+					node {
+						slug
+						title
 					}
 				}
-			`}
-			render={data => {
-				const isHome = pageContext.layout === "home";
-				return (
-					<>
-						<LayoutNav
-							isOpen={isNavOpen}
-							setIsOpen={setIsNavOpen}
-							committees={data.allWordpressWpCommittee.edges.map(
-								edge => edge.node
-							)}
-						/>
-						<div
-							id="container"
-							className={classes.layoutRoot}
-							style={
-								isNavOpen
-									? { pointerEvents: "none", transform: "translateX(-30vw)" }
-									: {}
-							}
-						>
-							<div
-								className={classes.layoutInner}
-								style={isNavOpen ? { opacity: 0.6 } : {}}
-							>
-								<Header
-									isNavOpen={isNavOpen}
-									handleToggleNav={handleToggleNav}
-									siteTitle={data.site.siteMetadata.title}
-								/>
-								{isHome ? (
-									<div className="hero-index">
-										<div className="wrap hero-wrap">
-											<Image
-												imgName="dsanola_FBpage_banner-01.png"
-												className="hero-index-img"
-												alt={`A stylized map of the New Orleans riverfront captioned with "A better world is possible"`}
-												title={`A stylized map of the New Orleans riverfront captioned with " A better world is possible"`}
-											/>
-										</div>
-									</div>
-								) : null}
+			}
+		}
+	`);
 
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column",
-										minHeight: "100vh"
-									}}
-								>
-									<main
-										style={{ flexGrow: 1, flexShrink: 0 }}
-										id="content"
-										className="wrap"
-									>
-										{children}
-									</main>
-									<footer className={classes.footer}>
-										<a itemProp="url" href="/">
-											<Image
-												style={{ width: 114, height: 100 }}
-												imgName="dsa-new-orleans-logo-footer.png"
-												alt="DSA New Orleans"
-												title="DSA New Orleans"
-											/>
-										</a>
-										<div>
-											<p>
-												© {new Date().getFullYear()}{" "}
-												<span itemProp="name">DSA New Orleans</span>
-												<br className="visible-xs" />
-												<span style={{ fontSize: "10px", color: "#7b7b7b" }}>
-													All rights reserved.
-												</span>
-											</p>
-										</div>
-										<div>
-											Get in Touch!
-											<br />
-											<a href="hello@dsaneworleans.org">
-												hello@dsaneworleans.org
-											</a>
-										</div>
-									</footer>
-								</div>
+	const isHome = pageContext.layout === "home";
+
+	return (
+		<>
+			<LayoutNav
+				isOpen={isNavOpen}
+				setIsOpen={setIsNavOpen}
+				committees={data.allWordpressWpCommittee.edges.map(edge => edge.node)}
+			/>
+			<div
+				id="container"
+				className={classes.layoutRoot}
+				style={
+					isNavOpen
+						? { pointerEvents: "none", transform: "translateX(-30vw)" }
+						: {}
+				}
+			>
+				<div
+					className={classes.layoutInner}
+					style={isNavOpen ? { opacity: 0.6 } : {}}
+				>
+					<Header
+						isNavOpen={isNavOpen}
+						handleToggleNav={handleToggleNav}
+						siteTitle={data.site.siteMetadata.title}
+					/>
+					{isHome ? (
+						<div className="hero-index">
+							<div className="wrap hero-wrap">
+								<Image
+									imgName="dsanola_FBpage_banner-01.png"
+									className="hero-index-img"
+									alt={`A stylized map of the New Orleans riverfront captioned with "A better world is possible"`}
+									title={`A stylized map of the New Orleans riverfront captioned with " A better world is possible"`}
+								/>
 							</div>
 						</div>
-					</>
-				);
-			}}
-		/>
+					) : null}
+
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							minHeight: "100vh"
+						}}
+					>
+						<main
+							style={{ flexGrow: 1, flexShrink: 0 }}
+							id="content"
+							className="wrap"
+						>
+							{children}
+						</main>
+						<footer className={classes.footer}>
+							<a itemProp="url" href="/">
+								<Image
+									style={{ width: 114, height: 100 }}
+									imgName="dsa-new-orleans-logo-footer.png"
+									alt="DSA New Orleans"
+									title="DSA New Orleans"
+								/>
+							</a>
+							<div>
+								<p>
+									© {new Date().getFullYear()}{" "}
+									<span itemProp="name">DSA New Orleans</span>
+									<br className="visible-xs" />
+									<span style={{ fontSize: "10px", color: "#7b7b7b" }}>
+										All rights reserved.
+									</span>
+								</p>
+							</div>
+							<div>
+								Get in Touch!
+								<br />
+								<a href="hello@dsaneworleans.org">hello@dsaneworleans.org</a>
+							</div>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</>
 	);
 };
 

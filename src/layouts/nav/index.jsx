@@ -22,7 +22,8 @@ const styles = theme => {
 
 	return {
 		root: {
-			transform: "translateX(30vw)",
+			transition: ".2s",
+			transform: props => (props.isOpen ? "translateX(0)" : "translateX(30vw)"),
 			width: "30vw",
 			zIndex: 1,
 			background: "rgba(0, 0, 0, 0.9)",

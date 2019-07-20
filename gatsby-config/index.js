@@ -15,6 +15,9 @@ const theme = {
 	},
 	spacing: {
 		unit: 8
+	},
+	zIndex: {
+		navbar: 100
 	}
 };
 

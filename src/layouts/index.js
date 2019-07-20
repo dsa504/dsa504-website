@@ -45,18 +45,18 @@ const Layout = ({ pageContext, children, classes }) => {
 				const isHome = pageContext.layout === "home";
 				return (
 					<>
+						<LayoutNav
+							isOpen={isNavOpen}
+							setIsOpen={setIsNavOpen}
+							committees={data.allWordpressWpCommittee.edges.map(
+								edge => edge.node
+							)}
+						/>
 						<div
 							id="container"
 							className={classes.layoutRoot}
 							style={isNavOpen ? { transform: "translateX(-30vw)" } : {}}
 						>
-							<LayoutNav
-								isOpen={isNavOpen}
-								setIsOpen={setIsNavOpen}
-								committees={data.allWordpressWpCommittee.edges.map(
-									edge => edge.node
-								)}
-							/>
 							<div
 								className={classes.layoutInner}
 								style={isNavOpen ? { opacity: 0.6 } : {}}
@@ -142,13 +142,17 @@ const Layout = ({ pageContext, children, classes }) => {
 	);
 };
 
-const styles = {
-	layoutRoot: {
-		transition: ".2s"
-	},
-	layoutInner: {
-		transition: ".2s"
-	}
+const styles = theme => {
+	const u = theme.spacing.unit;
+	return {
+		layoutRoot: {
+			transition: ".2s",
+			paddingTop: [u * 8]
+		},
+		layoutInner: {
+			transition: ".2s"
+		}
+	};
 };
 
 export default useSheet(styles)(Layout);

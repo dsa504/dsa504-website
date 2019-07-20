@@ -3,8 +3,8 @@ import React from "react";
 import useSheet from "react-jss";
 
 const Header = ({ siteTitle, handleToggleNav, classes }) => (
-	<header>
-		<div className={classes.root}>
+	<header className={classes.root}>
+		<div className={classes.inner}>
 			<h1 className={classes.wordmark}>
 				<Link to="/">{siteTitle}</Link>
 			</h1>
@@ -24,9 +24,16 @@ const styles = theme => {
 
 	return {
 		root: {
+			position: "fixed",
+			top: 0,
+			width: "100%",
+			zIndex: theme.zIndex.navbar
+		},
+		inner: {
 			display: "flex",
 			margin: [0, "auto"],
-			padding: [u * 2, u * 4]
+			padding: [u * 2, u * 4],
+			background: theme.palette.black
 		},
 		wordmark: {
 			margin: 0

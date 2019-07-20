@@ -79,48 +79,60 @@ const Layout = ({ pageContext, children, classes }) => {
 									</div>
 								) : null}
 
-								<main id="content" className="wrap">
-									{children}
-								</main>
-								<footer>
-									<div className="footer" style={{ padding: "1em 2em" }}>
-										<nav className="pull-left">
-											<a itemProp="url" href="/">
-												<Image
-													style={{ width: 114, height: 100 }}
-													imgName="dsa-new-orleans-logo-footer.png"
-													alt="DSA New Orleans"
-													title="DSA New Orleans"
-												/>
-											</a>
-											<span
-												className="microdata-logo"
-												itemProp="logo"
-												style={{ display: "none" }}
-											>
-												<Image imgName="equal-access-legal-logo.png" />
-											</span>
-										</nav>
-										<div className="copyright">
-											<p>
-												© {new Date().getFullYear()}{" "}
-												<span itemProp="name">DSA New Orleans</span>
-												<br className="visible-xs" />
-												<span style={{ fontSize: "10px", color: "#7b7b7b" }}>
-													All rights reserved.
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										minHeight: "100vh"
+									}}
+								>
+									<main
+										style={{ flexGrow: 1, flexShrink: 0 }}
+										id="content"
+										className="wrap"
+									>
+										{children}
+									</main>
+									<footer>
+										<div className="footer" style={{ padding: "1em 2em" }}>
+											<nav className="pull-left">
+												<a itemProp="url" href="/">
+													<Image
+														style={{ width: 114, height: 100 }}
+														imgName="dsa-new-orleans-logo-footer.png"
+														alt="DSA New Orleans"
+														title="DSA New Orleans"
+													/>
+												</a>
+												<span
+													className="microdata-logo"
+													itemProp="logo"
+													style={{ display: "none" }}
+												>
+													<Image imgName="equal-access-legal-logo.png" />
 												</span>
-											</p>
+											</nav>
+											<div className="copyright">
+												<p>
+													© {new Date().getFullYear()}{" "}
+													<span itemProp="name">DSA New Orleans</span>
+													<br className="visible-xs" />
+													<span style={{ fontSize: "10px", color: "#7b7b7b" }}>
+														All rights reserved.
+													</span>
+												</p>
+											</div>
+											<div className="additional-links">
+												Get in Touch!
+												<br />{" "}
+												<a href="hello@dsaneworleans.org">
+													hello@dsaneworleans.org
+												</a>
+											</div>
 										</div>
-										<div className="additional-links">
-											Get in Touch!
-											<br />{" "}
-											<a href="hello@dsaneworleans.org">
-												hello@dsaneworleans.org
-											</a>
-										</div>
-									</div>
-									<br className="clearit" />
-								</footer>
+										<br className="clearit" />
+									</footer>
+								</div>
 							</div>
 						</div>
 					</>

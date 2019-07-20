@@ -1,19 +1,14 @@
 import { Link } from "gatsby";
 import React from "react";
+import useSheet from "react-jss";
 
-const Header = ({ siteTitle, handleToggleNav }) => (
+const Header = ({ siteTitle, handleToggleNav, classes }) => (
 	<header>
-		<div
-			style={{
-				margin: `0 auto`,
-				padding: `1.45rem 1.0875rem`,
-				display: "flex"
-			}}
-		>
-			<h1 style={{ margin: 0 }}>
+		<div className={classes.root}>
+			<h1 className={classes.wordmark}>
 				<Link to="/">{siteTitle}</Link>
 			</h1>
-			<button style={{ marginLeft: "auto" }} onClick={handleToggleNav}>
+			<button className={classes.navToggle} onClick={handleToggleNav}>
 				Toggle nav
 			</button>
 		</div>
@@ -24,4 +19,19 @@ Header.defaultProps = {
 	siteTitle: ``
 };
 
-export default Header;
+const styles = theme => {
+	const u = theme.spacing.unit;
+
+	return {
+		root: {
+			display: "flex",
+			margin: [0, "auto"],
+			padding: [u * 2, u * 4]
+		},
+		wordmark: {
+			margin: 0
+		},
+		navToggle: { marginLeft: "auto" }
+	};
+};
+export default useSheet(styles)(Header);

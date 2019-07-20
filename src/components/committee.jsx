@@ -1,11 +1,23 @@
 import React from "react";
 import SEO from "./seo";
+import useSheet from "react-jss";
 
-const Committee = ({ pageContext }) => (
+const Committee = ({ pageContext, classes }) => (
 	<>
 		<SEO title={pageContext.title} />
-		<h1>{pageContext.title}</h1>
+		<div className={classes.root}>
+			<h1>{pageContext.title}</h1>
+		</div>
 	</>
 );
 
-export default Committee;
+const styles = theme => {
+	const u = theme.spacing.unit;
+	return {
+		root: {
+			padding: [u * 2, u * 4]
+		}
+	};
+};
+
+export default useSheet(styles)(Committee);

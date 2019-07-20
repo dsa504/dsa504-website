@@ -4,7 +4,7 @@ import { kebabCase } from "lodash";
 import useSheet from "react-jss";
 
 const HomeCalendarEvent = ({ fields, summary, previous, classes }) => {
-	const hasPrevious = !!previous;
+	const hasPrevious = !!(previous && previous.fields);
 	const showDate =
 		!hasPrevious ||
 		(hasPrevious && previous.fields.monthAndDay !== fields.monthAndDay);

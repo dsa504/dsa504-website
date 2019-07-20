@@ -2,6 +2,7 @@ import React, { useCallback, useRef } from "react";
 import HomeCommittees from "../../components/home-committees";
 import useSheet from "react-jss";
 import useOnClickOutside from "use-onclickoutside";
+import { Link } from "gatsby";
 
 const LayoutNav = ({ committees, setIsOpen, classes }) => {
 	const handleClose = useCallback(() => {
@@ -12,6 +13,9 @@ const LayoutNav = ({ committees, setIsOpen, classes }) => {
 	useOnClickOutside(ref, handleClose);
 	return (
 		<div ref={ref} className={classes.root}>
+			<Link to="/events" onClick={handleClose}>
+				Upcoming Events
+			</Link>
 			<HomeCommittees onClickLink={handleClose} committees={committees} />
 		</div>
 	);

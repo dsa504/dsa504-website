@@ -2,16 +2,19 @@
 import React from "react";
 import { graphql } from "gatsby";
 import SEO from "../seo";
+import useSheet from "react-jss";
 
 const EventDetail = ({
 	data: {
 		calendarEvent: { mapImage, summary, description }
-	}
+	},
+	classes
 }) => {
 	return (
 		<>
 			<SEO title={summary} />
-			<article>
+			<article className={classes.root}>
+				<h1>{summary}</h1>
 				<div style={{ display: "flex" }}>
 					<div
 						style={{
@@ -29,10 +32,10 @@ const EventDetail = ({
 							<img style={{ maxWidth: "100%" }} src={mapImage.publicURL} />
 						) : null}
 					</div>
-					<div>
-						<h1>{summary}</h1>
-						<div dangerouslySetInnerHTML={{ __html: description }} />
-					</div>
+					<div
+						className={classes.description}
+						dangerouslySetInnerHTML={{ __html: description }}
+					/>
 				</div>
 			</article>
 		</>
@@ -74,4 +77,16 @@ export const pageQuery = graphql`
 	}
 `;
 
-export default EventDetail;
+const styles = theme => {
+	const u = theme.spacing.unit;
+	return {
+		root: {
+			padding: [u * 2, u * 4]
+		},
+		description: {
+			marginLeft: u * 4
+		}
+	};
+};
+
+export default useSheet(styles)(EventDetail);

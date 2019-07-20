@@ -93,44 +93,32 @@ const Layout = ({ pageContext, children, classes }) => {
 									>
 										{children}
 									</main>
-									<footer>
-										<div className="footer" style={{ padding: "1em 2em" }}>
-											<nav className="pull-left">
-												<a itemProp="url" href="/">
-													<Image
-														style={{ width: 114, height: 100 }}
-														imgName="dsa-new-orleans-logo-footer.png"
-														alt="DSA New Orleans"
-														title="DSA New Orleans"
-													/>
-												</a>
-												<span
-													className="microdata-logo"
-													itemProp="logo"
-													style={{ display: "none" }}
-												>
-													<Image imgName="equal-access-legal-logo.png" />
+									<footer className={classes.footer}>
+										<a itemProp="url" href="/">
+											<Image
+												style={{ width: 114, height: 100 }}
+												imgName="dsa-new-orleans-logo-footer.png"
+												alt="DSA New Orleans"
+												title="DSA New Orleans"
+											/>
+										</a>
+										<div>
+											<p>
+												© {new Date().getFullYear()}{" "}
+												<span itemProp="name">DSA New Orleans</span>
+												<br className="visible-xs" />
+												<span style={{ fontSize: "10px", color: "#7b7b7b" }}>
+													All rights reserved.
 												</span>
-											</nav>
-											<div className="copyright">
-												<p>
-													© {new Date().getFullYear()}{" "}
-													<span itemProp="name">DSA New Orleans</span>
-													<br className="visible-xs" />
-													<span style={{ fontSize: "10px", color: "#7b7b7b" }}>
-														All rights reserved.
-													</span>
-												</p>
-											</div>
-											<div className="additional-links">
-												Get in Touch!
-												<br />{" "}
-												<a href="hello@dsaneworleans.org">
-													hello@dsaneworleans.org
-												</a>
-											</div>
+											</p>
 										</div>
-										<br className="clearit" />
+										<div>
+											Get in Touch!
+											<br />
+											<a href="hello@dsaneworleans.org">
+												hello@dsaneworleans.org
+											</a>
+										</div>
 									</footer>
 								</div>
 							</div>
@@ -151,6 +139,13 @@ const styles = theme => {
 		},
 		layoutInner: {
 			transition: ".2s"
+		},
+		footer: {
+			display: "flex",
+			justifyContent: "space-between",
+			padding: [u * 2, u * 4],
+			background: theme.palette.black,
+			color: "#fff"
 		}
 	};
 };

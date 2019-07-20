@@ -55,7 +55,11 @@ const Layout = ({ pageContext, children, classes }) => {
 						<div
 							id="container"
 							className={classes.layoutRoot}
-							style={isNavOpen ? { transform: "translateX(-30vw)" } : {}}
+							style={
+								isNavOpen
+									? { pointerEvents: "none", transform: "translateX(-30vw)" }
+									: {}
+							}
 						>
 							<div
 								className={classes.layoutInner}

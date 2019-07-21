@@ -29,13 +29,16 @@ const styles = theme => {
 			top: 0,
 			width: "100%",
 			zIndex: theme.zIndex.navbar,
-			boxShadow: "12px 0 24px 0 rgba(0,0,0,0.25)"
+			boxShadow: "12px 0 24px 0 rgba(0,0,0,0.25)",
+			background: "#000"
 		},
 		inner: {
+			transition: ".2s",
 			display: "flex",
 			margin: [0, "auto"],
 			padding: [u * 2, u * 4],
 			background: theme.palette.red,
+			opacity: props => (props.isNavOpen ? 0.6 : 1),
 			"&, & a": {
 				color: "#fff"
 			}

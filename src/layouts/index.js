@@ -62,7 +62,7 @@ const Layout = ({ pageContext, children, classes }) => {
 						? {
 								opacity: 0.6,
 								pointerEvents: "none",
-								transform: "translateX(-5vw)"
+								transform: "translateX(-1vw)"
 						  }
 						: {}
 				}

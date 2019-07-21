@@ -1,14 +1,13 @@
 /* eslint-env node */
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import SEO from "../seo";
 import useSheet from "react-jss";
-import { kebabCase } from "lodash";
 
 const EventDetail = ({
 	data: {
 		calendarEvent: {
-			fields: { slugDate, monthAndDay },
+			fields: { monthAndDay },
 			creator,
 			htmlLink,
 			mapImage,
@@ -18,7 +17,6 @@ const EventDetail = ({
 	},
 	classes
 }) => {
-	const slug = `${slugDate}/${kebabCase(summary)}`;
 	const emailSubject = `${monthAndDay} ${summary}`;
 
 	return (
@@ -26,11 +24,6 @@ const EventDetail = ({
 			<SEO title={summary} />
 			<article className={classes.root}>
 				<h1>{summary}</h1>
-				<Link to={`/events/${slug}`} className={classes.nameLink}>
-					<h4 itemProp="name" className={classes.name}>
-						{summary}
-					</h4>
-				</Link>
 				<a href={htmlLink}>Add to your calendar</a>
 				<a
 					className={classes.link}

@@ -16,22 +16,18 @@ const EventDetail = ({
 			<article className={classes.root}>
 				<h1>{summary}</h1>
 				<div style={{ display: "flex" }}>
-					<div
-						style={{
-							maxWidth: 400,
-							height: 400,
-							flex: "1 0 auto",
-							backgroundImage: mapImage
-								? `url(${mapImage.childImageSharp.fluid.base64})`
-								: null,
-							backgroundSize: "cover",
-							backgroundRepeat: "no-repeat"
-						}}
-					>
-						{mapImage ? (
+					{mapImage ? (
+						<div
+							className={classes.mapImage}
+							style={{
+								backgroundImage: mapImage
+									? `url(${mapImage.childImageSharp.fluid.base64})`
+									: null
+							}}
+						>
 							<img style={{ maxWidth: "100%" }} src={mapImage.publicURL} />
-						) : null}
-					</div>
+						</div>
+					) : null}
 					<div
 						className={classes.description}
 						dangerouslySetInnerHTML={{ __html: description }}
@@ -83,9 +79,15 @@ const styles = theme => {
 		root: {
 			padding: [u * 2, u * 4]
 		},
-		description: {
-			marginLeft: u * 4
-		}
+		mapImage: {
+			maxWidth: u * 50,
+			height: u * 50,
+			flex: "1 0 auto",
+			marginRight: u * 4,
+			backgroundSize: "cover",
+			backgroundRepeat: "no-repeat"
+		},
+		description: {}
 	};
 };
 

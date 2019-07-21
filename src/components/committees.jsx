@@ -1,15 +1,18 @@
 import React from "react";
 import SEO from "./seo";
 import { graphql, Link } from "gatsby";
+import useSheet from "react-jss";
 
-const Committee = ({ data }) => (
+const Committees = ({ data, classes }) => (
 	<>
 		<SEO title="Committees" />
-		{data.allWordpressWpCommittee.edges.map(({ node: { title, slug } }) => (
-			<div key={slug}>
-				<Link to={`/committees/${slug}`}>{title}</Link>
-			</div>
-		))}
+		<div className={classes.root}>
+			{data.allWordpressWpCommittee.edges.map(({ node: { title, slug } }) => (
+				<div key={slug}>
+					<Link to={`/committees/${slug}`}>{title}</Link>
+				</div>
+			))}
+		</div>
 	</>
 );
 
@@ -26,4 +29,13 @@ export const pageQuery = graphql`
 	}
 `;
 
-export default Committee;
+const styles = theme => {
+	const u = theme.spacing.unit;
+	return {
+		root: {
+			padding: [u * 2, u * 4]
+		}
+	};
+};
+
+export default useSheet(styles)(Committees);

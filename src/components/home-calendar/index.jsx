@@ -8,12 +8,10 @@ const HomeCalendar = ({ events }) => {
 			<Link to="/events">
 				<h3>Upcoming Events</h3>
 			</Link>
-			{events
-				.filter(evt => evt.id && evt.id !== "dummy")
-				.map((evt, idx) => {
-					const previous = events[idx - 1];
-					return <HomeCalendarEvent key={evt.id} {...evt} {...{ previous }} />;
-				})}
+			{events.map((evt, idx) => {
+				const previous = events[idx - 1];
+				return <HomeCalendarEvent key={evt.id} {...evt} {...{ previous }} />;
+			})}
 		</div>
 	);
 };

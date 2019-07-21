@@ -32,14 +32,14 @@ const styles = theme => {
 
 	return {
 		root: {
+			zIndex: theme.zIndex.navbar + 1,
 			transition: ".2s",
 			transform: props => (props.isOpen ? "translateX(0)" : "translateX(30vw)"),
 			boxShadow: props =>
 				props.isOpen
-					? "-12px 0 24px 0 rgba(0,0,0,0.5)"
+					? "-12px 0 24px 0 rgba(0,0,0,0.25)"
 					: "36px 0 24px 0 rgba(0,0,0,0)",
 			width: "30vw",
-			zIndex: 1,
 			background: theme.palette.red,
 			"&, & a": {
 				color: "#fff"

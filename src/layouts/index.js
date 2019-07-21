@@ -44,6 +44,11 @@ const Layout = ({ pageContext, children, classes }) => {
 
 	return (
 		<>
+			<Header
+				isNavOpen={isNavOpen}
+				handleToggleNav={handleToggleNav}
+				siteTitle={data.site.siteMetadata.title}
+			/>
 			<LayoutNav
 				isOpen={isNavOpen}
 				setIsOpen={setIsNavOpen}
@@ -54,19 +59,15 @@ const Layout = ({ pageContext, children, classes }) => {
 				className={classes.layoutRoot}
 				style={
 					isNavOpen
-						? { pointerEvents: "none", transform: "translateX(-5vw)" }
+						? {
+								opacity: 0.6,
+								pointerEvents: "none",
+								transform: "translateX(-5vw)"
+						  }
 						: {}
 				}
 			>
-				<div
-					className={classes.layoutInner}
-					style={isNavOpen ? { opacity: 0.6 } : {}}
-				>
-					<Header
-						isNavOpen={isNavOpen}
-						handleToggleNav={handleToggleNav}
-						siteTitle={data.site.siteMetadata.title}
-					/>
+				<div className={classes.layoutInner}>
 					{isHome ? (
 						<div className="hero-index">
 							<div className="wrap hero-wrap">
@@ -131,11 +132,11 @@ const styles = theme => {
 	return {
 		layoutRoot: {
 			transition: ".2s",
-			paddingTop: [u * 8]
+			marginTop: [u * 8],
+			background: "#fff"
 		},
 		layoutInner: {
-			transition: ".2s",
-			background: "#fff"
+			transition: ".2s"
 		},
 		footer: {
 			display: "flex",

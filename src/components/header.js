@@ -24,10 +24,12 @@ const styles = theme => {
 
 	return {
 		root: {
+			transition: ".2s",
 			position: "fixed",
 			top: 0,
 			width: "100%",
-			zIndex: theme.zIndex.navbar
+			zIndex: theme.zIndex.navbar,
+			boxShadow: "12px 0 24px 0 rgba(0,0,0,0.25)"
 		},
 		inner: {
 			display: "flex",

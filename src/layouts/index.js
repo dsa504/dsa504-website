@@ -15,6 +15,7 @@ import "../sass/style.scss";
 import "../sass/wp-block-library.scss";
 import LayoutNav from "./nav";
 import useSheet from "react-jss";
+import LayoutFooter from "./footer";
 
 const Layout = ({ pageContext, children, classes }) => {
 	const [isNavOpen, setIsNavOpen] = useState(false);
@@ -95,31 +96,7 @@ const Layout = ({ pageContext, children, classes }) => {
 						>
 							{children}
 						</main>
-						<footer className={classes.footer}>
-							<a itemProp="url" href="/">
-								<Image
-									style={{ width: 114, height: 100 }}
-									imgName="dsa-new-orleans-logo-footer.png"
-									alt="DSA New Orleans"
-									title="DSA New Orleans"
-								/>
-							</a>
-							<div>
-								<p>
-									© {new Date().getFullYear()}{" "}
-									<span itemProp="name">DSA New Orleans</span>
-									<br className="visible-xs" />
-									<span style={{ fontSize: "10px", color: "#7b7b7b" }}>
-										All rights reserved.
-									</span>
-								</p>
-							</div>
-							<div>
-								Get in Touch!
-								<br />
-								<a href="hello@dsaneworleans.org">hello@dsaneworleans.org</a>
-							</div>
-						</footer>
+						<LayoutFooter />
 					</div>
 				</div>
 			</div>
@@ -137,13 +114,6 @@ const styles = theme => {
 		},
 		layoutInner: {
 			transition: ".2s"
-		},
-		footer: {
-			display: "flex",
-			justifyContent: "space-between",
-			padding: [u * 2, u * 4],
-			background: theme.palette.black,
-			color: "#fff"
 		}
 	};
 };

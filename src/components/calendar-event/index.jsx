@@ -7,20 +7,17 @@ import { kebabCase } from "lodash";
 
 const CalendarEvent = ({
 	summary,
-	creator,
 	description,
 	location,
 	start,
 	end,
 	classes,
-	htmlLink,
 	fields
 }) => {
 	if (!start) return null;
 
 	const { slugDate, monthAndDay, dayOfWeek, startLocalTime, endLocalTime } =
 		fields || {};
-	const emailSubject = `${monthAndDay} ${summary}`;
 
 	const slug = `${slugDate}/${kebabCase(summary)}`;
 
@@ -44,15 +41,6 @@ const CalendarEvent = ({
 					{summary}
 				</h4>
 			</Link>
-			<a href={htmlLink}>Add to your calendar</a>
-			<a
-				className={classes.link}
-				href={`mailto:${creator.email}?subject=${encodeURIComponent(
-					emailSubject
-				)}`}
-			>
-				✉ Contact organizer
-			</a>
 			<a
 				className={classes.locationLink}
 				href={`https://google.com/maps/search/${encodeURIComponent(location)}`}

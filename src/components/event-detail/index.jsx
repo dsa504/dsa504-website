@@ -1,20 +1,45 @@
 /* eslint-env node */
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import SEO from "../seo";
 import useSheet from "react-jss";
+import { kebabCase } from "lodash";
 
 const EventDetail = ({
 	data: {
-		calendarEvent: { mapImage, summary, description }
+		calendarEvent: {
+			fields: { slugDate, monthAndDay },
+			creator,
+			htmlLink,
+			mapImage,
+			summary,
+			description
+		}
 	},
 	classes
 }) => {
+	const slug = `${slugDate}/${kebabCase(summary)}`;
+	const emailSubject = `${monthAndDay} ${summary}`;
+
 	return (
 		<>
 			<SEO title={summary} />
 			<article className={classes.root}>
 				<h1>{summary}</h1>
+				<Link to={`/events/${slug}`} className={classes.nameLink}>
+					<h4 itemProp="name" className={classes.name}>
+						{summary}
+					</h4>
+				</Link>
+				<a href={htmlLink}>Add to your calendar</a>
+				<a
+					className={classes.link}
+					href={`mailto:${creator.email}?subject=${encodeURIComponent(
+						emailSubject
+					)}`}
+				>
+					✉ Contact organizer
+				</a>
 				<div style={{ display: "flex" }}>
 					{mapImage ? (
 						<div
@@ -44,6 +69,7 @@ export const pageQuery = graphql`
 			id
 			summary
 			description
+			htmlLink
 			creator {
 				email
 			}

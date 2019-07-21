@@ -54,7 +54,7 @@ const Layout = ({ pageContext, children, classes }) => {
 				className={classes.layoutRoot}
 				style={
 					isNavOpen
-						? { pointerEvents: "none", transform: "translateX(-30vw)" }
+						? { pointerEvents: "none", transform: "translateX(-5vw)" }
 						: {}
 				}
 			>
@@ -134,7 +134,8 @@ const styles = theme => {
 			paddingTop: [u * 8]
 		},
 		layoutInner: {
-			transition: ".2s"
+			transition: ".2s",
+			background: "#fff"
 		},
 		footer: {
 			display: "flex",

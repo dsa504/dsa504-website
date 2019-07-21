@@ -3,6 +3,7 @@ import HomeCommittees from "../../components/home-committees";
 import useSheet from "react-jss";
 import useOnClickOutside from "use-onclickoutside";
 import { Link } from "gatsby";
+import NavSectionHeader from "./section-header";
 
 const LayoutNav = ({ committees, setIsOpen, classes }) => {
 	const handleClose = useCallback(() => {
@@ -16,6 +17,11 @@ const LayoutNav = ({ committees, setIsOpen, classes }) => {
 			<Link to="/events" onClick={handleClose}>
 				Upcoming Events
 			</Link>
+			<br />
+			<br />
+			<NavSectionHeader linkTo="/committees" onClickLink={handleClose}>
+				Committees &amp; Caucuses
+			</NavSectionHeader>
 			<HomeCommittees onClickLink={handleClose} committees={committees} />
 		</div>
 	);
@@ -28,14 +34,21 @@ const styles = theme => {
 		root: {
 			transition: ".2s",
 			transform: props => (props.isOpen ? "translateX(0)" : "translateX(30vw)"),
+			boxShadow: props =>
+				props.isOpen
+					? "-12px 0 24px 0 rgba(0,0,0,0.5)"
+					: "36px 0 24px 0 rgba(0,0,0,0)",
 			width: "30vw",
 			zIndex: 1,
-			background: "rgba(0, 0, 0, 0.9)",
-			color: "#fff",
+			background: theme.palette.red,
+			"&, & a": {
+				color: "#fff"
+			},
 			position: "fixed",
 			top: 0,
 			right: 0,
 			height: "100vh",
+			overflowY: "auto",
 			padding: [u * 2, u * 4]
 		}
 	};

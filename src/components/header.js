@@ -33,7 +33,10 @@ const styles = theme => {
 			display: "flex",
 			margin: [0, "auto"],
 			padding: [u * 2, u * 4],
-			background: theme.palette.black
+			background: theme.palette.red,
+			"&, & a": {
+				color: "#fff"
+			}
 		},
 		wordmark: {
 			margin: 0

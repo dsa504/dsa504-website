@@ -59,7 +59,7 @@ const IndexPage = () => {
 	return (
 		<>
 			<SEO title="Home" />
-			return <HomeRoot {...data} />
+			<HomeRoot {...data} />
 		</>
 	);
 };

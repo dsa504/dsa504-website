@@ -24,14 +24,18 @@ const EventDetail = ({
 			<SEO title={summary} />
 			<article className={classes.root}>
 				<h1>{summary}</h1>
-				<a href={htmlLink}>Add to your calendar</a>
+				<a className={classes.link} href={htmlLink}>Add to your calendar</a>
+				<br />
+				<a className={classes.link} href={`https://docs.google.com/forms/d/e/1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ/viewform?entry.981133582=${encodeURIComponent(emailSubject)}`} className={classes.link}>
+					Volunteer
+				</a>
 				<a
 					className={classes.link}
 					href={`mailto:${creator.email}?subject=${encodeURIComponent(
 						emailSubject
 					)}`}
 				>
-					✉ Contact organizer
+					Contact organizer
 				</a>
 				<div style={{ display: "flex" }}>
 					{mapImage ? (

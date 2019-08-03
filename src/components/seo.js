@@ -9,7 +9,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, prevLink, nextLink }) {
 	const { site } = useStaticQuery(
 		graphql`
 			query {
@@ -67,7 +67,10 @@ function SEO({ description, lang, meta, title }) {
 					content: metaDescription
 				}
 			].concat(meta)}
-		/>
+		>
+			{prevLink ? <link rel="prev" href={prevLink} /> : null}
+			{nextLink ? <link rel="next" href={nextLink} /> : null}
+		</Helmet>
 	);
 }
 

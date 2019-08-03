@@ -1,7 +1,15 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import SEO from "../seo";
 import useSheet from "react-jss";
+import { kebabCase } from "lodash";
+
+const volunteerFormId =
+	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
+
+const volunteerFormFields = {
+	event: "entry.981133582"
+};
 
 const EventDetail = ({
 	data: {
@@ -14,24 +22,38 @@ const EventDetail = ({
 			description
 		}
 	},
+	pageContext: { previous, next },
 	classes
 }) => {
-	const emailSubject = `${monthAndDay} ${summary}`;
+	const summaryWithDate = `${monthAndDay} ${summary}`;
+
+	// have to do this gross shit because we don't have the slug in the query at the time of node creation
+	const prevSlug = previous
+		? `/events/${previous.start.dateTime.split("T")[0]}/${kebabCase(
+				previous.summary
+		  )}`
+		: null;
+
+	const nextSlug = next
+		? `/events/${next.start.dateTime.split("T")[0]}/${kebabCase(next.summary)}`
+		: null;
 
 	return (
 		<>
-			<SEO title={summary} />
+			<SEO title={summary} prevLink={prevSlug} nextLink={nextSlug} />
 			<article className={classes.root}>
 				<h1>{summary}</h1>
+				{monthAndDay}
+				<br />
 				<a className={classes.link} href={htmlLink}>
 					Add to your calendar
 				</a>
 				<br />
 				<a
 					className={classes.link}
-					href={`https://docs.google.com/forms/d/e/1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ/viewform?entry.981133582=${encodeURIComponent(
-						emailSubject
-					)}`}
+					href={`https://docs.google.com/forms/d/e/${volunteerFormId}/viewform?${
+						volunteerFormFields.event
+					}=${encodeURIComponent(summaryWithDate)}`}
 				>
 					Volunteer
 				</a>
@@ -39,7 +61,7 @@ const EventDetail = ({
 				<a
 					className={classes.link}
 					href={`mailto:${creator.email}?subject=${encodeURIComponent(
-						emailSubject
+						summaryWithDate
 					)}`}
 				>
 					Contact organizer
@@ -61,6 +83,20 @@ const EventDetail = ({
 						className={classes.description}
 						dangerouslySetInnerHTML={{ __html: description }}
 					/>
+				</div>
+				<br />
+				<br />
+				<div style={{ display: "flex", justifyContent: "space-between" }}>
+					{prevSlug ? (
+						<div>
+							&#8592; <Link to={prevSlug}>{previous.summary}</Link>
+						</div>
+					) : null}
+					{nextSlug ? (
+						<div>
+							<Link to={nextSlug}>{next.summary}</Link> &#8594;
+						</div>
+					) : null}
 				</div>
 			</article>
 		</>

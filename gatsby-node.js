@@ -33,6 +33,18 @@ exports.createPages = async function({ actions, graphql }) {
 		query {
 			allCalendarEvent {
 				edges {
+					previous {
+						summary
+						start {
+							dateTime
+						}
+					}
+					next {
+						summary
+						start {
+							dateTime
+						}
+					}
 					node {
 						id
 						summary
@@ -108,7 +120,11 @@ exports.createPages = async function({ actions, graphql }) {
 			actions.createPage({
 				path: `/events/${slug}`,
 				component: require.resolve(`./src/components/event-detail/index.jsx`),
-				context: { id: evt.node.id }
+				context: {
+					id: evt.node.id,
+					previous: evt.previous,
+					next: evt.next
+				}
 			});
 		}
 	});

@@ -14,7 +14,7 @@ const volunteerFormFields = {
 const EventDetail = ({
 	data: {
 		calendarEvent: {
-			fields: { monthAndDay },
+			fields: { monthAndDay, slugDate, dayOfWeek },
 			creator,
 			htmlLink,
 			mapImage,
@@ -46,8 +46,14 @@ const EventDetail = ({
 		<>
 			<SEO title={summary} prevLink={prevSlug} nextLink={nextSlug} />
 			<article className={classes.root}>
-				<h1>{summary}</h1>
-				{monthAndDay}
+				<h1>
+					{summary} <br />{" "}
+					<small>
+						<Link to={`/events/${slugDate}`}>
+							{dayOfWeek} {monthAndDay}
+						</Link>
+					</small>
+				</h1>
 				<br />
 				<a className={classes.link} href={htmlLink}>
 					Add to your calendar

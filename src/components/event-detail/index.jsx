@@ -28,15 +28,19 @@ const EventDetail = ({
 	const summaryWithDate = `${monthAndDay} ${summary}`;
 
 	// have to do this gross shit because we don't have the slug in the query at the time of node creation
-	const prevSlug = previous
-		? `/events/${previous.start.dateTime.split("T")[0]}/${kebabCase(
-				previous.summary
-		  )}`
-		: null;
+	const prevSlug =
+		previous && previous.start
+			? `/events/${previous.start.dateTime.split("T")[0]}/${kebabCase(
+					previous.summary
+			  )}`
+			: null;
 
-	const nextSlug = next
-		? `/events/${next.start.dateTime.split("T")[0]}/${kebabCase(next.summary)}`
-		: null;
+	const nextSlug =
+		next && next.start
+			? `/events/${next.start.dateTime.split("T")[0]}/${kebabCase(
+					next.summary
+			  )}`
+			: null;
 
 	return (
 		<>

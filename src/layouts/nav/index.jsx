@@ -2,7 +2,6 @@ import React, { useCallback, useRef } from "react";
 import HomeCommittees from "../../components/home-committees";
 import useSheet from "react-jss";
 import useOnClickOutside from "use-onclickoutside";
-import { Link } from "gatsby";
 import NavSectionHeader from "./section-header";
 import HomeCalendar from "../../components/home-calendar";
 
@@ -11,19 +10,28 @@ const LayoutNav = ({ committees, events, setIsOpen, classes }) => {
 		setIsOpen(false);
 	}, [setIsOpen]);
 
+	const handleNavClick = useCallback(
+		e => {
+			const isLinkOrHasLink =
+				e.target && (e.target.nodeName === "A" || e.target.closest("a"));
+
+			if (isLinkOrHasLink) {
+				handleClose();
+			}
+		},
+		[handleClose]
+	);
+
 	const ref = useRef(null);
 	useOnClickOutside(ref, handleClose);
 	return (
-		<div ref={ref} className={classes.root}>
-			<Link to="/events" onClick={handleClose}>
-				Upcoming Events
-			</Link>
-			<br />
-			<br />
-			<NavSectionHeader linkTo="/committees" onClickLink={handleClose}>
+		<div ref={ref} className={classes.root} onClick={handleNavClick}>
+			<NavSectionHeader linkTo="/committees">
 				Committees &amp; Caucuses
 			</NavSectionHeader>
-			<HomeCommittees onClickLink={handleClose} committees={committees} />
+			<HomeCommittees committees={committees} />
+			<br />
+			<NavSectionHeader linkTo="/events">Upcoming Events</NavSectionHeader>
 			<HomeCalendar events={events} />
 		</div>
 	);

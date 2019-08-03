@@ -4,7 +4,6 @@ import useSheet from "react-jss";
 
 const NavSectionHeader = ({
 	linkTo,
-	onClickLink,
 	linkProps = {},
 	children,
 	classes,
@@ -12,7 +11,7 @@ const NavSectionHeader = ({
 }) => {
 	return (
 		<h4 className={classes.root} {...props}>
-			<Link to={linkTo} onClick={onClickLink} {...linkProps}>
+			<Link to={linkTo} {...linkProps}>
 				{children}
 			</Link>
 		</h4>

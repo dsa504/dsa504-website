@@ -24,7 +24,7 @@ const theme = {
 module.exports = {
 	siteMetadata: {
 		title: `DSA New Orleans`,
-		description: `The New Orleans Chapter of Democratic Socialists of America"`,
+		description: `The New Orleans Chapter of Democratic Socialists of America`,
 		author: `dsaneworleans`
 	},
 	plugins: [

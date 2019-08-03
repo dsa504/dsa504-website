@@ -4,8 +4,9 @@ import useSheet from "react-jss";
 import useOnClickOutside from "use-onclickoutside";
 import { Link } from "gatsby";
 import NavSectionHeader from "./section-header";
+import HomeCalendar from "../../components/home-calendar";
 
-const LayoutNav = ({ committees, setIsOpen, classes }) => {
+const LayoutNav = ({ committees, events, setIsOpen, classes }) => {
 	const handleClose = useCallback(() => {
 		setIsOpen(false);
 	}, [setIsOpen]);
@@ -23,6 +24,7 @@ const LayoutNav = ({ committees, setIsOpen, classes }) => {
 				Committees &amp; Caucuses
 			</NavSectionHeader>
 			<HomeCommittees onClickLink={handleClose} committees={committees} />
+			<HomeCalendar events={events} />
 		</div>
 	);
 };

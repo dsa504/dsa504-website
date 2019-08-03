@@ -38,6 +38,20 @@ const Layout = ({ pageContext, children, classes }) => {
 					}
 				}
 			}
+
+			allCalendarEvent(limit: 10, filter: { id: { ne: "dummy" } }) {
+				edges {
+					node {
+						summary
+						id
+						fields {
+							monthAndDay
+							slugDate
+							startLocalTime
+						}
+					}
+				}
+			}
 		}
 	`);
 
@@ -54,6 +68,7 @@ const Layout = ({ pageContext, children, classes }) => {
 				isOpen={isNavOpen}
 				setIsOpen={setIsNavOpen}
 				committees={data.allWordpressWpCommittee.edges.map(edge => edge.node)}
+				events={data.allCalendarEvent.edges.map(edge => edge.node)}
 			/>
 			<div
 				id="container"

@@ -89,7 +89,9 @@ const EventDetail = ({
 						>
 							<img style={{ maxWidth: "100%" }} src={mapImage.publicURL} />
 						</div>
-					) : null}
+					) : (
+						<div className={classes.mapImageEmpty}>Location TBD</div>
+					)}
 					<div
 						className={classes.description}
 						dangerouslySetInnerHTML={{ __html: description }}
@@ -152,6 +154,14 @@ const styles = theme => {
 			marginRight: u * 4,
 			backgroundSize: "cover",
 			backgroundRepeat: "no-repeat"
+		},
+		mapImageEmpty: {
+			composes: "$mapImage",
+			backgroundColor: "#ccc",
+			color: "#fff",
+			display: "flex",
+			alignItems: "center",
+			justifyContent: "center"
 		},
 		description: {}
 	};

@@ -25,6 +25,7 @@ const LayoutNav = ({ committees, events, setIsOpen, classes }) => {
 	const ref = useRef(null);
 	useOnClickOutside(ref, handleClose);
 	return (
+		// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 		<div ref={ref} className={classes.root} onClick={handleNavClick}>
 			<NavSectionHeader linkTo="/committees">
 				Committees &amp; Caucuses

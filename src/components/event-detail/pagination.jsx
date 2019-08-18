@@ -13,7 +13,7 @@ const EventDetailPagination = ({
 		<div className={classes.container}>
 			{prevSlug ? (
 				<div>
-					<Link className={classes.link} to={prevSlug}>
+					<Link className={classes.prevLink} to={prevSlug}>
 						<span className={classes.arrow}>&#8592;</span>{" "}
 						<span className={classes.linkText}>{previous.summary}</span>
 					</Link>
@@ -21,7 +21,7 @@ const EventDetailPagination = ({
 			) : null}
 			{nextSlug ? (
 				<div>
-					<Link className={classes.link} to={nextSlug}>
+					<Link className={classes.nextLink} to={nextSlug}>
 						<span className={classes.linkText}>{next.summary}</span>{" "}
 						<span className={classes.arrow}>&#8594;</span>
 					</Link>
@@ -41,6 +41,8 @@ const styles = theme => {
 			borderStyle: "solid",
 			borderRadius: u * 4
 		},
+		prevLink: { composes: "$link", paddingLeft: u },
+		nextLink: { composes: "$link", paddingRight: u * 1.5 },
 		linkText: {
 			color: theme.palette.red
 		},

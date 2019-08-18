@@ -5,6 +5,7 @@ import useSheet from "react-jss";
 import { kebabCase } from "lodash";
 import EventDetailPagination from "./pagination";
 import EventDetailActions from "./actions";
+import EventDetailMapImage from "./map-image";
 
 const EventDetail = ({
 	data: {
@@ -52,20 +53,7 @@ const EventDetail = ({
 				<br />
 				<EventDetailActions {...{ creator, htmlLink, summaryWithDate }} />
 				<div style={{ display: "flex" }}>
-					{mapImage ? (
-						<div
-							className={classes.mapImage}
-							style={{
-								backgroundImage: mapImage
-									? `url(${mapImage.childImageSharp.fluid.base64})`
-									: null
-							}}
-						>
-							<img style={{ maxWidth: "100%" }} src={mapImage.publicURL} />
-						</div>
-					) : (
-						<div className={classes.mapImageEmpty}>Location TBD</div>
-					)}
+					<EventDetailMapImage {...{ mapImage }} />
 					<div
 						className={classes.description}
 						dangerouslySetInnerHTML={{ __html: description }}
@@ -120,22 +108,6 @@ const styles = theme => {
 	return {
 		root: {
 			padding: [u * 2, u * 4]
-		},
-		mapImage: {
-			maxWidth: u * 50,
-			height: u * 50,
-			flex: "1 0 auto",
-			marginRight: u * 4,
-			backgroundSize: "cover",
-			backgroundRepeat: "no-repeat"
-		},
-		mapImageEmpty: {
-			composes: "$mapImage",
-			backgroundColor: "#bbb",
-			color: "#fff",
-			display: "flex",
-			alignItems: "center",
-			justifyContent: "center"
 		},
 		description: {}
 	};

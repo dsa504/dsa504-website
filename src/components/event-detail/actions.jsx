@@ -45,7 +45,7 @@ const styles = theme => {
 	const u = theme.spacing.unit;
 	return {
 		root: { display: "flex" },
-		link: { padding: [u, u * 2] }
+		link: { padding: [u, 0], marginRight: u * 2 }
 	};
 };
 

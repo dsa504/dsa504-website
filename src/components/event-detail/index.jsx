@@ -4,13 +4,7 @@ import SEO from "../seo";
 import useSheet from "react-jss";
 import { kebabCase } from "lodash";
 import EventDetailPagination from "./pagination";
-
-const volunteerFormId =
-	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
-
-const volunteerFormFields = {
-	event: "entry.981133582"
-};
+import EventDetailActions from "./actions";
 
 const EventDetail = ({
 	data: {
@@ -56,27 +50,7 @@ const EventDetail = ({
 					</small>
 				</h1>
 				<br />
-				<a className={classes.link} href={htmlLink}>
-					Add to your calendar
-				</a>
-				<br />
-				<a
-					className={classes.link}
-					href={`https://docs.google.com/forms/d/e/${volunteerFormId}/viewform?${
-						volunteerFormFields.event
-					}=${encodeURIComponent(summaryWithDate)}`}
-				>
-					Volunteer
-				</a>
-				<br />
-				<a
-					className={classes.link}
-					href={`mailto:${creator.email}?subject=${encodeURIComponent(
-						summaryWithDate
-					)}`}
-				>
-					Contact organizer
-				</a>
+				<EventDetailActions {...{ creator, htmlLink, summaryWithDate }} />
 				<div style={{ display: "flex" }}>
 					{mapImage ? (
 						<div
@@ -157,7 +131,7 @@ const styles = theme => {
 		},
 		mapImageEmpty: {
 			composes: "$mapImage",
-			backgroundColor: "#ccc",
+			backgroundColor: "#bbb",
 			color: "#fff",
 			display: "flex",
 			alignItems: "center",

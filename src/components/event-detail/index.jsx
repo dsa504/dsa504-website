@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 import SEO from "../seo";
 import useSheet from "react-jss";
 import { kebabCase } from "lodash";
+import EventDetailPagination from "./pagination";
 
 const volunteerFormId =
 	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
@@ -96,18 +97,7 @@ const EventDetail = ({
 				</div>
 				<br />
 				<br />
-				<div style={{ display: "flex", justifyContent: "space-between" }}>
-					{prevSlug ? (
-						<div>
-							&#8592; <Link to={prevSlug}>{previous.summary}</Link>
-						</div>
-					) : null}
-					{nextSlug ? (
-						<div>
-							<Link to={nextSlug}>{next.summary}</Link> &#8594;
-						</div>
-					) : null}
-				</div>
+				<EventDetailPagination {...{ previous, next, prevSlug, nextSlug }} />
 			</article>
 		</>
 	);

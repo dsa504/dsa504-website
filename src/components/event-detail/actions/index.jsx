@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useState, useCallback } from "react";
 import useSheet from "react-jss";
 
-const Volunteer = lazy(() => import("./volunteer.jsx"));
+const Volunteer = lazy(() => import("./volunteer"));
 
 // const volunteerFormId =
 // 	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
@@ -22,7 +22,8 @@ const EventDetailActions = ({
 	}, []);
 
 	const [isVolunteerOpen, setIsVolunteerOpen] = useState(false);
-	const handleOpenVolunteer = useCallback(() => {
+	const handleOpenVolunteer = useCallback(e => {
+		e && e.preventDefault && e.preventDefault();
 		setIsVolunteerOpen(true);
 	}, []);
 	const handleCloseVolunteer = useCallback(() => {
@@ -38,6 +39,7 @@ const EventDetailActions = ({
 				<br />
 				<a
 					href="#"
+					onFocus={handleIntendVolunteer}
 					onMouseEnter={handleIntendVolunteer}
 					className={classes.link}
 					onClick={handleOpenVolunteer}

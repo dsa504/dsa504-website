@@ -1,14 +1,7 @@
 import React, { Suspense, lazy, useState, useCallback, useEffect } from "react";
 import useSheet from "react-jss";
 
-const Volunteer = lazy(() => import("./volunteer"));
-
-// const volunteerFormId =
-// 	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
-
-// const volunteerFormFields = {
-// 	event: "entry.981133582"
-// };
+const Volunteer = lazy(() => import("./volunteer.jsx"));
 
 const EventDetailActions = ({
 	creator,
@@ -66,7 +59,9 @@ const EventDetailActions = ({
 			</div>
 			{didIntentVolunteer ? (
 				<Suspense fallback={<div />}>
-					<Volunteer {...{ isVolunteerOpen, handleCloseVolunteer }} />
+					<Volunteer
+						{...{ summaryWithDate, isVolunteerOpen, handleCloseVolunteer }}
+					/>
 				</Suspense>
 			) : null}
 		</>

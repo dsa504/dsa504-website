@@ -12,20 +12,20 @@ const EventDetailPagination = ({
 	return (
 		<div className={classes.container}>
 			{prevSlug ? (
-				<div>
-					<Link className={classes.prevLink} to={prevSlug}>
+				<Link className={classes.prevLink} to={prevSlug}>
+					<div className={classes.linkContents}>
 						<span className={classes.arrow}>&#8592;</span>{" "}
 						<span className={classes.linkText}>{previous.summary}</span>
-					</Link>
-				</div>
+					</div>
+				</Link>
 			) : null}
 			{nextSlug ? (
-				<div>
-					<Link className={classes.nextLink} to={nextSlug}>
+				<Link className={classes.nextLink} to={nextSlug}>
+					<div className={classes.linkContents}>
 						<span className={classes.linkText}>{next.summary}</span>{" "}
 						<span className={classes.arrow}>&#8594;</span>
-					</Link>
-				</div>
+					</div>
+				</Link>
 			) : null}
 		</div>
 	);
@@ -34,12 +34,24 @@ const EventDetailPagination = ({
 const styles = theme => {
 	const u = theme.spacing.unit;
 	return {
-		container: { display: "flex", justifyContent: "space-between" },
+		container: {
+			display: "flex",
+			justifyContent: "space-between",
+			alignItems: "center"
+		},
 		link: {
+			display: "flex",
+			alignSelf: "stretch",
+			flex: "0 1 auto",
 			padding: [u * 1.5, u * 3],
 			borderWidth: 1,
 			borderStyle: "solid",
 			borderRadius: u * 4
+		},
+		linkContents: {
+			display: "flex",
+			maxWidth: "40vw",
+			alignItems: "center"
 		},
 		prevLink: { composes: "$link", paddingLeft: u },
 		nextLink: { composes: "$link", paddingRight: u * 1.5 },
@@ -47,7 +59,8 @@ const styles = theme => {
 			color: theme.palette.red
 		},
 		arrow: {
-			color: theme.palette.black
+			color: theme.palette.black,
+			margin: [0, u * 2]
 		}
 	};
 };

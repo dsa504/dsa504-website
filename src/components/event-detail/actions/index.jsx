@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useState, useCallback } from "react";
 import useSheet from "react-jss";
 
-const Volunteer = lazy(() => import("./volunteer"));
+const Volunteer = lazy(() => import("./volunteer.jsx"));
 
 // const volunteerFormId =
 // 	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";

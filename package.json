@@ -6,6 +6,7 @@
   "author": "the work of many hands",
   "dependencies": {
     "@material-ui/core": "^4.3.3",
+    "@material-ui/styles": "^4.3.3",
     "common-tags": "^1.8.0",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.67",

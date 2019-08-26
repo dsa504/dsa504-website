@@ -10,8 +10,15 @@ import {
 	FormGroup,
 	DialogActions
 } from "@material-ui/core";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import { red, black } from "@material-ui/core/colors";
 
 import { volunteerFormId, volunteerFormFields } from ".";
+
+const theme = createMuiTheme({
+	palette: { primary: red, secondary: black }
+});
 
 const Volunteer = ({
 	summaryWithDate,
@@ -19,45 +26,47 @@ const Volunteer = ({
 	handleCloseVolunteer
 }) => {
 	return (
-		<Dialog
-			TransitionComponent={Slide}
-			open={isVolunteerOpen}
-			onClose={handleCloseVolunteer}
-		>
-			<form action={`https://docs.google.com/forms/d/e/${volunteerFormId}/`}>
-				<DialogTitle>Volunteer: {summaryWithDate}</DialogTitle>
-				<DialogContent>
-					<DialogContentText>
-						<input
-							type="hidden"
-							name={volunteerFormFields.event}
-							value={summaryWithDate}
-						/>
-						<FormGroup>
-							<TextField margin="normal" fullWidth label="Email address" />
-							<TextField margin="normal" fullWidth label="Phone number" />
-							<TextField margin="normal" fullWidth label="ZIP code" />
-							<TextField
-								margin="normal"
-								fullWidth
-								label="How can you pitch in?"
+		<ThemeProvider theme={theme}>
+			<Dialog
+				TransitionComponent={Slide}
+				open={isVolunteerOpen}
+				onClose={handleCloseVolunteer}
+			>
+				<form action={`https://docs.google.com/forms/d/e/${volunteerFormId}/`}>
+					<DialogTitle>Volunteer: {summaryWithDate}</DialogTitle>
+					<DialogContent>
+						<DialogContentText>
+							<input
+								type="hidden"
+								name={volunteerFormFields.event}
+								value={summaryWithDate}
 							/>
-						</FormGroup>
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button
-						color="primary"
-						variant="outlined"
-						size="large"
-						fullWidth
-						type="submit"
-					>
-						Volunteer me!
-					</Button>
-				</DialogActions>
-			</form>
-		</Dialog>
+							<FormGroup>
+								<TextField margin="normal" fullWidth label="Email address" />
+								<TextField margin="normal" fullWidth label="Phone number" />
+								<TextField margin="normal" fullWidth label="ZIP code" />
+								<TextField
+									margin="normal"
+									fullWidth
+									label="How can you pitch in?"
+								/>
+							</FormGroup>
+						</DialogContentText>
+					</DialogContent>
+					<DialogActions>
+						<Button
+							color="primary"
+							variant="contained"
+							size="large"
+							fullWidth
+							type="submit"
+						>
+							Volunteer me!
+						</Button>
+					</DialogActions>
+				</form>
+			</Dialog>
+		</ThemeProvider>
 	);
 };
 

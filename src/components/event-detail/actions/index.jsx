@@ -8,7 +8,7 @@ export const volunteerFormFields = {
 	event: "entry.981133582"
 };
 
-const Volunteer = lazy(() => import("./volunteer.jsx"));
+const Volunteer = lazy(() => import("./volunteer"));
 
 const EventDetailActions = ({
 	creator,

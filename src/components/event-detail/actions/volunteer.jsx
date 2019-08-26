@@ -3,7 +3,8 @@ import {
 	Slide,
 	Dialog,
 	DialogContent,
-	DialogContentText
+	DialogContentText,
+	TextField
 } from "@material-ui/core";
 
 const Volunteer = ({ isVolunteerOpen, handleCloseVolunteer }) => {
@@ -14,7 +15,9 @@ const Volunteer = ({ isVolunteerOpen, handleCloseVolunteer }) => {
 			onClose={handleCloseVolunteer}
 		>
 			<DialogContent>
-				<DialogContentText>Hoot</DialogContentText>
+				<DialogContentText>
+					<TextField label="Flurf" />
+				</DialogContentText>
 			</DialogContent>
 		</Dialog>
 	);

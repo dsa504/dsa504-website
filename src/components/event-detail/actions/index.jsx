@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useCallback } from "react";
+import React, { Suspense, lazy, useState, useCallback, useEffect } from "react";
 import useSheet from "react-jss";
 
 const Volunteer = lazy(() => import("./volunteer"));
@@ -29,6 +29,11 @@ const EventDetailActions = ({
 	const handleCloseVolunteer = useCallback(() => {
 		setIsVolunteerOpen(false);
 	}, []);
+
+	// Immediately lazy load modal on mount/idle
+	useEffect(() => {
+		handleIntendVolunteer();
+	}, [handleIntendVolunteer]);
 
 	return (
 		<>

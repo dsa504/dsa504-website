@@ -5,15 +5,13 @@ import {
 	DialogContent,
 	DialogContentText,
 	TextField,
-	DialogTitle
+	DialogTitle,
+	Button,
+	FormGroup,
+	DialogActions
 } from "@material-ui/core";
 
-const volunteerFormId =
-	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
-
-const volunteerFormFields = {
-	event: "entry.981133582"
-};
+import { volunteerFormId, volunteerFormFields } from ".";
 
 const Volunteer = ({
 	summaryWithDate,
@@ -26,21 +24,39 @@ const Volunteer = ({
 			open={isVolunteerOpen}
 			onClose={handleCloseVolunteer}
 		>
-			<DialogTitle>Volunteer: {summaryWithDate}</DialogTitle>
-			<DialogContent>
-				<DialogContentText>
-					<form
-						action={`https://docs.google.com/forms/d/e/${volunteerFormId}/`}
-					>
+			<form action={`https://docs.google.com/forms/d/e/${volunteerFormId}/`}>
+				<DialogTitle>Volunteer: {summaryWithDate}</DialogTitle>
+				<DialogContent>
+					<DialogContentText>
 						<input
 							type="hidden"
 							name={volunteerFormFields.event}
 							value={summaryWithDate}
 						/>
-						<TextField label="Flurfo" />
-					</form>
-				</DialogContentText>
-			</DialogContent>
+						<FormGroup>
+							<TextField margin="normal" fullWidth label="Email address" />
+							<TextField margin="normal" fullWidth label="Phone number" />
+							<TextField margin="normal" fullWidth label="ZIP code" />
+							<TextField
+								margin="normal"
+								fullWidth
+								label="How can you pitch in?"
+							/>
+						</FormGroup>
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button
+						color="primary"
+						variant="outlined"
+						size="large"
+						fullWidth
+						type="submit"
+					>
+						Volunteer me!
+					</Button>
+				</DialogActions>
+			</form>
 		</Dialog>
 	);
 };

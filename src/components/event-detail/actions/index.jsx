@@ -1,6 +1,13 @@
 import React, { Suspense, lazy, useState, useCallback, useEffect } from "react";
 import useSheet from "react-jss";
 
+export const volunteerFormId =
+	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
+
+export const volunteerFormFields = {
+	event: "entry.981133582"
+};
+
 const Volunteer = lazy(() => import("./volunteer.jsx"));
 
 const EventDetailActions = ({
@@ -36,14 +43,13 @@ const EventDetailActions = ({
 				</a>
 				<br />
 				<a
-					href="#"
 					onFocus={handleIntendVolunteer}
 					onMouseEnter={handleIntendVolunteer}
 					className={classes.link}
 					onClick={handleOpenVolunteer}
-					// href={`https://docs.google.com/forms/d/e/${volunteerFormId}/viewform?${
-					// 	volunteerFormFields.event
-					// }=${encodeURIComponent(summaryWithDate)}`}
+					href={`https://docs.google.com/forms/d/e/${volunteerFormId}/viewform?${
+						volunteerFormFields.event
+					}=${encodeURIComponent(summaryWithDate)}`}
 				>
 					Volunteer
 				</a>

@@ -33,17 +33,22 @@ const Volunteer = ({
 				onClose={handleCloseVolunteer}
 			>
 				<form action={`https://docs.google.com/forms/d/e/${volunteerFormId}/`}>
-					<DialogTitle>Volunteer: {summaryWithDate}</DialogTitle>
+					<DialogTitle>{summaryWithDate}</DialogTitle>
 					<DialogContent>
 						<DialogContentText>
 							<input
 								type="hidden"
-								name={volunteerFormFields.event}
+								name={volunteerFormFields.EVENT}
 								value={summaryWithDate}
 							/>
 							<FormGroup>
 								<TextField margin="normal" fullWidth label="Email address" />
-								<TextField margin="normal" fullWidth label="Phone number" />
+								<TextField
+									type="tel"
+									margin="normal"
+									fullWidth
+									label="Phone number"
+								/>
 								<TextField margin="normal" fullWidth label="ZIP code" />
 								<TextField
 									margin="normal"

@@ -5,7 +5,11 @@ export const volunteerFormId =
 	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
 
 export const volunteerFormFields = {
-	event: "entry.981133582"
+	EMAIL_ADDRESS: "entry.706626491",
+	PHONE_NUMBER: "entry.1910289712",
+	ZIP_CODE: "entry.2025282883",
+	EVENT_DESCRIPTION: "entry.981133582",
+	VOLUNTEER_ASK: "entry.1294265320"
 };
 
 const Volunteer = lazy(() => import("./volunteer"));
@@ -48,7 +52,7 @@ const EventDetailActions = ({
 					className={classes.link}
 					onClick={handleOpenVolunteer}
 					href={`https://docs.google.com/forms/d/e/${volunteerFormId}/viewform?${
-						volunteerFormFields.event
+						volunteerFormFields.EVENT
 					}=${encodeURIComponent(summaryWithDate)}`}
 				>
 					Volunteer

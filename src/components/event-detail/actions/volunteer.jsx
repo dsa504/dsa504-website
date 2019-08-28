@@ -10,11 +10,13 @@ import {
 	FormGroup,
 	DialogActions
 } from "@material-ui/core";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme, useTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { red, black } from "@material-ui/core/colors";
 
 import { volunteerFormId, volunteerFormFields } from ".";
+
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const theme = createMuiTheme({
 	palette: { primary: red, secondary: black }
@@ -25,9 +27,13 @@ const Volunteer = ({
 	isVolunteerOpen,
 	handleCloseVolunteer
 }) => {
+	const muiTheme = useTheme();
+	const fullScreen = useMediaQuery(muiTheme.breakpoints.down("sm"));
+
 	return (
 		<ThemeProvider theme={theme}>
 			<Dialog
+				fullScreen={fullScreen}
 				TransitionComponent={Slide}
 				open={isVolunteerOpen}
 				onClose={handleCloseVolunteer}
@@ -59,11 +65,13 @@ const Volunteer = ({
 						</DialogContentText>
 					</DialogContent>
 					<DialogActions>
+						<Button size="large" onClick={handleCloseVolunteer}>
+							Cancel
+						</Button>
 						<Button
 							color="primary"
 							variant="contained"
 							size="large"
-							fullWidth
 							type="submit"
 						>
 							Volunteer me!

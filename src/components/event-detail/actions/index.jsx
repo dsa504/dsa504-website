@@ -12,7 +12,7 @@ export const volunteerFormFields = {
 	VOLUNTEER_ASK: "entry.1294265320"
 };
 
-const Volunteer = lazy(() => import("./volunteer"));
+const Volunteer = lazy(() => import("./volunteer.jsx"));
 
 const EventDetailActions = ({
 	creator,

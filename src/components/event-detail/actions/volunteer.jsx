@@ -38,7 +38,7 @@ const Volunteer = ({
 						<DialogContentText>
 							<input
 								type="hidden"
-								name={volunteerFormFields.EVENT}
+								name={volunteerFormFields.EVENT_DESCRIPTION}
 								value={summaryWithDate}
 							/>
 							<FormGroup>

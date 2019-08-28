@@ -52,7 +52,7 @@ const EventDetailActions = ({
 					className={classes.link}
 					onClick={handleOpenVolunteer}
 					href={`https://docs.google.com/forms/d/e/${volunteerFormId}/viewform?${
-						volunteerFormFields.EVENT
+						volunteerFormFields.EVENT_DESCRIPTION
 					}=${encodeURIComponent(summaryWithDate)}`}
 				>
 					Volunteer

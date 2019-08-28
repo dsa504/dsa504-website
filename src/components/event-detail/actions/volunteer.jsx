@@ -48,16 +48,16 @@ const Volunteer = ({
 								value={summaryWithDate}
 							/>
 							<FormGroup>
-								<TextField margin="normal" fullWidth label="Email address" />
+								<TextField margin="dense" fullWidth label="Email address" />
 								<TextField
 									type="tel"
-									margin="normal"
+									margin="dense"
 									fullWidth
 									label="Phone number"
 								/>
-								<TextField margin="normal" fullWidth label="ZIP code" />
+								<TextField margin="dense" fullWidth label="ZIP code" />
 								<TextField
-									margin="normal"
+									margin="dense"
 									fullWidth
 									label="How can you pitch in?"
 								/>

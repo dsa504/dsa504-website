@@ -12,11 +12,13 @@ export const volunteerFormFields = {
 	VOLUNTEER_ASK: "entry.1294265320"
 };
 
-const Volunteer = lazy(() => import("./volunteer.jsx"));
+const Volunteer = lazy(() => import("./volunteer"));
 
 const EventDetailActions = ({
 	creator,
 	htmlLink,
+	summary,
+	monthAndDay,
 	summaryWithDate,
 	classes
 }) => {
@@ -70,7 +72,13 @@ const EventDetailActions = ({
 			{didIntentVolunteer ? (
 				<Suspense fallback={<div />}>
 					<Volunteer
-						{...{ summaryWithDate, isVolunteerOpen, handleCloseVolunteer }}
+						{...{
+							summary,
+							monthAndDay,
+							summaryWithDate,
+							isVolunteerOpen,
+							handleCloseVolunteer
+						}}
 					/>
 				</Suspense>
 			) : null}

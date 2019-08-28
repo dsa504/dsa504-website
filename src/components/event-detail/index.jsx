@@ -51,7 +51,9 @@ const EventDetail = ({
 					</small>
 				</h1>
 				<br />
-				<EventDetailActions {...{ creator, htmlLink, summaryWithDate }} />
+				<EventDetailActions
+					{...{ creator, htmlLink, summaryWithDate, monthAndDay, summary }}
+				/>
 				<div style={{ display: "flex" }}>
 					<EventDetailMapImage {...{ mapImage }} />
 					<div

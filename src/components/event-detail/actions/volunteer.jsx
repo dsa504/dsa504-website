@@ -8,7 +8,8 @@ import {
 	DialogTitle,
 	Button,
 	FormGroup,
-	DialogActions
+	DialogActions,
+	Typography
 } from "@material-ui/core";
 import { createMuiTheme, useTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -23,6 +24,8 @@ const theme = createMuiTheme({
 });
 
 const Volunteer = ({
+	summary,
+	monthAndDay,
 	summaryWithDate,
 	isVolunteerOpen,
 	handleCloseVolunteer
@@ -39,7 +42,11 @@ const Volunteer = ({
 				onClose={handleCloseVolunteer}
 			>
 				<form action={`https://docs.google.com/forms/d/e/${volunteerFormId}/`}>
-					<DialogTitle>{summaryWithDate}</DialogTitle>
+					<DialogTitle disableTypography>
+						<Typography variant="subtitle1">{summary}</Typography>
+
+						<Typography variant="caption">{monthAndDay}</Typography>
+					</DialogTitle>
 					<DialogContent>
 						<DialogContentText>
 							<input

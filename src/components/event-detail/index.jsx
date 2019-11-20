@@ -25,7 +25,7 @@ const EventDetail = ({
 
 	// have to do this gross shit because we don't have the slug in the query at the time of node creation
 	const prevSlug =
-		previous && previous.start
+		previous && previous.start && previous.start.dateTime
 			? `/events/${previous.start.dateTime.split("T")[0]}/${kebabCase(
 					previous.summary
 			  )}`

@@ -32,7 +32,7 @@ const EventDetail = ({
 			: null;
 
 	const nextSlug =
-		next && next.start
+		next && next.start && next.start.dateTime
 			? `/events/${next.start.dateTime.split("T")[0]}/${kebabCase(
 					next.summary
 			  )}`

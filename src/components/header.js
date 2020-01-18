@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 
 const Header = ({ siteTitle, handleToggleNav, classes }) => (
 	<header className={classes.root}>
@@ -49,4 +49,4 @@ const styles = theme => {
 		navToggle: { marginLeft: "auto" }
 	};
 };
-export default useSheet(styles)(Header);
+export default injectSheet(styles)(Header);

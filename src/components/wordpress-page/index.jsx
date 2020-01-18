@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import SEO from "../seo";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 
 const Page = ({
 	data: {
@@ -39,4 +39,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(Page);
+export default injectSheet(styles)(Page);

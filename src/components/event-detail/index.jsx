@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import SEO from "../seo";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 import { kebabCase } from "lodash";
 import EventDetailPagination from "./pagination";
 import EventDetailActions from "./actions";
@@ -115,4 +115,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(EventDetail);
+export default injectSheet(styles)(EventDetail);

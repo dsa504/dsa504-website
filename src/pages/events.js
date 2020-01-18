@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Calendar from "../components/calendar";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 import { get } from "lodash";
 
 function nodesToProps(path) {
@@ -66,4 +66,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(Events);
+export default injectSheet(styles)(Events);

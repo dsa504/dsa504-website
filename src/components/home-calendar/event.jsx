@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { kebabCase } from "lodash";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 
 const HomeCalendarEvent = ({ fields, summary, previous, classes }) => {
 	const hasPrevious = !!(previous && previous.fields);
@@ -45,4 +45,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(HomeCalendarEvent);
+export default injectSheet(styles)(HomeCalendarEvent);

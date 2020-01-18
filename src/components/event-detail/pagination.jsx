@@ -1,5 +1,5 @@
 import React from "react";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 import { Link } from "gatsby";
 
 const EventDetailPagination = ({
@@ -65,4 +65,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(EventDetailPagination);
+export default injectSheet(styles)(EventDetailPagination);

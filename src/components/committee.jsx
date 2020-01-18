@@ -1,6 +1,6 @@
 import React from "react";
 import SEO from "./seo";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 
 const Committee = ({ pageContext, classes }) => (
 	<>
@@ -20,4 +20,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(Committee);
+export default injectSheet(styles)(Committee);

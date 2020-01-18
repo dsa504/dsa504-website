@@ -1,5 +1,5 @@
 import React from "react";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 import Image from "../../components/image";
 
 const LayoutFooter = ({ classes }) => {
@@ -45,4 +45,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(LayoutFooter);
+export default injectSheet(styles)(LayoutFooter);

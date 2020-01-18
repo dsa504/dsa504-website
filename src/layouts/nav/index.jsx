@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import HomeCommittees from "../../components/home-committees";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 import useOnClickOutside from "use-onclickoutside";
 import NavSectionHeader from "./section-header";
 import HomeCalendar from "../../components/home-calendar";
@@ -65,4 +65,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(LayoutNav);
+export default injectSheet(styles)(LayoutNav);

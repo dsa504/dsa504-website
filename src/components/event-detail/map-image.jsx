@@ -1,5 +1,5 @@
 import React from "react";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 
 const EventDetailMapImage = ({ mapImage, classes }) => {
 	return mapImage ? (
@@ -40,4 +40,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(EventDetailMapImage);
+export default injectSheet(styles)(EventDetailMapImage);

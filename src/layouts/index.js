@@ -14,7 +14,7 @@ import "./layout.css";
 import "../sass/style.scss";
 import "../sass/wp-block-library.scss";
 import LayoutNav from "./nav";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 import LayoutFooter from "./footer";
 
 const Layout = ({ pageContext, children, classes }) => {
@@ -133,4 +133,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(Layout);
+export default injectSheet(styles)(Layout);

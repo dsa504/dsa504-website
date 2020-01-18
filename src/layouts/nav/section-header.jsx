@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 
 const NavSectionHeader = ({
 	linkTo,
@@ -25,4 +25,4 @@ const styles = {
 	}
 };
 
-export default useSheet(styles)(NavSectionHeader);
+export default injectSheet(styles)(NavSectionHeader);

@@ -4,7 +4,7 @@ import SEO from "../components/seo";
 import HomeCalendar from "../components/home-calendar";
 import HomePost from "../components/home-post";
 import HomeCommittees from "../components/home-committees";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 
 const IndexPage = () => {
 	const data = useStaticQuery(graphql`
@@ -138,6 +138,6 @@ const styles = {
 	}
 };
 
-const HomeRoot = useSheet(styles)(_HomeRoot);
+const HomeRoot = injectSheet(styles)(_HomeRoot);
 
 export default IndexPage;

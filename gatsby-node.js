@@ -9,7 +9,7 @@ const mapsKey = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 const getMapImageUrl = require("google-maps-image-api-url");
 
 const mapStyle = encodeURIComponent(oneLineTrim`
-  element:labels.icon|visibility:off&
+  style=element:labels.icon|visibility:off&
   style=element:labels.text.fill|color:0xffffff&
   style=element:labels.text.stroke|visibility:off&
   style=feature:administrative|element:geometry.fill|color:0xc9323b&
@@ -28,7 +28,7 @@ const mapStyle = encodeURIComponent(oneLineTrim`
   style=feature:water|element:geometry|color:0x090228
   `);
 
-exports.createPages = async function({ actions, graphql }) {
+exports.createPages = async ({ actions, graphql }) => {
 	const { data } = await graphql(`
 		query {
 			allCalendarEvent {
@@ -172,7 +172,7 @@ async function onCreateNode({
 	store,
 	cache,
 	createNodeId,
-	actions: { createNode, createNodeField }
+	actions: { createNode, createNodeField, createParentChildLink }
 }) {
 	if (node.internal.type === "CalendarEvent" && node.start) {
 		const startMoment = moment(node.start.dateTime).tz("America/Chicago");
@@ -210,35 +210,32 @@ async function onCreateNode({
 			value: endMoment.format("h:mm A")
 		});
 
-		if (node.location) {
-			const mapUrl = getMapImageUrl({
-				type: "staticmap",
-				size: "400x400",
-				zoom: 12,
-				scale: 2,
-				center: node.location,
-				key: mapsKey,
-				markers: `color:0x222222|label:X|${node.location}`,
-				style: mapStyle,
-				format: "JPEG"
-			});
+		const mapUrl = getMapImageUrl({
+			type: "staticmap",
+			size: "400x400",
+			zoom: 12,
+			scale: 2,
+			center: node.location || "New Orleans",
+			key: mapsKey,
+			markers: `color:0x222222|label:X|${node.location || "New Orleans"}`,
+			style: mapStyle,
+			format: "JPEG"
+		});
 
-			const fileNode = await createRemoteFileNode({
-				url: mapUrl,
-				store,
-				cache,
-				createNode,
-				createNodeId,
-				name: `${slugDate}-${kebabCase(node.summary)}-map-image`,
-				ext: ".jpg"
-			});
+		const fileNode = await createRemoteFileNode({
+			url: mapUrl,
+			store,
+			cache,
+			createNode,
+			createNodeId,
+			parentNodeId: node.id,
+			name: `${slugDate}-${kebabCase(node.summary)}-map-image`,
+			ext: ".jpg"
+		});
 
-			if (fileNode) {
-				node.mapImage___NODE = fileNode.id;
-			}
-		}
+		node.mapImage___NODE = fileNode.id;
+		createParentChildLink({ parent: node, child: fileNode });
 	}
-	return;
 }
 
 exports.onCreateNode = onCreateNode;
@@ -251,3 +248,7 @@ exports.onCreatePage = ({ page, actions }) => {
 		createPage(page);
 	}
 };
+
+// Make gatsby-source-filesystem extend the file nodes
+// we created dynamically after other nodes were created
+exports.setFieldsOnGraphQLNodeType = require("gatsby-source-filesystem/extend-file-node");

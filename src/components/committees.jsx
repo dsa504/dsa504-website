@@ -1,7 +1,7 @@
 import React from "react";
 import SEO from "./seo";
 import { graphql, Link } from "gatsby";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
 
 const Committees = ({ data, classes }) => (
 	<>
@@ -38,4 +38,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(Committees);
+export default injectSheet(styles)(Committees);

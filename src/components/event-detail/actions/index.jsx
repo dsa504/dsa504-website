@@ -1,5 +1,7 @@
 import React, { Suspense, lazy, useState, useCallback, useEffect } from "react";
-import useSheet from "react-jss";
+import injectSheet from "react-jss";
+
+const Volunteer = lazy(() => import("./volunteer"));
 
 export const volunteerFormId =
 	"1FAIpQLSfqmuqWCrgVfsHpXdiM5nOn0exeO9ZIr9n9CTGsvLbR-It7dQ";
@@ -11,8 +13,6 @@ export const volunteerFormFields = {
 	EVENT_DESCRIPTION: "entry.981133582",
 	VOLUNTEER_ASK: "entry.1294265320"
 };
-
-const Volunteer = lazy(() => import("./volunteer"));
 
 const EventDetailActions = ({
 	creator,
@@ -94,4 +94,4 @@ const styles = theme => {
 	};
 };
 
-export default useSheet(styles)(EventDetailActions);
+export default injectSheet(styles)(EventDetailActions);

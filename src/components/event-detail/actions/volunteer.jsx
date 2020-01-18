@@ -13,14 +13,14 @@ import {
 } from "@material-ui/core";
 import { createMuiTheme, useTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import { red, black } from "@material-ui/core/colors";
+import { red, grey } from "@material-ui/core/colors";
 
 import { volunteerFormId, volunteerFormFields } from ".";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const theme = createMuiTheme({
-	palette: { primary: red, secondary: black }
+	palette: { primary: red, secondary: grey }
 });
 
 const Volunteer = ({

@@ -31,7 +31,9 @@ const mapStyle = encodeURIComponent(oneLineTrim`
 exports.createPages = async ({ actions, graphql }) => {
 	const { data } = await graphql(`
 		query {
-			allCalendarEvent {
+			allCalendarEvent(
+				filter: { id: { ne: "dummy" }, start: { dateTime: { ne: null } } }
+			) {
 				edges {
 					previous {
 						summary

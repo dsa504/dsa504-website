@@ -39,7 +39,10 @@ const Layout = ({ pageContext, children, classes }) => {
 				}
 			}
 
-			allCalendarEvent(limit: 10, filter: { id: { ne: "dummy" } }) {
+			allCalendarEvent(
+				limit: 10
+				filter: { id: { ne: "dummy" }, start: { dateTime: { ne: null } } }
+			) {
 				edges {
 					node {
 						summary
@@ -76,10 +79,10 @@ const Layout = ({ pageContext, children, classes }) => {
 				style={
 					isNavOpen
 						? {
-								opacity: 0.6,
-								pointerEvents: "none",
-								transform: "translateX(-1vw)"
-						  }
+							opacity: 0.6,
+							pointerEvents: "none",
+							transform: "translateX(-1vw)"
+						}
 						: {}
 				}
 			>

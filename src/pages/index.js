@@ -41,7 +41,10 @@ const IndexPage = () => {
 				}
 			}
 
-			allCalendarEvent(limit: 10, filter: { id: { ne: "dummy" } }) {
+			allCalendarEvent(
+				limit: 10
+				filter: { id: { ne: "dummy" }, start: { dateTime: { ne: null } } }
+			) {
 				edges {
 					node {
 						summary

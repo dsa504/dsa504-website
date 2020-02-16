@@ -79,10 +79,10 @@ const Layout = ({ pageContext, children, classes }) => {
 				style={
 					isNavOpen
 						? {
-							opacity: 0.6,
-							pointerEvents: "none",
-							transform: "translateX(-1vw)"
-						}
+								opacity: 0.6,
+								pointerEvents: "none",
+								transform: "translateX(-1vw)"
+						  }
 						: {}
 				}
 			>

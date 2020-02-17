@@ -1,13 +1,13 @@
-import React from "react";
-import { graphql } from "gatsby";
-import SEO from "../seo";
-import injectSheet from "react-jss";
+import React from 'react';
+import { graphql } from 'gatsby';
+import SEO from '../seo';
+import injectSheet from 'react-jss';
 
 const Post = ({
 	data: {
-		wordpressPost: { content, title, date }
+		wordpressPost: { content, title, date },
 	},
-	classes
+	classes,
 }) => {
 	return (
 		<>
@@ -31,12 +31,12 @@ export const pageQuery = graphql`
 	}
 `;
 
-const styles = theme => {
+const styles = (theme) => {
 	const u = theme.spacing.unit;
 	return {
 		root: {
-			padding: [u * 2, u * 4]
-		}
+			padding: [u * 2, u * 4],
+		},
 	};
 };
 

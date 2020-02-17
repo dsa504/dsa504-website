@@ -1,12 +1,12 @@
 /* eslint-env node */
 /* eslint-disable import/no-commonjs */
-const { kebabCase, groupBy } = require("lodash");
-const moment = require("moment-timezone");
-const { createRemoteFileNode } = require("gatsby-source-filesystem");
-const { oneLineTrim } = require("common-tags");
+const { kebabCase, groupBy } = require('lodash');
+const moment = require('moment-timezone');
+const { createRemoteFileNode } = require('gatsby-source-filesystem');
+const { oneLineTrim } = require('common-tags');
 
 const mapsKey = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
-const getMapImageUrl = require("google-maps-image-api-url");
+const getMapImageUrl = require('google-maps-image-api-url');
 
 const mapStyle = encodeURIComponent(oneLineTrim`
   style=element:labels.icon|visibility:off&
@@ -31,9 +31,7 @@ const mapStyle = encodeURIComponent(oneLineTrim`
 exports.createPages = async ({ actions, graphql }) => {
 	const { data } = await graphql(`
 		query {
-			allCalendarEvent(
-				filter: { id: { ne: "dummy" }, start: { dateTime: { ne: null } } }
-			) {
+			allCalendarEvent(filter: { id: { ne: "dummy" }, start: { dateTime: { ne: null } } }) {
 				edges {
 					previous {
 						summary
@@ -101,19 +99,19 @@ exports.createPages = async ({ actions, graphql }) => {
 	const calEvents = data.allCalendarEvent.edges;
 
 	const calDateSlugGroups = groupBy(
-		calEvents.map(edge => edge.node),
-		"fields.slugDate"
+		calEvents.map((edge) => edge.node),
+		'fields.slugDate'
 	);
 
 	for (let dateSlugGroup in calDateSlugGroups) {
 		actions.createPage({
 			path: `/events/${dateSlugGroup}`,
-			component: require.resolve("./src/components/day/index.jsx"),
-			context: calDateSlugGroups[dateSlugGroup]
+			component: require.resolve('./src/components/day/index.jsx'),
+			context: calDateSlugGroups[dateSlugGroup],
 		});
 	}
 
-	calEvents.forEach(evt => {
+	calEvents.forEach((evt) => {
 		if (evt.node.start && evt.node.fields) {
 			const slugDate = evt.node.fields.slugDate;
 			const summary = evt.node.summary;
@@ -125,45 +123,42 @@ exports.createPages = async ({ actions, graphql }) => {
 				context: {
 					id: evt.node.id,
 					previous: evt.previous,
-					next: evt.next
-				}
+					next: evt.next,
+				},
 			});
 		}
 	});
 
 	const wpPosts = data.allWordpressPost.edges;
-	wpPosts.forEach(post => {
+	wpPosts.forEach((post) => {
 		actions.createPage({
 			path: `/posts/${post.node.slugYear}/${post.node.slugMonth}/${post.node.slug}`,
 			component: require.resolve(`./src/components/wordpress-post/index.jsx`),
-			context: { slug: post.node.slug }
+			context: { slug: post.node.slug },
 		});
 	});
 	const wpPages = data.allWordpressPage.edges;
-	wpPages.forEach(page => {
-		if (page.node.slug !== "events") {
+	wpPages.forEach((page) => {
+		if (page.node.slug !== 'events') {
 			actions.createPage({
 				path: `/${page.node.slug}`,
 				component: require.resolve(`./src/components/wordpress-page/index.jsx`),
-				context: { slug: page.node.slug }
+				context: { slug: page.node.slug },
 			});
 		}
 	});
 
-	if (
-		data.allWordpressWpCommittee &&
-		data.allWordpressWpCommittee.edges.length
-	) {
+	if (data.allWordpressWpCommittee && data.allWordpressWpCommittee.edges.length) {
 		actions.createPage({
 			path: `/committees`,
-			component: require.resolve(`./src/components/committees.jsx`)
+			component: require.resolve(`./src/components/committees.jsx`),
 		});
 
 		data.allWordpressWpCommittee.edges.forEach(({ node }) => {
 			actions.createPage({
 				path: `/committees/${node.slug}`,
 				component: require.resolve(`./src/components/committee.jsx`),
-				context: node
+				context: node,
 			});
 		});
 	}
@@ -174,54 +169,54 @@ async function onCreateNode({
 	store,
 	cache,
 	createNodeId,
-	actions: { createNode, createNodeField, createParentChildLink }
+	actions: { createNode, createNodeField, createParentChildLink },
 }) {
-	if (node.internal.type === "CalendarEvent" && node.start) {
-		const startMoment = moment(node.start.dateTime).tz("America/Chicago");
-		const endMoment = moment(node.end.dateTime).tz("America/Chicago");
+	if (node.internal.type === 'CalendarEvent' && node.start) {
+		const startMoment = moment(node.start.dateTime).tz('America/Chicago');
+		const endMoment = moment(node.end.dateTime).tz('America/Chicago');
 
-		const slugDate = startMoment.format("YYYY-MM-DD");
+		const slugDate = startMoment.format('YYYY-MM-DD');
 
 		createNodeField({
 			node,
-			name: "slugDate",
-			value: slugDate
+			name: 'slugDate',
+			value: slugDate,
 		});
 
 		createNodeField({
 			node,
-			name: "monthAndDay",
-			value: startMoment.format("MMMM Do")
+			name: 'monthAndDay',
+			value: startMoment.format('MMMM Do'),
 		});
 
 		createNodeField({
 			node,
-			name: "dayOfWeek",
-			value: startMoment.format("dddd")
+			name: 'dayOfWeek',
+			value: startMoment.format('dddd'),
 		});
 
 		createNodeField({
 			node,
-			name: "startLocalTime",
-			value: startMoment.format("h:mm A")
+			name: 'startLocalTime',
+			value: startMoment.format('h:mm A'),
 		});
 
 		createNodeField({
 			node,
-			name: "endLocalTime",
-			value: endMoment.format("h:mm A")
+			name: 'endLocalTime',
+			value: endMoment.format('h:mm A'),
 		});
 
 		const mapUrl = getMapImageUrl({
-			type: "staticmap",
-			size: "400x400",
+			type: 'staticmap',
+			size: '400x400',
 			zoom: 12,
 			scale: 2,
-			center: node.location || "New Orleans",
+			center: node.location || 'New Orleans',
 			key: mapsKey,
-			markers: `color:0x222222|label:X|${node.location || "New Orleans"}`,
+			markers: `color:0x222222|label:X|${node.location || 'New Orleans'}`,
 			style: mapStyle,
-			format: "JPEG"
+			format: 'JPEG',
 		});
 
 		const fileNode = await createRemoteFileNode({
@@ -232,7 +227,7 @@ async function onCreateNode({
 			createNodeId,
 			parentNodeId: node.id,
 			name: `${slugDate}-${kebabCase(node.summary)}-map-image`,
-			ext: ".jpg"
+			ext: '.jpg',
 		});
 
 		node.mapImage___NODE = fileNode.id;
@@ -245,12 +240,12 @@ exports.onCreateNode = onCreateNode;
 exports.onCreatePage = ({ page, actions }) => {
 	const { createPage } = actions;
 
-	if (page.path === "/") {
-		page.context.layout = "home";
+	if (page.path === '/') {
+		page.context.layout = 'home';
 		createPage(page);
 	}
 };
 
 // Make gatsby-source-filesystem extend the file nodes
 // we created dynamically after other nodes were created
-exports.setFieldsOnGraphQLNodeType = require("gatsby-source-filesystem/extend-file-node");
+exports.setFieldsOnGraphQLNodeType = require('gatsby-source-filesystem/extend-file-node');

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from 'react';
+import { Link } from 'gatsby';
 
 const HomePost = ({ slug, slugYear, title, content, excerpt, slugMonth }) => {
 	return (

@@ -1,10 +1,10 @@
-import React from "react";
-import { map } from "lodash";
-import CalendarEvent from "../calendar-event";
+import React from 'react';
+import { map } from 'lodash';
+import CalendarEvent from '../calendar-event';
 
 const EventsDay = ({ pageContext }) => (
 	<div>
-		{map(pageContext, p => (
+		{map(pageContext, (p) => (
 			<CalendarEvent {...p} />
 		))}
 	</div>

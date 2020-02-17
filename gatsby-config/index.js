@@ -1,31 +1,31 @@
 /* eslint-env node */
 /* eslint-disable import/no-commonjs */
 
-require("dotenv").config({
-	path: `.env`
+require('dotenv').config({
+	path: `.env`,
 });
 
-const calendarConfig = require("./calendar");
-const wordpressConfig = require("./wordpress");
+const calendarConfig = require('./calendar');
+const wordpressConfig = require('./wordpress');
 
 const theme = {
 	palette: {
-		red: "#ec1f27",
-		black: "#222"
+		red: '#ec1f27',
+		black: '#222',
 	},
 	spacing: {
-		unit: 8
+		unit: 8,
 	},
 	zIndex: {
-		navbar: 100
-	}
+		navbar: 100,
+	},
 };
 
 module.exports = {
 	siteMetadata: {
 		title: `DSA New Orleans`,
 		description: `The New Orleans Chapter of Democratic Socialists of America`,
-		author: `dsaneworleans`
+		author: `dsaneworleans`,
 	},
 	plugins: [
 		`gatsby-plugin-eslint`,
@@ -39,8 +39,8 @@ module.exports = {
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				name: `images`,
-				path: `${__dirname}/../src/images`
-			}
+				path: `${__dirname}/../src/images`,
+			},
 		},
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-sharp`,
@@ -53,10 +53,10 @@ module.exports = {
 				background_color: `#ec1f27`,
 				theme_color: `#ec1f27`,
 				display: `minimal-ui`,
-				icon: `src/images/logo.png`
-			}
+				icon: `src/images/logo.png`,
+			},
 		},
 		wordpressConfig,
-		calendarConfig
-	]
+		calendarConfig,
+	],
 };

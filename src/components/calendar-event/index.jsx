@@ -1,31 +1,20 @@
-import React from "react";
-import EventJsonLd from "./event-json-ld";
-import injectSheet from "react-jss";
-import styles from "./styles";
-import { Link } from "gatsby";
-import { kebabCase } from "lodash";
+import React from 'react';
+import EventJsonLd from './event-json-ld';
+import injectSheet from 'react-jss';
+import styles from './styles';
+import { Link } from 'gatsby';
+import { kebabCase } from 'lodash';
 
-const CalendarEvent = ({
-	summary,
-	description,
-	location,
-	start,
-	end,
-	classes,
-	fields
-}) => {
+const CalendarEvent = ({ summary, description, location, start, end, classes, fields }) => {
 	if (!start) return null;
 
-	const { slugDate, monthAndDay, dayOfWeek, startLocalTime, endLocalTime } =
-		fields || {};
+	const { slugDate, monthAndDay, dayOfWeek, startLocalTime, endLocalTime } = fields || {};
 
 	const slug = `${slugDate}/${kebabCase(summary)}`;
 
 	return (
 		<div className={classes.root} itemScope itemType="http://schema.org/Event">
-			<EventJsonLd
-				{...{ summary, description, start, end, location, fields }}
-			/>
+			<EventJsonLd {...{ summary, description, start, end, location, fields }} />
 			<meta itemProp="startDate" content={start.dateTime} />
 			<div>
 				<div className={classes.date}>

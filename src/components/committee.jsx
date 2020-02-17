@@ -1,6 +1,6 @@
-import React from "react";
-import SEO from "./seo";
-import injectSheet from "react-jss";
+import React from 'react';
+import SEO from './seo';
+import injectSheet from 'react-jss';
 
 const Committee = ({ pageContext, classes }) => (
 	<>
@@ -11,12 +11,12 @@ const Committee = ({ pageContext, classes }) => (
 	</>
 );
 
-const styles = theme => {
+const styles = (theme) => {
 	const u = theme.spacing.unit;
 	return {
 		root: {
-			padding: [u * 2, u * 4]
-		}
+			padding: [u * 2, u * 4],
+		},
 	};
 };
 

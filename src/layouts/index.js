@@ -5,22 +5,22 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React, { useState, useCallback } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import React, { useState, useCallback } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import Header from "../components/header";
-import Image from "../components/image";
-import "./layout.css";
-import "../sass/style.scss";
-import "../sass/wp-block-library.scss";
-import LayoutNav from "./nav";
-import injectSheet from "react-jss";
-import LayoutFooter from "./footer";
+import Header from '../components/header';
+import Image from '../components/image';
+import './layout.css';
+import '../sass/style.scss';
+import '../sass/wp-block-library.scss';
+import LayoutNav from './nav';
+import injectSheet from 'react-jss';
+import LayoutFooter from './footer';
 
 const Layout = ({ pageContext, children, classes }) => {
 	const [isNavOpen, setIsNavOpen] = useState(false);
 	const handleToggleNav = useCallback(() => {
-		setIsNavOpen(currentIsNavOpen => !currentIsNavOpen);
+		setIsNavOpen((currentIsNavOpen) => !currentIsNavOpen);
 	}, []);
 	const data = useStaticQuery(graphql`
 		query {
@@ -58,7 +58,7 @@ const Layout = ({ pageContext, children, classes }) => {
 		}
 	`);
 
-	const isHome = pageContext.layout === "home";
+	const isHome = pageContext.layout === 'home';
 
 	return (
 		<>
@@ -70,8 +70,8 @@ const Layout = ({ pageContext, children, classes }) => {
 			<LayoutNav
 				isOpen={isNavOpen}
 				setIsOpen={setIsNavOpen}
-				committees={data.allWordpressWpCommittee.edges.map(edge => edge.node)}
-				events={data.allCalendarEvent.edges.map(edge => edge.node)}
+				committees={data.allWordpressWpCommittee.edges.map((edge) => edge.node)}
+				events={data.allCalendarEvent.edges.map((edge) => edge.node)}
 			/>
 			<div
 				id="container"
@@ -80,8 +80,8 @@ const Layout = ({ pageContext, children, classes }) => {
 					isNavOpen
 						? {
 								opacity: 0.6,
-								pointerEvents: "none",
-								transform: "translateX(-1vw)"
+								pointerEvents: 'none',
+								transform: 'translateX(-1vw)',
 						  }
 						: {}
 				}
@@ -102,16 +102,12 @@ const Layout = ({ pageContext, children, classes }) => {
 
 					<div
 						style={{
-							display: "flex",
-							flexDirection: "column",
-							minHeight: "100vh"
+							display: 'flex',
+							flexDirection: 'column',
+							minHeight: '100vh',
 						}}
 					>
-						<main
-							style={{ flexGrow: 1, flexShrink: 0 }}
-							id="content"
-							className="wrap"
-						>
+						<main style={{ flexGrow: 1, flexShrink: 0 }} id="content" className="wrap">
 							{children}
 						</main>
 						<LayoutFooter />
@@ -122,17 +118,17 @@ const Layout = ({ pageContext, children, classes }) => {
 	);
 };
 
-const styles = theme => {
+const styles = (theme) => {
 	const u = theme.spacing.unit;
 	return {
 		layoutRoot: {
-			transition: ".2s",
+			transition: '.2s',
 			marginTop: [u * 8],
-			background: "#fff"
+			background: '#fff',
 		},
 		layoutInner: {
-			transition: ".2s"
-		}
+			transition: '.2s',
+		},
 	};
 };
 

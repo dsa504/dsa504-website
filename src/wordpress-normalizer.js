@@ -1,27 +1,24 @@
 /* eslint-env node */
 /* eslint-disable import/no-commonjs */
 
-const sanitizeHtml = require("sanitize-html");
+const sanitizeHtml = require('sanitize-html');
 
 const wordpressNormalizer = ({ entities }) => {
-	return entities.map(entity => {
+	return entities.map((entity) => {
 		let { content } = entity;
 
 		content = sanitizeHtml(content, {
 			transformTags: {
 				a: (tagName, attribs) => {
-					const rewritten = attribs.href.replace(
-						/http[s]*:\/\/[www.]*dsaneworleans\.org[/]?/,
-						"/"
-					);
+					const rewritten = attribs.href.replace(/http[s]*:\/\/[www.]*dsaneworleans\.org[/]?/, '/');
 					return {
-						tagName: "a",
+						tagName: 'a',
 						attribs: {
-							href: rewritten
-						}
+							href: rewritten,
+						},
 					};
-				}
-			}
+				},
+			},
 		});
 
 		return { ...entity, content };

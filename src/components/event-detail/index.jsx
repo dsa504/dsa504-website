@@ -1,11 +1,11 @@
-import React from "react";
-import { graphql, Link } from "gatsby";
-import SEO from "../seo";
-import injectSheet from "react-jss";
-import { kebabCase } from "lodash";
-import EventDetailPagination from "./pagination";
-import EventDetailActions from "./actions";
-import EventDetailMapImage from "./map-image";
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import SEO from '../seo';
+import injectSheet from 'react-jss';
+import { kebabCase } from 'lodash';
+import EventDetailPagination from './pagination';
+import EventDetailActions from './actions';
+import EventDetailMapImage from './map-image';
 
 const EventDetail = ({
 	data: {
@@ -15,27 +15,23 @@ const EventDetail = ({
 			htmlLink,
 			mapImage,
 			summary,
-			description
-		}
+			description,
+		},
 	},
 	pageContext: { previous, next },
-	classes
+	classes,
 }) => {
 	const summaryWithDate = `${monthAndDay} ${summary}`;
 
 	// have to do this gross shit because we don't have the slug in the query at the time of node creation
 	const prevSlug =
 		previous && previous.start && previous.start.dateTime
-			? `/events/${previous.start.dateTime.split("T")[0]}/${kebabCase(
-					previous.summary
-			  )}`
+			? `/events/${previous.start.dateTime.split('T')[0]}/${kebabCase(previous.summary)}`
 			: null;
 
 	const nextSlug =
 		next && next.start && next.start.dateTime
-			? `/events/${next.start.dateTime.split("T")[0]}/${kebabCase(
-					next.summary
-			  )}`
+			? `/events/${next.start.dateTime.split('T')[0]}/${kebabCase(next.summary)}`
 			: null;
 
 	return (
@@ -43,7 +39,7 @@ const EventDetail = ({
 			<SEO title={summary} prevLink={prevSlug} nextLink={nextSlug} />
 			<article className={classes.root}>
 				<h1>
-					{summary} <br />{" "}
+					{summary} <br />{' '}
 					<small>
 						<Link to={`/events/${slugDate}`}>
 							{dayOfWeek} {monthAndDay}
@@ -51,15 +47,10 @@ const EventDetail = ({
 					</small>
 				</h1>
 				<br />
-				<EventDetailActions
-					{...{ creator, htmlLink, summaryWithDate, monthAndDay, summary }}
-				/>
-				<div style={{ display: "flex" }}>
+				<EventDetailActions {...{ creator, htmlLink, summaryWithDate, monthAndDay, summary }} />
+				<div style={{ display: 'flex' }}>
 					<EventDetailMapImage {...{ mapImage }} />
-					<div
-						className={classes.description}
-						dangerouslySetInnerHTML={{ __html: description }}
-					/>
+					<div className={classes.description} dangerouslySetInnerHTML={{ __html: description }} />
 				</div>
 				<br />
 				<br />
@@ -105,13 +96,13 @@ export const pageQuery = graphql`
 	}
 `;
 
-const styles = theme => {
+const styles = (theme) => {
 	const u = theme.spacing.unit;
 	return {
 		root: {
-			padding: [u * 2, u * 4]
+			padding: [u * 2, u * 4],
 		},
-		description: {}
+		description: {},
 	};
 };
 

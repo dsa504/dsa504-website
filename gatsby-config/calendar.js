@@ -8,20 +8,20 @@ const url = `${process.env.GOOGLE_CALENDAR_BASE_URL}/${process.env.GOOGLE_CALEND
 
 const calendarParams = {
 	key: process.env.GOOGLE_CALENDAR_API_KEY,
-	orderBy: "startTime",
+	orderBy: 'startTime',
 	singleEvents: true,
 	timeMin,
 	timeMax,
-	timeZone: "America/Chicago"
+	timeZone: 'America/Chicago',
 };
 
 module.exports = {
-	resolve: "gatsby-source-apiserver",
+	resolve: 'gatsby-source-apiserver',
 	options: {
 		url,
-		method: "get",
+		method: 'get',
 		headers: {
-			"Content-Type": "application/json"
+			'Content-Type': 'application/json',
 		},
 		name: `CalendarEvent`,
 		entityLevel: `items`,
@@ -34,6 +34,6 @@ module.exports = {
 		// }
 		// schemaType: calendarEventTypeType,
 		params: calendarParams,
-		verboseOutput: true
-	}
+		verboseOutput: true,
+	},
 };

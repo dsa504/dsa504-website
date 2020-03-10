@@ -1,17 +1,22 @@
 {
-	env: {
-		browser: true,
-		es6: true,
-		node: true
-	},
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
   "parser": "babel-eslint",
-  "plugins": ["react-hooks"],
-  "extends": ["mdarens"],
+  "plugins": [
+    "react-hooks"
+  ],
+  "extends": [
+    "mdarens"
+  ],
   "rules": {
-    "react/prop-types": ["off"],
+    "react/prop-types": [
+      "off"
+    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
-    "react/jsx-no-bind": "ignore"
   },
   "settings": {
     "react": {

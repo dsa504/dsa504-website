@@ -1,13 +1,13 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import Calendar from "../components/calendar";
-import useSheet from "react-jss";
-import { get } from "lodash";
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Calendar from '../components/calendar';
+import injectSheet from 'react-jss';
+import { get } from 'lodash';
 
 function nodesToProps(path) {
-	const nodes = get(path, "edges");
+	const nodes = get(path, 'edges');
 	if (!nodes) return [];
-	return nodes.map(n => n.node);
+	return nodes.map((n) => n.node);
 }
 
 const Events = ({ classes }) => {
@@ -43,12 +43,7 @@ const Events = ({ classes }) => {
 		}
 	`);
 
-	return (
-		<CalendarInner
-			classes={classes}
-			items={nodesToProps(data.allCalendarEvent)}
-		/>
-	);
+	return <CalendarInner classes={classes} items={nodesToProps(data.allCalendarEvent)} />;
 };
 
 const CalendarInner = ({ classes, items }) => (
@@ -57,13 +52,13 @@ const CalendarInner = ({ classes, items }) => (
 	</div>
 );
 
-const styles = theme => {
+const styles = (theme) => {
 	const u = theme.spacing.unit;
 	return {
 		root: {
-			padding: [u * 2, u * 4]
-		}
+			padding: [u * 2, u * 4],
+		},
 	};
 };
 
-export default useSheet(styles)(Events);
+export default injectSheet(styles)(Events);

@@ -1,5 +1,5 @@
-import React from "react";
-import HomeCalendarEvent from "./event";
+import React from 'react';
+import HomeCalendarEvent from './event';
 
 const HomeCalendar = ({ events }) => {
 	return (

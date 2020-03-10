@@ -1,10 +1,10 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import SEO from "../components/seo";
-import HomeCalendar from "../components/home-calendar";
-import HomePost from "../components/home-post";
-import HomeCommittees from "../components/home-committees";
-import useSheet from "react-jss";
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import SEO from '../components/seo';
+import HomeCalendar from '../components/home-calendar';
+import HomePost from '../components/home-post';
+import HomeCommittees from '../components/home-committees';
+import injectSheet from 'react-jss';
 
 const IndexPage = () => {
 	const data = useStaticQuery(graphql`
@@ -41,7 +41,10 @@ const IndexPage = () => {
 				}
 			}
 
-			allCalendarEvent(limit: 10, filter: { id: { ne: "dummy" } }) {
+			allCalendarEvent(
+				limit: 10
+				filter: { id: { ne: "dummy" }, start: { dateTime: { ne: null } } }
+			) {
 				edges {
 					node {
 						summary
@@ -69,22 +72,18 @@ const _HomeRoot = ({
 	restPosts,
 	allWordpressWpCommittee,
 	allCalendarEvent,
-	classes
+	classes,
 }) => {
 	return (
 		<div className={classes.root}>
 			<div className={classes.upcoming}>
 				<div>
-					<HomeCalendar
-						events={allCalendarEvent.edges.map(edge => edge.node)}
-					/>
+					<HomeCalendar events={allCalendarEvent.edges.map((edge) => edge.node)} />
 					<br />
 					<br />
 				</div>
 				<div>
-					<HomeCommittees
-						committees={allWordpressWpCommittee.edges.map(edge => edge.node)}
-					/>
+					<HomeCommittees committees={allWordpressWpCommittee.edges.map((edge) => edge.node)} />
 				</div>
 			</div>
 			<div className={classes.posts}>
@@ -99,45 +98,45 @@ const _HomeRoot = ({
 
 const styles = {
 	root: {
-		"&:after": {
-			display: "table",
+		'&:after': {
+			display: 'table',
 			content: '""',
-			clear: "both"
-		}
+			clear: 'both',
+		},
 	},
 	column: {
-		padding: ["1em", "2em"]
+		padding: ['1em', '2em'],
 	},
 	posts: {
-		composes: "$column",
-		"& > article": {
-			paddingBottom: "2em"
+		composes: '$column',
+		'& > article': {
+			paddingBottom: '2em',
 		},
-		"@media screen and (min-width: 65em)": {
-			"& > article:not(:first-child)": {
-				display: "inline-block",
-				verticalAlign: "top",
-				width: "50%",
-				paddingRight: "2em"
-			}
-		}
+		'@media screen and (min-width: 65em)': {
+			'& > article:not(:first-child)': {
+				display: 'inline-block',
+				verticalAlign: 'top',
+				width: '50%',
+				paddingRight: '2em',
+			},
+		},
 	},
 	upcoming: {
-		composes: "$column",
-		"@media screen and (min-width: 45em)": {
+		composes: '$column',
+		'@media screen and (min-width: 45em)': {
 			columns: 2,
-			"& > div": {
-				breakInside: "avoid"
-			}
+			'& > div': {
+				breakInside: 'avoid',
+			},
 		},
-		"@media screen and (min-width: 65em)": {
-			float: "right",
-			columns: 1
+		'@media screen and (min-width: 65em)': {
+			float: 'right',
+			columns: 1,
 		},
-		"@media screen and (min-width: 105em)": {}
-	}
+		'@media screen and (min-width: 105em)': {},
+	},
 };
 
-const HomeRoot = useSheet(styles)(_HomeRoot);
+const HomeRoot = injectSheet(styles)(_HomeRoot);
 
 export default IndexPage;

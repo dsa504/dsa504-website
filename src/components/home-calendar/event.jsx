@@ -1,13 +1,12 @@
-import React from "react";
-import { Link } from "gatsby";
-import { kebabCase } from "lodash";
-import useSheet from "react-jss";
+import React from 'react';
+import { Link } from 'gatsby';
+import { kebabCase } from 'lodash';
+import injectSheet from 'react-jss';
 
 const HomeCalendarEvent = ({ fields, summary, previous, classes }) => {
 	const hasPrevious = !!(previous && previous.fields);
 	const showDate =
-		!hasPrevious ||
-		(hasPrevious && previous.fields.monthAndDay !== fields.monthAndDay);
+		!hasPrevious || (hasPrevious && previous.fields.monthAndDay !== fields.monthAndDay);
 	return (
 		<>
 			{showDate && hasPrevious ? <br /> : null}
@@ -19,30 +18,30 @@ const HomeCalendarEvent = ({ fields, summary, previous, classes }) => {
 				</>
 			) : null}
 			<Link to={`/events/${fields.slugDate}/${kebabCase(summary)}`}>
-				<div style={{ display: "flex" }}>
+				<div style={{ display: 'flex' }}>
 					<div
 						style={{
-							whiteSpace: "nowrap",
-							maxWidth: "18em",
-							overflow: "hidden",
-							textOverflow: "ellipsis"
+							whiteSpace: 'nowrap',
+							maxWidth: '18em',
+							overflow: 'hidden',
+							textOverflow: 'ellipsis',
 						}}
 					>
 						{summary}
 					</div>
-					<div style={{ marginLeft: "auto" }}>{fields.startLocalTime}</div>
+					<div style={{ marginLeft: 'auto' }}>{fields.startLocalTime}</div>
 				</div>
 			</Link>
 		</>
 	);
 };
 
-const styles = theme => {
+const styles = (theme) => {
 	return {
 		date: {
-			color: theme.palette.black
-		}
+			color: theme.palette.black,
+		},
 	};
 };
 
-export default useSheet(styles)(HomeCalendarEvent);
+export default injectSheet(styles)(HomeCalendarEvent);

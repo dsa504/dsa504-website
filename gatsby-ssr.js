@@ -1,8 +1,8 @@
 /* eslint-env es6, node */
 /* eslint-disable import/no-commonjs */
 
-const React = require("react");
-const { JssProvider, SheetsRegistry, ThemeProvider } = require("react-jss");
+const React = require('react');
+const { JssProvider, SheetsRegistry, ThemeProvider } = require('react-jss');
 
 /**
  * Keep track of SheetRegistry for each page
@@ -30,7 +30,7 @@ exports.onRenderBody = ({ setHeadComponents, pathname }) => {
 				id="server-side-jss"
 				key="server-side-jss"
 				dangerouslySetInnerHTML={{ __html: sheets.toString() }}
-			/>
+			/>,
 		]);
 		sheetsRegistryManager.delete(pathname);
 	}
@@ -38,18 +38,18 @@ exports.onRenderBody = ({ setHeadComponents, pathname }) => {
 
 // replace inline css/scss with links
 exports.onPreRenderHTML = ({ getHeadComponents }) => {
-	if (process.env.NODE_ENV !== "production") return;
+	if (process.env.NODE_ENV !== 'production') return;
 
 	let hc = getHeadComponents();
-	hc.forEach(el => {
-		if (el.type === "style" && el.props && el.props["data-href"]) {
-			el.type = "link";
-			el.props["href"] = el.props["data-href"];
-			el.props["rel"] = "stylesheet";
-			el.props["type"] = "text/css";
+	hc.forEach((el) => {
+		if (el.type === 'style' && el.props && el.props['data-href']) {
+			el.type = 'link';
+			el.props['href'] = el.props['data-href'];
+			el.props['rel'] = 'stylesheet';
+			el.props['type'] = 'text/css';
 
-			delete el.props["data-href"];
-			delete el.props["dangerouslySetInnerHTML"];
+			delete el.props['data-href'];
+			delete el.props['dangerouslySetInnerHTML'];
 		}
 	});
 };

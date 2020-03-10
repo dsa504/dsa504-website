@@ -1,14 +1,8 @@
-import React from "react";
-import { Link } from "gatsby";
-import useSheet from "react-jss";
+import React from 'react';
+import { Link } from 'gatsby';
+import injectSheet from 'react-jss';
 
-const NavSectionHeader = ({
-	linkTo,
-	linkProps = {},
-	children,
-	classes,
-	...props
-}) => {
+const NavSectionHeader = ({ linkTo, linkProps = {}, children, classes, ...props }) => {
 	return (
 		<h4 className={classes.root} {...props}>
 			<Link to={linkTo} {...linkProps}>
@@ -20,9 +14,9 @@ const NavSectionHeader = ({
 
 const styles = {
 	root: {
-		color: "#fff",
-		margin: 0
-	}
+		color: '#fff',
+		margin: 0,
+	},
 };
 
-export default useSheet(styles)(NavSectionHeader);
+export default injectSheet(styles)(NavSectionHeader);

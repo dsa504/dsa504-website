@@ -30,7 +30,7 @@
     "react-helmet": "^5.2.1",
     "react-jss": "^8.6.1",
     "react-static-google-map": "^0.5.2",
-    "sanitize-html": "^1.20.1",
+    "sanitize-html": "^2.3.2",
     "tinycolor2": "^1.4.1",
     "use-onclickoutside": "^0.3.1"
   },
